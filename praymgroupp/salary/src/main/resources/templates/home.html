@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <style>
+        .rightpic {
+         float: right; /* Выравнивание по правому краю */
+         margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+        }
+    </style>
+    <img src="/images/logo-praym.jpg" width="200px" height="200px" class="rightpic">
+</head>
+<body>
+<h1>Главная страница</h1>
+<form action="/user-registration">
+    <input type="submit" value="Регистрация пользователя" />
+</form>
+<br />
+<form action="/admin-registration">
+    <input type="submit" value="Регистрация Администратора" />
+</form>
+<br />
+<form action="/super-admin-registration">
+    <input type="submit" value="Регистрация Супер Администратора" />
+</form>
+<br />
+<form action="/get-users">
+    <input type="submit" value="Получить одного пользователя" />
+</form>
+<br />
+<form action="/get-allUsers">
+    <input type="submit" value="Получить всех пользователей" />
+</form>
+<br />
+<form action="/get_all_salary">
+    <input type="submit" value="Получить все зарплаты" />
+</form>
+<!--<p>Добавление пользователя <a href="/user-registration">Создать</a></p>-->
+<!--<p>Получение пользователя<a href="/get-users">Получить</a></p>-->
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Request with Multiple Objects</title>
+    <style>
+        .data-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+    <style>
+        .rightpic {
+         float: right; /* Выравнивание по правому краю */
+         margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+        }
+    </style>
+    <img src="/images/logo-praym.jpg" width="200px" height="200px" class="rightpic">
+</head>
+<body>
+<form action="/home">
+    <input type="submit" value="<- На главную" />
+</form>
+<h1>GET Request with Multiple Objects</h1>
+<button id="fetchButton">Fetch Data</button>
+<div id="data-container"></div>
+
+<script>
+    // Function to send GET request and display data
+    async function fetchData() {
+        try {
+            // Replace with your API endpoint
+            const response = await fetch('http://localhost:8080/admin/all');
+
+            // Check if the response is successful
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            // Parse the JSON response
+            const data = await response.json();
+
+            // Clear previous data
+            document.getElementById('data-container').innerHTML = '';
+
+            // Loop through the array of objects and render each one
+            data.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'data-card';
+
+                // Dynamically create and append fields with unique IDs
+                card.innerHTML = `
+<!--                    <label for="id-${index}">ID:</label>-->
+                    <input style="width: 15px;" type="text" id="id-${index}" name="id" value="${item.id}" required>
+<!--                    <label for="name-${index}">Name:</label>-->
+                    <input style="width: 90px;" type="text" id="name-${index}" name="name" value="${item.name}" required>
+<!--                    <label for="lastName-${index}">Last Name:</label>-->
+                    <input style="width: 90px;" type="text" id="lastName-${index}" name="lastName" value="${item.lastName}" required>
+<!--                    <label for="email-${index}">Email:</label>-->
+                    <input type="text" id="email-${index}" name="email" value="${item.email}" required>
+<!--                    <label for="phone-${index}">Phone:</label>-->
+                    <input type="text" id="phone-${index}" name="phone" value="${item.phone}" required>
+<!--                    <label for="category-${index}">Category:</label>-->
+                    <input type="text" id="category-${index}" name="category" value="${item.category}" required>
+                    <input type="text" id="city-${index}" name="city" value="${item.city}" required>
+                `;
+
+                // Append the card to the container
+                document.getElementById('data-container').appendChild(card);
+            });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            alert('Failed to fetch data. Please try again.');
+        }
+    }
+
+    // Attach the fetchData function to the button click event
+    document.getElementById('fetchButton').addEventListener('click', fetchData);
+</script>
+</body>
+</html>

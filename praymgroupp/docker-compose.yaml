@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+  salary:
+    build: salary
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db-praym
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-praym:5432/praym
+      - POSTGRES_USER=login
+      - POSTGRES_PASSWORD=password
+
+  db-praym:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: praym
+      POSTGRES_USER: login
+      POSTGRES_PASSWORD: password
+#    volumes:
+#      - ./data:/var/lib/ewm-db/data
+    ports:
+      - "5430:5432"
