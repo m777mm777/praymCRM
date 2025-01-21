@@ -4,8 +4,6 @@ COPY target/classes/static/images /app/resources/static/images
 
 FROM nginx:stable-alpine
 # COPY --from=build /dist /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d
 # COPY --from=build praymgroupp/nginx.conf /etc/nginx.conf.d/default.conf
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
