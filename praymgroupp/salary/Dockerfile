@@ -1,6 +1,6 @@
 FROM openjdk:17 as build
 COPY target/*.jar app.jar
-COPY target/classes/static/images /app/resources/static/images
+# COPY target/classes/static/images /app/resources/static/images
 
 FROM nginx:stable-alpine
 COPY --from=build /dist /usr/share/nginx/html
