@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+ <changeSet id="1" author="hromov">
+     <createTable tableName="users">
+         <column name="id" type="bigint" autoIncrement="true">
+             <constraints primaryKey="true"/>
+         </column>
+         <column name="name" type="varchar(20)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="last_name" type="varchar(20)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="email" type="VARCHAR(30)">
+             <constraints nullable="false" unique="true"/>
+         </column>
+         <column name="password" type="VARCHAR(255)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="phone" type="bigint(11)">
+             <constraints nullable="false" unique="true"/>
+         </column>
+         <column name="role" type="VARCHAR(25)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="city" type="VARCHAR(25)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="category" type="VARCHAR(25)">
+             <constraints nullable="false"/>
+         </column>
+         <column name="owner_id" type="bigint">
+         </column>
+         <column name="dismissed" type="boolean">
+         </column>
+     </createTable>
+
+     <addForeignKeyConstraint baseColumnNames="owner_id"
+                              baseTableName="users"
+                              constraintName="fk_users_owner_id"
+                              referencedColumnNames="id"
+                              referencedTableName="users"/>
+ </changeSet>
+
+    <changeSet id="2" author="hromov">
+        <createTable tableName="comments">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="text" type="varchar(2000)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="hromov">
+        <createTable tableName="salary">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="owner_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_month" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salary" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="premiya" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fobo" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="miratorg" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="smety" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lenta" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="avans" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zp_po_karte" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rent_car" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rent_phone" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="owner_id"
+                                 baseTableName="salary"
+                                 constraintName="fk_salary_owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+
+        <addForeignKeyConstraint baseColumnNames="comment_id"
+                                 baseTableName="salary"
+                                 constraintName="fk_salary_comment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="comments"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2" author="hromov">
+        <createTable tableName="salary">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="owner_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_id_user" references="users(id)"/>
+            </column>
+            <column name="reportingMonth" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salary" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="premiya" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fobo" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="miratorg" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="smety" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lenta" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="avans" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zpPoKarte" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rentCar" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rentPhone" type="double">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

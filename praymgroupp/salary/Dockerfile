@@ -1,5 +1,4 @@
 FROM openjdk:17 as build
-COPY --chown=node:node ./package*.json ./
 COPY target/*.jar app.jar
 # COPY target/classes/static/images /app/resources/static/images
 
