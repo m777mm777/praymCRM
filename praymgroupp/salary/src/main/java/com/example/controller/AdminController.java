@@ -26,6 +26,13 @@ public class AdminController {
         return userService.crateAdmin(request);
     }
 
+    @GetMapping("/tr")
+    @ResponseStatus(HttpStatus.CREATED)
+    public String tt() {
+
+        return "XyI";
+    }
+
     @PostMapping("/create-super-admin")
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponse crateSuperAdmin(@Validated(Create.class) @RequestBody UserRequest request) {
