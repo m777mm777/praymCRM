@@ -173,7 +173,7 @@
     // Function to load responsibles into the select dropdown
     async function loadResponsibles() {
         try {
-            const response = await fetch('http://95.142.37.35/user/get-admins');
+            const response = await fetch('http://localhost:8080/user/get-admins');
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -216,7 +216,7 @@
             const formaoplatyParam = formaoplaty === "" ? null : formaoplaty;
 
             // Build the URL with parameters
-            let url = 'http://95.142.37.35/admin/sallarys';
+            let url = 'http://localhost:8080/admin/sallarys';
             const params = [];
 
             if (monthParam) params.push(`month=${monthParam}`);
@@ -342,7 +342,7 @@
 
         // Send all updated data to the server
         try {
-            const response = await fetch('http://95.142.37.35/admin/update_all_salary', {
+            const response = await fetch('http://localhost:8080/admin/update_all_salary', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
