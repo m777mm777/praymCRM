@@ -2,18 +2,18 @@ networks:
   dev:
 
 services:
-  nginx:
-    image: nginx:stable-alpine
-    ports:
-      - "80:80"
-    volumes:
-      - './nginx.conf:/etc/nginx/nginx.conf'
-      - './salary/src/main/resources/static/images:/app/resources/static/images'
-    depends_on:
-      - salary
-      - db-praym
-    networks:
-      - dev
+#  nginx:
+#    image: nginx:stable-alpine
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - './nginx.conf:/etc/nginx/nginx.conf'
+#      - './salary/src/main/resources/static/images:/app/resources/static/images'
+#    depends_on:
+#      - salary
+#      - db-praym
+#    networks:
+#      - dev
 
   salary:
 #    build: salary
