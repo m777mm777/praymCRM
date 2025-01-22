@@ -98,7 +98,7 @@
         const ownerLastName = document.getElementById('ownerLastName').value;
 
         // Send data to the server
-        fetch(`http://95.142.37.35/user/create-user/${ownerLastName}`, {
+        fetch(`http://95.142.37.35:8080/user/create-user/${ownerLastName}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
