@@ -51,6 +51,12 @@ public class ControllerSalaryAdmin {
 //        return salaryService.update(userId, salaryId, request);
 //    }
 
+    @GetMapping("/t")
+    public String tt() {
+
+        return "XyI";
+    }
+
     @GetMapping("/sallarys")
     public List<SalaryResponse> getAllSalarysBy(@RequestParam(required = false) String month,
                                                 @RequestParam(required = false) String year,
