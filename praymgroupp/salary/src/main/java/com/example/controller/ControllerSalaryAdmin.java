@@ -51,7 +51,7 @@ public class ControllerSalaryAdmin {
 //        return salaryService.update(userId, salaryId, request);
 //    }
 
-    @GetMapping("/t")
+    @GetMapping("/tt")
     public String tt() {
 
         return "XyI";
