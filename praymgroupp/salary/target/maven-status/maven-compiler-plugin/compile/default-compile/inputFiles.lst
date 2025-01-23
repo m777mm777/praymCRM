@@ -5,7 +5,6 @@
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerHtml.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerSalaryAdmin.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerSuperAdmin.java
-/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/Nn.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/UserController.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/createAndUpdate/Create.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/createAndUpdate/Update.java
@@ -15,8 +14,6 @@
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/SalarySearchFilter.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/UserRequest.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/CommentResponse.java
-/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/Hz.java
-/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/Hz2.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/SalaryResponse.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/UserResponse.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/UserResponseSmall.java

@@ -27,7 +27,7 @@
 <form id="dataForm">
     <input type="text" id="name" name="name" placeholder="Введите имя" required><br /><br />
     <input type="text" id="lastName" name="lastName" placeholder="Введите Фамилию" required><br /><br />
-    <input type="text" id="email" name="email" placeholder="Введите Email" required><br /><br />
+    <input type="text" id="patronymic" name="patronymic" placeholder="Введите Отчество" required><br /><br />
     <input type="text" id="password" name="password" placeholder="Введите Пароль" required><br /><br />
     <input type="text" id="phone" name="phone" placeholder="Введите телефон" required><br /><br />
     <input type="hidden" id="role" name="role" value="SUPERADMIN" readonly >
@@ -58,7 +58,7 @@
         // Collect form data
         const name = document.getElementById('name').value;
         const lastName = document.getElementById('lastName').value;
-        const email = document.getElementById('email').value;
+        const patronymic = document.getElementById('patronymic').value;
         const password = document.getElementById('password').value;
         const phone = document.getElementById('phone').value;
         const role = document.getElementById('role').value;
@@ -75,7 +75,7 @@
             body: JSON.stringify({
                 name: name,
                 lastName: lastName,
-                email: email,
+                patronymic: patronymic,
                 password: password,
                 phone: phone,
                 role: role,
@@ -108,7 +108,7 @@
         const id = data.id;
         const name = data.name;
         const lastName = data.lastName;
-        const email = data.email;
+        const patronymic = data.patronymic;
         const phone = data.phone;
         const category = data.category;
         const city = data.city;
@@ -126,9 +126,9 @@
         listItemLastName.textContent = `Last Name: ${lastName}`;
         container.appendChild(listItemLastName);
 
-        const listItemEmail = document.createElement('li');
-        listItemEmail.textContent = `Email: ${email}`;
-        container.appendChild(listItemEmail);
+        const listItemPatronymic = document.createElement('li');
+        listItemPatronymic.textContent = `Patronymic: ${patronymic}`;
+        container.appendChild(listItemPatronymic);
 
         const listItemPhone = document.createElement('li');
         listItemPhone.textContent = `Phone: ${phone}`;

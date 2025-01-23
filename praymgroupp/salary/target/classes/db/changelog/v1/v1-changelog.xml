@@ -16,8 +16,8 @@
          <column name="last_name" type="varchar(20)">
              <constraints nullable="false"/>
          </column>
-         <column name="email" type="VARCHAR(30)">
-             <constraints nullable="false" unique="true"/>
+         <column name="patronymic" type="VARCHAR(20)">
+             <constraints nullable="false"/>
          </column>
          <column name="password" type="VARCHAR(255)">
              <constraints nullable="false"/>
@@ -37,6 +37,8 @@
          <column name="owner_id" type="bigint">
          </column>
          <column name="dismissed" type="boolean">
+         </column>
+         <column name="bank_account_number" type="bigint(20)">
          </column>
      </createTable>
 

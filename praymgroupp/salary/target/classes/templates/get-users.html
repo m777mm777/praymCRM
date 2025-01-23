@@ -22,7 +22,7 @@
     <label for="id">id:</label>
     <label for="name">Имя____:</label>
     <label for="lastName">Фамилия:</label>
-    <label for="email">Email___:</label>
+    <label for="patronymic">Отчество:</label>
     <label for="phone">Телефон:</label>
     <label for="category">Категория:</label>
     <label for="city">Город:</label><br />
@@ -31,7 +31,7 @@
     <input style="width: 15px;" type="text" id="id" name="id" required>
     <input style="width: 90px;" type="text" id="name" name="name" required>
     <input style="width: 90px;" type="text" id="lastName" name="lastName" required>
-    <input type="text" id="email" name="email" required>
+    <input type="text" id="patronymic" name="patronymic" required>
     <input type="text" id="phone" name="phone" required>
     <input type="text" id="category" name="category" required>
     <input type="text" id="city" name="city" required>
@@ -44,6 +44,7 @@
         try {
             // Replace with your API endpoint
             const response = await fetch('http://95.142.37.35/admin');
+<!--            const response = await fetch('http://localhost:8080/admin');-->
 
             // Check if the response is successful
             if (!response.ok) {
@@ -57,7 +58,7 @@
             document.getElementById('id').value = data.id;
             document.getElementById('name').value = data.name;
             document.getElementById('lastName').value = data.lastName;
-            document.getElementById('email').value = data.email;
+            document.getElementById('patronymic').value = data.patronymic;
             document.getElementById('phone').value = data.phone;
             document.getElementById('category').value = data.category;
             document.getElementById('city').value = data.city;

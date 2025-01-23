@@ -20,7 +20,7 @@ public class ControllerAuth {
     @PostMapping(value = "/auth")
     public String auth(@RequestBody Auth auth) {
 
-        User user = userService.chekUser(auth.getLogin(), auth.getPassword());
+        User user = userService.chekUser(auth.getPhone(), auth.getPassword());
 
         String role = user.getRole();
         String html = " ";

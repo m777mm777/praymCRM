@@ -2,41 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Request with Multiple Objects</title>
     <style>
-        .rightpic {
-         float: right; /* Выравнивание по правому краю */
-         margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
+        /* Fix the header at the top of the page */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* Ширина элемента на всю ширину экрана */
+            height: 142px; /* Фиксированная высота элемента */
+            background-image: url("/images/logo-praym1.jpg");/* Optional: Add a background color */
+            background-size: 100% auto;
+            z-index: 100; /* Ensure it stays on top of other content */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            padding: 10px 10px; /* Optional: Add padding for better spacing */
+        }
+
+        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
+        main {
+            padding-top: 150px; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+        }
+
+        /* Optional: Add some basic styling to the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Optional: Style the main content */
+        main p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        .nemenyemye-field {
+            background-color: #b0b7c6; /* синий цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 5px; /* Скругление углов */
+        }
+
+        .botton-field {
+            background-color: #baacc7; /* красные кнопки */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 5px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
         }
     </style>
-    <img src="/images/logo-praym.jpg" width="200px" height="200px" class="rightpic">
+    <!--    <img src="/images/logo-praym.jpg" width="200px" height="200px" class="rightpic">-->
 </head>
 <body>
-<h1>Главная страница</h1>
-<form action="/user-registration">
-    <input type="submit" value="Регистрация пользователя" />
-</form>
-<br />
-<form action="/admin-registration">
-    <input type="submit" value="Регистрация Администратора" />
-</form>
-<br />
-<form action="/super-admin-registration">
-    <input type="submit" value="Регистрация Супер Администратора" />
-</form>
-<br />
-<form action="/get-users">
-    <input type="submit" value="Получить одного пользователя" />
-</form>
-<br />
-<form action="/get-allUsers">
-    <input type="submit" value="Получить всех пользователей" />
-</form>
-<br />
-<form action="/get_all_salary">
-    <input type="submit" value="Получить все зарплаты" />
-</form>
-<!--<p>Добавление пользователя <a href="/user-registration">Создать</a></p>-->
-<!--<p>Получение пользователя<a href="/get-users">Получить</a></p>-->
+
+<!-- Фиксированный заголовок -->
+<div id="i-container" class="fixed-header">
+
+    <label style="color: white; font-size: 20px; margin-left: 50px;">
+        Главное меню
+    </label><br />
+
+    <form action="/user-registration">
+        <input type="submit" value="Регистрация пользователя" class="botton-field"/>
+    </form>
+    <form action="/admin-registration">
+        <input type="submit" value="Регистрация Администратора" class="botton-field"/>
+    </form>
+    <form action="/super-admin-registration">
+        <input type="submit" value="Регистрация Супер Администратора" class="botton-field"/>
+    </form>
+    <form action="/get-users">
+        <input type="submit" value="Получить одного пользователя" class="botton-field"/>
+    </form>
+    <form action="/get-allUsers">
+        <input type="submit" value="Получить всех пользователей" class="botton-field"/>
+    </form>
+    <form action="/get_all_salary">
+        <input type="submit" value="Получить все зарплаты" class="botton-field"/>
+    </form>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+</div>
+
 </body>
 </html>

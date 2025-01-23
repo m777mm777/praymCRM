@@ -17,7 +17,6 @@ public class SalaryRequest {
 
     private Double salary;
 
-//    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate reportingMonth;
 
     private Double premiya;

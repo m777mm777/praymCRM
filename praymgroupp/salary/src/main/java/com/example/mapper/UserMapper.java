@@ -21,12 +21,16 @@ public class UserMapper {
         User user = new User();
         user.setName(request.getName());
         user.setLastName(request.getLastName());
-        user.setEmail(request.getEmail());
+        user.setPatronymic(request.getPatronymic());
         user.setPassword(request.getPassword());
         user.setPhone(request.getPhone());
         user.setRole(request.getRole());
         user.setCity(request.getCity());
         user.setCategory(request.getCategory());
+        if(request.getBankAccountNumber() != null) {
+            user.setBankAccountNumber(request.getBankAccountNumber());
+        }
+        user.setDismissed(false);
 
         return user;
     }
@@ -40,7 +44,7 @@ public class UserMapper {
         userResponse.id(user.getId());
         userResponse.name(user.getName());
         userResponse.lastName(user.getLastName());
-        userResponse.email(user.getEmail());
+        userResponse.patronymic(user.getPatronymic());
         userResponse.phone(user.getPhone());
         userResponse.category(user.getCategory());
         userResponse.city(user.getCity());
@@ -48,6 +52,11 @@ public class UserMapper {
             userResponse.ownerLastName(user.getOwner().getLastName());
         }
 
+        if (user.getBankAccountNumber() != null) {
+            userResponse.bankAccountNumber(user.getBankAccountNumber());
+        }
+
+        userResponse.dismissed(user.getDismissed());
 
         return userResponse.build();
     }

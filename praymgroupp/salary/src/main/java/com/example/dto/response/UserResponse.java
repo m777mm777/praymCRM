@@ -15,7 +15,7 @@ public class UserResponse {
 
     private String lastName;
 
-    private String email;
+    private String patronymic;
 
     private Long phone;
 
@@ -24,4 +24,8 @@ public class UserResponse {
     private String category;
 
     private String ownerLastName;
+
+    private Integer bankAccountNumber;
+
+    private Boolean dismissed;
 }

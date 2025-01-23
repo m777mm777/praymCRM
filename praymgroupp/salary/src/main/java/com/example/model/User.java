@@ -22,8 +22,8 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(nullable = false)
+    private String patronymic;
 
     @Column(nullable = false)
     private String password;
@@ -46,6 +46,9 @@ public class User {
 
     @Column(nullable = false)
     private Boolean dismissed;
+
+    @Column(name = "bank_account_number")
+    private Integer bankAccountNumber;
 
 }
 

@@ -19,7 +19,7 @@ public interface UserService {
 
     UserResponse getById(Long id);
 
-    User chekUser(String email, String password);
+    User chekUser(Integer phone, String password);
 
     List<UserResponse> getAll();
 

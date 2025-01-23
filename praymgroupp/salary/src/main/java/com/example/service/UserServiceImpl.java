@@ -67,9 +67,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User chekUser(String email, String password) {
+    public User chekUser(Integer phone, String password) {
 
-        return userRepository.findByEmailAndPassword(email, password)
+        return userRepository.findByPhoneAndPassword(phone, password)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
     }
 

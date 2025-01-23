@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GET Request with Nested Objects</title>
+    <title>GET Request with Multiple Objects</title>
     <style>
         .data-card {
             background-color: #f5f5f5;
@@ -80,17 +80,29 @@
             background-color: #c2c2c2; /* Серый цвет фона */
             color: #000000; /* Черный цвет текста */
         }
+
+        .botton-field {
+            background-color: #baacc7; /* красные кнопки */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 5px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
     </style>
+    <!--    <img src="/images/logo-praym.jpg" width="200px" height="200px" class="rightpic">-->
 </head>
 <body>
+
 <!-- Фиксированный заголовок -->
 <div id="i-container" class="fixed-header">
     <!--    <img src="/images/logo-praymm.jpg" width="600" height="100px" class="rightpic">-->
     <form action="/home">
-        <input style="border-radius: 5px;" type="submit" value="<- На главную" />
+        <input type="submit" value="<- На главную" class="botton-field"/>
+        <label style="color: white; font-size: 20px; margin-left: 50px;">
+            Зарплаты ПРАЙМГРУПП
+        </label>
     </form>
-    <h1 style="color: white">Зарплата ПРАЙМГРУПП</h1>
-    <button style="border-radius: 5px;" id="fetchButton">Получить данные</button>
+    <br />
+<!--    <h1 style="color: white">Сотрудники ПРАЙМГРУПП</h1>-->
     <select style="border-radius: 5px;" id="month" name="month">
         <option value="">Месяц</option>
         <option value="01">Январь</option>
@@ -140,7 +152,9 @@
         <option value="IP">ИП</option>
         <option value="NEOFFICIAL">За наличные</option>
     </select><br />
-    <button id="saveAllButton" style="margin-top: 20px; border-radius: 5px;">Сохранить все</button><br />
+    <button id="fetchButton" class="botton-field">Получить данные</button>
+    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button><br />
+    <br />
     <div id="label">
         <!--        <input style="width: 0px;" type="text" name="1" value="ID" readonly class="nechet-field"/>-->
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
@@ -156,24 +170,33 @@
         <input style="width: 50px;" type="text" name="12" value="Сметы" readonly class="nechet-field"/>
         <input style="width: 50px;" type="text" name="13" value="Лента" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="14" value="Аванс" readonly class="nechet-field"/>
-        <input style="width: 75px;" type="text" name="15" value="Зп по карте" readonly class="chet-field"/>
+        <input style="width: 75px;" type="text" name="15" value="Самозанятый" readonly class="chet-field"/>
         <input style="width: 75px;" type="text" name="16" value="За машину" readonly class="nechet-field"/>
         <input style="width: 70px;" type="text" name="17" value="За телефон" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
         <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
 </div>
-
-<!-- Основной контент -->
-<main>
-    <div id="data-container"></div>
-</main>
+<form action="/home">
+    <input type="submit" value="<- На главную" />
+</form>
+<!--<h1>GET Request with Multiple Objects</h1>-->
+<!--<button id="fetchButton">Fetch Data</button>-->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="data-container"></div>
 
 <script>
     // Function to load responsibles into the select dropdown
     async function loadResponsibles() {
         try {
             const response = await fetch('http://95.142.37.35/user/get-admins');
+<!--            const response = await fetch('http://localhost:8080/user/get-admins');-->
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -217,6 +240,7 @@
 
             // Build the URL with parameters
             let url = 'http://95.142.37.35/admin/sallarys';
+<!--            let url = 'http://localhost:8080/admin/sallarys';-->
             const params = [];
 
             if (monthParam) params.push(`month=${monthParam}`);
@@ -269,7 +293,7 @@
                     <input style="width: 0px;" type="hidden" id="id-${index}" name="id" value="${item.id}" readonly >
                     <input style="width: 49px;" type="text" id="reportingMonth-${index}" name="reportingMonth" value="${item.reportingMonth}" readonly class="nemenyemye-field">
                     <input style="width: 60px;" type="text" id="salary-${index}" name="salary" value="${item.salary}" required class="nechet-field">
-                    <input style="width: 50px; border-radius: 5px;" type="text" id="premiya-${index}" name="premiya" value="${item.premiya}" required class="chet-field">
+                    <input style="width: 50px;" type="text" id="premiya-${index}" name="premiya" value="${item.premiya}" required class="chet-field">
                     <input style="width: 50px;" type="text" id="fobo-${index}" name="fobo" value="${item.fobo}" required class="nechet-field">
                     <input style="width: 60px;" type="text" id="miratorg-${index}" name="miratorg" value="${item.miratorg}" required class="chet-field">
                     <input style="width: 50px;" type="text" id="smety-${index}" name="smety" value="${item.smety}" required class="nechet-field">
@@ -322,7 +346,7 @@
 
             updatedDataArray.push({
                 id: id,
-                ownerId: ownerId, // Исправлено на ownerId
+                ownerId: ownerId,
                 reportingMonth: reportingMonth,
                 salary: salary,
                 premiya: premiya,
@@ -343,6 +367,7 @@
         // Send all updated data to the server
         try {
             const response = await fetch('http://95.142.37.35/admin/update_all_salary', {
+<!--            const response = await fetch('http://localhost:8080/admin/update_all_salary', {-->
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

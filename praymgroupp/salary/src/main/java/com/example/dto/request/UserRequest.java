@@ -23,17 +23,15 @@ public class UserRequest {
     @NotEmpty(groups = Create.class)
     private String lastName;
 
-    @Size(min = 6, max = 250, groups = {Create.class, Update.class})
+    @Size(min = 2, max = 20, groups = {Create.class, Update.class})
     @NotEmpty(groups = Create.class)
-    @Email(groups = {Create.class, Update.class})
-    private String email;
+    private String patronymic;
 
     @Size(min = 6, max = 25, groups = {Create.class, Update.class})
     @NotEmpty(groups = Create.class)
     private String password;
 
-//    @Size(min = 11, max = 11, groups = {Create.class, Update.class})
-//    @NotEmpty(groups = Create.class)
+    @Size(min = 11, max = 11, groups = {Create.class, Update.class})
     private Long phone;
 
     private String role;
@@ -43,4 +41,7 @@ public class UserRequest {
     private String category;
 
     private Long ownerId;
+
+    @Size(min = 20, max = 20, groups = {Create.class, Update.class})
+    private Integer bankAccountNumber;
 }
