@@ -198,8 +198,8 @@
 
         document.getElementById('get-all-salary-form').addEventListener('submit', (e) => {
             e.preventDefault(); // Отменяем стандартное поведение формы
-            handleFormSubmit(`http://localhost:8080/super-admin/get-all-salary/${initiatorId}`);
-<!--            handleFormSubmit(`http://95.142.37.35/super-admin/get-all-salary/${initiatorId}`);-->
+<!--            handleFormSubmit(`http://localhost:8080/super-admin/get-all-salary/${initiatorId}`);-->
+            handleFormSubmit(`http://95.142.37.35/super-admin/get-all-salary/${initiatorId}`);
         });
     } else {
         console.log("Number not found in URL");
