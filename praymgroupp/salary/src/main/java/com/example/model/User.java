@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigInteger;
+
 @Data
 @Entity
 @Table(name = "users")
@@ -48,7 +50,7 @@ public class User {
     private Boolean dismissed;
 
     @Column(name = "bank_account_number")
-    private Integer bankAccountNumber;
+    private BigInteger bankAccountNumber;
 
 }
 

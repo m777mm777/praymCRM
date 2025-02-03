@@ -26,10 +26,12 @@ public class ControllerAuth {
         String html = " ";
         switch (role) {
             case "SUPERADMIN":
-                return  "home";
+                html = "super-admin/home-super-admin/h/" + user.getId();
+                break;
             case "ADMIN":
-                return  "home";
+                html = "admin/home-admin/h/" + user.getId();
+                break;
         }
-        return "home";
+        return html;
     }
 }

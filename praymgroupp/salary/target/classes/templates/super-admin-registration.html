@@ -5,52 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отправка данных на сервер</title>
     <style>
-        .rightpic {
-            float: right; /* Выравнивание по правому краю */
-            margin: 0 0 5px 5px; /* Отступы вокруг фотографии */
-        }
+        .data-card {
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
 
-        body {
-            background: url('nubex.png') no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-        }
+    /* Fix the header at the top of the page */
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 1px;
+        width: 96.9%; /* Ширина элемента на всю ширину экрана */
+        height: 20%; /* Фиксированная высота элемента */
+        background-image: url("/images/logo-praym1.jpg");/* Optional: Add a background color */
+        background-size: 100% auto;
+        z-index: 100; /* Ensure it stays on top of other content */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        padding: 10px 17px; /* Optional: Add padding for better spacing */
+        border-radius: 10px; /* Скругление углов */
+        border: 4px solid black; /* Черная рамка по контуру */
+    }
+
+    /* Add padding to the main content to prevent it from being hidden behind the fixed header */
+    main {
+        padding-top: 150px; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+    }
+
+    /* Optional: Add some basic styling to the body */
+    body {
+        font-family: Arial, sans-serif;
+        margin-top: 10px;
+        padding: 0;
+    }
+
+    /* Optional: Style the header text */
+    .fixed-header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    /* Optional: Style the main content */
+    main p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 20px;
+    }
+
+    /* Стили для четных и нечетных полей */
+    .chet-field {
+        background-color: #a8a8a8; /* темно-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    }
+
+    .nechet-field {
+        background-color: #e3e8e6; /* бело-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    }
+
+    .nemenyemye-field {
+        background-color: #b0b7c6; /* синий цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 7px; /* Скругление углов */
+    }
+
+    .non-field {
+        background-color: #c2c2c2; /* Серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    }
+
+    .botton-field {
+        background-color: #baacc7; /* красные кнопки */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+    }
+
+    .one-field {
+        background-color: #c2c2c2; /* Серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 10px; /* Скругление углов */
+        border: 4px solid black; /* Черная рамка по контуру */
+    }
+
+    .two-field {
+        background-color: #e3e8e6; /* бело-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border-radius: 10px; /* Скругление углов */
+        border: 4px solid black; /* Черная рамка по контуру */
+    }
+
+    .margin-field {
+        margin-left: 5px;
+    }
+
+    .polya {
+    border-radius: 5px;
+    }
     </style>
-    <img src="/images/logo-praym.jpg" width="200px" height="200px" class="rightpic">
 </head>
 <body>
-<form action="/home">
-    <input type="submit" value="<- На главную" />
+<div class="fixed-header">
+<form action="/index">
+    <input class="botton-field" type="submit" value="<- На главную" />
 </form>
-
-<h1>Создание Супер пользователя Праймгрупп</h1>
+    <br />
+    <br />
+<h1>Создание Супер пользователя Праймгрупп by super admin</h1>
 <form id="dataForm">
-    <input type="text" id="name" name="name" placeholder="Введите имя" required><br /><br />
-    <input type="text" id="lastName" name="lastName" placeholder="Введите Фамилию" required><br /><br />
-    <input type="text" id="patronymic" name="patronymic" placeholder="Введите Отчество" required><br /><br />
-    <input type="text" id="password" name="password" placeholder="Введите Пароль" required><br /><br />
-    <input type="text" id="phone" name="phone" placeholder="Введите телефон" required><br /><br />
-    <input type="hidden" id="role" name="role" value="SUPERADMIN" readonly >
-    <select id="category" name="category" required>
-        <option value="OFFICIAL">ПО ТК</option>
-        <option value="SZ">Самозанятый</option>
-        <option value="IP">ИП</option>
-        <option value="NEOFFICIAL">Не официально</option>
-    </select><br /><br />
-    <select id="city" name="city" required>
+    <input class="polya" type="text" id="name" name="name" placeholder="Введите имя" required>
+    <input class="polya" type="text" id="lastName" name="lastName" placeholder="Введите Фамилию" required>
+    <input class="polya" type="text" id="patronymic" name="patronymic" placeholder="Введите Отчество" required>
+    <input class="polya" type="text" id="password" name="password" placeholder="Введите Пароль" required>
+    <input class="polya" type="text" id="phone" name="phone" placeholder="Введите телефон" required>
+    <input class="polya" type="text" id="initiatorId" name="initiatorId" placeholder="pass" required>
+    <select class="polya" id="category" name="category" required>
+        <option value="По ТК">ПО ТК</option>
+        <option value="По ТК др-банк">По ТК др банк</option>
+        <option value="Самозанятый">Самозанятый</option>
+        <option value="Ип">ИП</option>
+        <option value="Не официально">Не официально</option>
+    </select>
+    <select class="polya" id="city" name="city" required>
         <option value="Москва">Москва</option>
         <option value="Ново-Ебенево">Ново-Ебенево</option>
         <option value="Саратов">Саратов</option>
         <option value="Королев">Королев</option>
         <option value="Питер">Питер</option>
     </select><br /><br />
-    <button type="submit">Отправить</button>
+    <button class="botton-field" type="submit">Сохранить</button>
     <br /><br /><br />
 </form>
 
 <h2>Данные пользователя:</h2>
 <ul id="data-container"></ul>
-
+</div>
 <script>
     document.getElementById('dataForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
@@ -61,13 +158,14 @@
         const patronymic = document.getElementById('patronymic').value;
         const password = document.getElementById('password').value;
         const phone = document.getElementById('phone').value;
-        const role = document.getElementById('role').value;
+        const initiatorId = document.getElementById('initiatorId').value;
         const category = document.getElementById('category').value;
         const city = document.getElementById('city').value;
 
         // Send data to the server
-<!--        fetch(`http://localhost:8080/super-admin/create-super-admin`, {-->
-            fetch(`http://95.142.37.35/super-admin/create-super-admin`, {
+<!--        fetch(`http://localhost:8080/super-admin/create-super-admin/${initiatorId}`, {-->
+        fetch(`http://95.142.37.35/super-admin/create-super-admin/${initiatorId}`, {
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -78,7 +176,6 @@
                 patronymic: patronymic,
                 password: password,
                 phone: phone,
-                role: role,
                 category: category,
                 city: city
             })

@@ -38,7 +38,7 @@
          </column>
          <column name="dismissed" type="boolean">
          </column>
-         <column name="bank_account_number" type="bigint(20)">
+         <column name="bank_account_number" type="decimal(20)">
          </column>
      </createTable>
 

@@ -2,7 +2,6 @@ com/example/model/Comment.class
 com/example/createAndUpdate/Update.class
 com/example/exceptions/ErrorMessage.class
 com/example/exceptions/ValidationException.class
-com/example/controller/ControllerSalaryAdmin.class
 com/example/service/SalaryServiceImpl.class
 com/example/service/CommentService.class
 com/example/exceptions/ConflictServerError.class
@@ -12,6 +11,7 @@ com/example/controller/ControllerAdmin.class
 com/example/dto/request/CommentRequest.class
 com/example/repository/UserRepository.class
 com/example/dto/request/Auth.class
+com/example/controller/ControllerHtmlAdmin.class
 com/example/createAndUpdate/Create.class
 com/example/dto/response/SalaryResponse$SalaryResponseBuilder.class
 com/example/dto/response/CommentResponse$CommentResponseBuilder.class
@@ -19,20 +19,20 @@ com/example/PraymgrouppApplication.class
 com/example/model/User.class
 com/example/enums/Month.class
 com/example/dto/request/SalaryRequest.class
-com/example/controller/AdminController.class
 com/example/repository/SalaryRepository.class
 com/example/mapper/CommentMapper.class
 com/example/service/SalaryService.class
 com/example/repository/CommentRepository.class
 com/example/model/Salary.class
+com/example/controller/ControllerSuperAdminAction.class
 com/example/mapper/UserMapper.class
 com/example/exceptions/ResourceServerError.class
 com/example/exceptions/ErrorHandler.class
 com/example/exceptions/ResourceNotFoundException.class
 com/example/dto/request/UserRequest.class
-com/example/controller/UserController.class
 com/example/dto/response/UserResponseSmall$UserResponseSmallBuilder.class
 com/example/dto/response/UserResponse.class
+com/example/controller/ControllerHtmlSuperAdmin.class
 com/example/controller/ControllerSuperAdmin.class
 com/example/enums/CategoryUser.class
 com/example/dto/response/UserResponse$UserResponseBuilder.class
@@ -42,6 +42,8 @@ com/example/service/UserServiceImpl.class
 com/example/controller/ControllerHtml.class
 com/example/dto/response/UserResponseSmall.class
 com/example/dto/response/CommentResponse.class
+com/example/dto/request/UserRequestUpdate.class
 com/example/enums/Role.class
 com/example/controller/ControllerAuth.class
+com/example/controller/ControllerAdminAction.class
 com/example/dto/request/SalarySearchFilter.class

@@ -18,4 +18,6 @@ public class SalarySearchFilter {
     private String city;
 
     private String formaoplaty;
+
+    private Boolean dismissed;
 }

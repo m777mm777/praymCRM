@@ -16,7 +16,6 @@ services:
       - dev
 
   salary:
-#    build: salary
     build:
       context: ./salary
     ports:

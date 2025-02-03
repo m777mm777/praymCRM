@@ -1,11 +1,12 @@
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/PraymgrouppApplication.java
-/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/AdminController.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerAdmin.java
+/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerAdminAction.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerAuth.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerHtml.java
-/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerSalaryAdmin.java
+/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerHtmlAdmin.java
+/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerHtmlSuperAdmin.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerSuperAdmin.java
-/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/UserController.java
+/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/controller/ControllerSuperAdminAction.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/createAndUpdate/Create.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/createAndUpdate/Update.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/Auth.java
@@ -13,6 +14,7 @@
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/SalaryRequest.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/SalarySearchFilter.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/UserRequest.java
+/Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/request/UserRequestUpdate.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/CommentResponse.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/SalaryResponse.java
 /Users/urijhromov/praymgroupp/praym/praymgroupp/salary/src/main/java/com/example/dto/response/UserResponse.java

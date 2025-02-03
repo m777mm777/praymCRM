@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Request with Multiple Objects</title>
+    <style>
+        .data-card {
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .rightpic {
+            float: right; /* Выравнивание по правому краю */
+            margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
+        }
+
+        /* Fix the header at the top of the page */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 1px;
+            width: 96.9%; /* Ширина элемента на всю ширину экрана */
+            height: 20%; /* Фиксированная высота элемента */
+            background-image: url("/images/logo-praym1.jpg");/* Optional: Add a background color */
+            background-size: 100% auto;
+            z-index: 100; /* Ensure it stays on top of other content */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            padding: 10px 17px; /* Optional: Add padding for better spacing */
+            border-radius: 10px; /* Скругление углов */
+            border: 4px solid black; /* Черная рамка по контуру */
+        }
+
+        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
+        main {
+            padding-top: 150px; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+        }
+
+        /* Optional: Add some basic styling to the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 25px;
+            padding: 0;
+        }
+
+        /* Optional: Style the header text */
+        .fixed-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Optional: Style the main content */
+        main p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        /* Стили для четных и нечетных полей */
+        .chet-field {
+            background-color: #a8a8a8; /* темно-серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .nechet-field {
+            background-color: #e3e8e6; /* бело-серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .nemenyemye-field {
+            background-color: #b0b7c6; /* синий цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+        }
+
+        .non-field {
+            background-color: #c2c2c2; /* Серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .botton-field {
+            background-color: #baacc7; /* красные кнопки */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .one-field {
+            background-color: #c2c2c2; /* Серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 10px; /* Скругление углов */
+            border: 4px solid black; /* Черная рамка по контуру */
+        }
+
+        .two-field {
+            background-color: #e3e8e6; /* бело-серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 10px; /* Скругление углов */
+            border: 4px solid black; /* Черная рамка по контуру */
+        }
+
+        .margin-field {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Фиксированный заголовок -->
+<div id="i-container" class="fixed-header">
+    <form id="homeForm">
+        <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
+        <label style="color: white; font-size: 20px; margin-left: 50px;">
+            Сотрудники ПРАЙМГРУПП by super admin
+        </label>
+    </form>
+    <br />
+    <select style="border-radius: 5px;" id="responsible" name="responsible" required>
+        <option value="" disabled selected>Ответственный</option>
+        <!-- Опции будут заполнены динамически -->
+    </select>
+    <select style="border-radius: 5px;" id="city" name="city">
+        <option value="">Город</option>
+        <option value="Москва">Москва</option>
+        <option value="Ново-Ебенево">Ново-Ебенево</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Королев">Королев</option>
+        <option value="Питер">Питер</option>
+    </select>
+    <select style="border-radius: 5px;" id="formaoplaty" name="formaoplaty">
+        <option value="">Форма оплаты</option>
+        <option value="По ТК">ПО ТК</option>
+        <option value="По ТК др-банк">По ТК др банк</option>
+        <option value="Самозанятый">Самозанятый</option>
+        <option value="Ип">ИП</option>
+        <option value="Не официально">Не официально</option>
+    </select>
+    <select style="border-radius: 5px;" id="dismissed" name="dismissed">
+        <option value="">Не уволен</option>
+        <option value="true">Уволен</option>
+    </select><br />
+    <button id="fetchButton" class="botton-field">Получить данные</button>
+    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button><br />
+    <br />
+    <div id="label">
+        <input style="width: 90px;" type="text" name="2" value="Имя" readonly class="chet-field"/>
+        <input style="width: 90px;" type="text" name="3" value="Фамилия" readonly class="nechet-field"/>
+        <input style="width: 90px;" type="text" name="4" value="Отчество" readonly class="chet-field"/>
+        <input style="width: 90px;" type="text" name="5" value="Телефон" readonly class="nechet-field"/>
+        <input style="width: 110px;" type="text" name="7" value="Форма занятости" readonly class="chet-field"/>
+        <input style="width: 90px;" type="text" name="8" value="Город" readonly class="nechet-field"/>
+        <input style="width: 160px;" type="text" name="9" value="Номер счета" readonly class="chet-field"/>
+        <input style="width: 110px;" type="text" name="10" value="Ответственный" readonly class="nechet-field"/>
+        <input style="width: 85px;" type="text" name="11" value="Уволен" readonly class="chet-field"/>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="data-container"></div>
+
+<script>
+
+    // Получаем текущий URL
+ const url = window.location.href;
+
+ // Используем регулярное выражение для извлечения числа в конце URL
+ const match = url.match(/\/super-admin\/get-all-users-by-super-admin\/h\/(\d+)/);
+
+ // Если число найдено, сохраняем его в переменную
+ let initiatorId = null;
+ if (match && match[1]) {
+ initiatorId = match[1];
+ console.log("Extracted number:", initiatorId);
+ } else {
+ console.log("Number not found in URL");
+ }
+
+ // Функция для загрузки списка администраторов
+function loadResponsibles() {
+<!-- fetch(`http://localhost:8080/super-admin/get-admins/${initiatorId}`)-->
+  fetch(`http://95.142.37.35/super-admin/get-admins/${initiatorId}`)
+     .then(response => {
+         if (!response.ok) {
+             throw new Error(`Server responded with status: ${response.status}`);
+         }
+         return response.json();
+     })
+     .then(data => {
+         const ownerLastNameSelect = document.getElementById('responsible');
+         ownerLastNameSelect.innerHTML = ''; // Очищаем список перед заполнением
+
+         // Добавляем первый элемент "Ответственный"
+         const defaultOption = document.createElement('option');
+         defaultOption.value = "";
+         defaultOption.textContent = "Ответственный";
+<!--            defaultOption.disabled = true;-->
+<!--            defaultOption.selected = true;-->
+         ownerLastNameSelect.appendChild(defaultOption);
+
+         // Добавляем остальные элементы из данных
+         data.forEach(admin => {
+             const option = document.createElement('option');
+             option.value = admin;
+             option.textContent = admin;
+             ownerLastNameSelect.appendChild(option);
+         });
+     })
+     .catch(error => {
+         console.error('Ошибка при загрузке списка администраторов:', error);
+     });
+}
+
+ // Load responsibles when the page loads
+ document.addEventListener('DOMContentLoaded', loadResponsibles);
+
+ // Function to send GET request and display data
+ async function fetchData() {
+     try {
+         // Get the selected values
+         const responsible = document.getElementById('responsible').value;
+         const city = document.getElementById('city').value;
+         const formaoplaty = document.getElementById('formaoplaty').value;
+         const dismissed = document.getElementById('dismissed').value;
+
+         // Set parameters to null if the default option is selected
+         const responsibleParam = responsible === "" ? null : responsible;
+         const cityParam = city === "" ? null : city;
+         const formaoplatyParam = formaoplaty === "" ? null : formaoplaty;
+         const dismissedParam = dismissed === "" ? null : dismissed;
+
+         // Build the URL with parameters
+
+<!--         let url = `http://localhost:8080/super-admin/all-users-by-super-admin/${initiatorId}`;-->
+         let url = `http://95.142.37.35/super-admin/all-users-by-super-admin/${initiatorId}`;
+         const params = [];
+
+         if (responsibleParam) params.push(`responsible=${responsibleParam}`);
+         if (cityParam) params.push(`city=${cityParam}`);
+         if (formaoplatyParam) params.push(`formaoplaty=${formaoplatyParam}`);
+         if (dismissedParam) params.push(`dismissed=${dismissedParam}`);
+
+         if (params.length > 0) {
+             url += `?${params.join('&')}`;
+         }
+
+         const response = await fetch(url);
+
+         if (!response.ok) {
+             throw new Error('Network response was not ok');
+         }
+         const data = await response.json();
+         document.getElementById('data-container').innerHTML = '';
+         data.forEach((item, index) => {
+             const card = document.createElement('div');
+             card.className = 'data-card';
+             if (index % 2 === 0) {
+                 card.classList.add('one-field');
+             } else {
+                 card.classList.add('two-field');
+             }
+             card.innerHTML = `
+                 <input style="width: 15px;" type="hidden" id="id-${index}" name="id" value="${item.id}" readonly>
+                 <input style="width: 90px;" type="text" id="name-${index}" name="name" value="${item.name}" required class="chet-field">
+                 <input style="width: 90px;" type="text" id="lastName-${index}" name="lastName" value="${item.lastName}" required class="nechet-field">
+                 <input style="width: 90px;" type="text" id="patronymic-${index}" name="patronymic" value="${item.patronymic}" required class="chet-field">
+                 <input style="width: 90px;" type="text" id="phone-${index}" name="phone" value="${item.phone}" required class="nechet-field">
+                 <input style="width: 110px;" type="text" id="category-${index}" name="category" value="${item.category}" required class="chet-field">
+                 <input style="width: 90px;" type="text" id="city-${index}" name="city" value="${item.city}" required class="nechet-field">
+                 <input style="width: 160px;" type="text" id="bankAccountNumber-${index}" name="bankAccountNumber" value="${item.bankAccountNumber}" required class="chet-field">
+                 <input style="width: 110px;" type="text" id="ownerLastName-${index}" name="ownerLastName" value="${item.ownerLastName}" required class="nechet-field">
+                 <select style="width: 90px;" id="dismissed-${index}" name="dismissed" class="chet-field">
+                     <option value="true" ${item.dismissed === true ? 'selected' : ''}>Да</option>
+                     <option value="false" ${item.dismissed === false ? 'selected' : ''}>Нет</option>
+                 </select>
+             `;
+             document.getElementById('data-container').appendChild(card);
+         });
+     } catch (error) {
+         console.error('Error fetching data:', error);
+         alert('Failed to fetch data. Please try again.');
+     }
+ }
+
+ // Function to collect data and send it to the server
+ async function saveAllData() {
+     const data = [];
+     const cards = document.querySelectorAll('.data-card');
+     cards.forEach((card, index) => {
+         const item = {
+             id: card.querySelector(`#id-${index}`).value,
+             name: card.querySelector(`#name-${index}`).value,
+             lastName: card.querySelector(`#lastName-${index}`).value,
+             patronymic: card.querySelector(`#patronymic-${index}`).value,
+             phone: card.querySelector(`#phone-${index}`).value,
+             category: card.querySelector(`#category-${index}`).value,
+             city: card.querySelector(`#city-${index}`).value,
+             bankAccountNumber: card.querySelector(`#bankAccountNumber-${index}`).value,
+             ownerLastName: card.querySelector(`#ownerLastName-${index}`).value,
+             dismissed: card.querySelector(`#dismissed-${index}`).value === 'true'
+         };
+         data.push(item);
+     });
+
+     try {
+<!--         const response = await fetch(`http://localhost:8080/super-admin/update-all-users/${initiatorId}`, {-->
+         const response = await fetch(`http://95.142.37.35/super-admin/update-all-users/${initiatorId}`, {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+         });
+
+         if (!response.ok) {
+             throw new Error('Network response was not ok');
+         }
+
+         alert('Данные успешно сохранены!');
+     } catch (error) {
+         console.error('Error saving data:', error);
+         alert('Failed to save data. Please try again.');
+     }
+ }
+
+       const handleFormSubmit = async (url) => {
+            try {
+                const response = await fetch(url, { method: 'GET' });
+                if (response.ok) {
+                    const redirectUrl = await response.text(); // Получаем URL для редиректа
+<!--                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
+                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект
+                } else {
+                    console.error('Ошибка при выполнении запроса:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        };
+
+        // Назначаем обработчики событий для кнопки "Назад"
+        document.getElementById('fetchButtonHome').addEventListener('click', () => {
+<!--            handleFormSubmit(`http://localhost:8080/super-admin/home-super-admin/${initiatorId}`);-->
+            handleFormSubmit(`http://95.142.37.35/super-admin/home-super-admin/${initiatorId}`);
+        });
+
+ // Attach the fetchData function to the button click event
+ document.getElementById('fetchButton').addEventListener('click', fetchData);
+
+ // Attach the saveAllData function to the "Сохранить все" button click event
+ document.getElementById('saveAllButton').addEventListener('click', saveAllData);
+
+ window.onload = fetchData;
+</script>
+</body>
+</html>

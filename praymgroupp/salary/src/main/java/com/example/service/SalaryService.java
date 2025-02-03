@@ -14,15 +14,17 @@ public interface SalaryService {
 
     Salary createToUser(User user);
 
-//    SalaryResponse update(Long userId, Long salaryId, SalaryRequest request);
+    List<SalaryResponse> updateAllSalaryByAdmin(Long initiatorId, List<SalaryRequest> requests);
 
-    SalaryResponse getById(Long id);
+    List<SalaryResponse> updateAllSalaryBySuperAdmin(Long initiatorId, List<SalaryRequest> requests);
 
-    List<SalaryResponse> updateAll(List<SalaryRequest> requests);
+    List<SalaryResponse> getAllBySuperAdmin(Long initiatorId,
+                                            String month,
+                                            String year,
+                                            String responsible,
+                                            String city,
+                                            String formaoplaty,
+                                            String dismissed);
 
-    List<SalaryResponse> getAllBy(String month,String year, String responsible,String city, String formaoplaty);
-
-    Long remove(Long id);
-
-    List<SalaryResponse> getForTheCurrentMonth(Long requesterId);
+    List<SalaryResponse> getAllSalarysByAdmin(Long initiatorId, String city, String formaoplaty);
 }

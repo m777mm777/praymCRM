@@ -1,28 +1,41 @@
 package com.example.service;
 
-import com.example.createAndUpdate.Create;
 import com.example.dto.request.UserRequest;
+import com.example.dto.request.UserRequestUpdate;
 import com.example.dto.response.UserResponse;
 import com.example.model.User;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 public interface UserService {
 
-    UserResponse crateUser(String ownerLastName, UserRequest request);
+    User findById(Long id);
 
-    UserResponse crateAdmin(UserRequest request);
-
-    UserResponse crateSuperAdmin(UserRequest request);
-
-    UserResponse getById(Long id);
-
-    User chekUser(Integer phone, String password);
+    User chekUser(Long phone, String password);
 
     List<UserResponse> getAll();
 
-    List<String> getAdmins();
+    List<String> getAdmins(Long initiatorId);
+
+    List<UserResponse> updateAllUsersBySuperAdmin(Long initiatorId, List<UserRequestUpdate> request);
+
+    List<UserResponse> getAllUsersByAdmin(Long initiatorId,
+                                          String city,
+                                          String formaoplaty,
+                                          String dismissed);
+
+    List<UserResponse> getAllUsersBySuperAdmin(Long initiatorId,
+                                               String responsible,
+                                               String city,
+                                               String formaoplaty,
+                                               String dismissed);
+
+    UserResponse crateUserByAdmin(Long initiatorId, UserRequest request);
+
+    UserResponse crateUserBySuperAdmin(Long initiatorId, UserRequest request);
+
+    UserResponse crateAdminBySuperAdmin(Long initiatorId, UserRequest request);
+
+    UserResponse crateSuperAdminBySuperAdmin(Long initiatorId, UserRequest request);
 
 }

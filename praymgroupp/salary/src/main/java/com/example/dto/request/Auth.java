@@ -9,7 +9,7 @@ public class Auth {
 
     @Size(min = 6, max = 20)
     @NotEmpty
-    private Integer phone;
+    private Long phone;
 
     @Size(min = 6, max = 20)
     private String password;

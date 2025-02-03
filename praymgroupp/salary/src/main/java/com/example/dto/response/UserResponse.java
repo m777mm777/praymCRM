@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigInteger;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class UserResponse {
 
     private String ownerLastName;
 
-    private Integer bankAccountNumber;
+    private BigInteger bankAccountNumber;
 
     private Boolean dismissed;
 }

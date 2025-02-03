@@ -20,50 +20,49 @@ import java.util.List;
 
 @Slf4j
 @Controller
-//@RestController
 @RequestMapping()
 @RequiredArgsConstructor
 public class ControllerHtml {
 
     private final UserService userService;
 
-    @RequestMapping(value = "/greeting")
-    public String helloWorldController(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
+//    @RequestMapping(value = "/greeting")
+//    public String helloWorldController(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "greeting";
+//    }
 
-    @RequestMapping(value = "/user-registration")
+    @RequestMapping(value = "/user-registration/{initiatorId}")
     public String createUser(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "user-registration";
     }
 
-    @RequestMapping(value = "/admin-registration")
-    public String createAdmin(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "admin-registration";
-    }
+//    @RequestMapping(value = "/admin-registration/{initiatorId}")
+//    public String createAdmin(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "admin-registration";
+//    }
 
-    @RequestMapping(value = "/super-admin-registration")
-    public String createSuperAdmin(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "super-admin-registration";
-    }
+//    @RequestMapping(value = "/super-admin-registration/{initiatorId}")
+//    public String createSuperAdmin(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "super-admin-registration";
+//    }
 
-    @RequestMapping(value = "/get-users")
+    @RequestMapping(value = "/get-users/{initiatorId}")
     public String getUsers(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "get-users";
     }
 
-    @RequestMapping(value = "/get-allUsers")
-    public String getAllUsers(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "get-allUsers";
-    }
+//    @RequestMapping(value = "/get-allUsers/{initiatorId}")
+//    public String getAllUsers(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "get-allUsers";
+//    }
 
-    @RequestMapping(value = "/get_all_salary")
+    @RequestMapping(value = "/get_all_salary/{initiatorId}")
     public String getAllSalary(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "get_all_salary";
@@ -91,8 +90,23 @@ public class ControllerHtml {
 //        return "home";
 //    }
 
-    @RequestMapping(value = "/home")
-    public String homeAdd() {
-        return "home";
+//    @RequestMapping(value = "/home/{initiatorId}")
+//    public String home() {
+//        return "home";
+//    }
+
+//    @RequestMapping(value = "/home-admin/{initiatorId}")
+//    public String homeAdmin() {
+//        return "home-admin";
+//    }
+
+    @RequestMapping(value = "/home-super-admin/{initiatorId}")
+    public String homeSuperAdmin() {
+        return "home-super-admin";
+    }
+
+    @RequestMapping(value = "/tr/{initiatorId}")
+    public String createSuperAdminnn(@PathVariable Long initiatorId) {
+        return "super-admin-registration";
     }
 }

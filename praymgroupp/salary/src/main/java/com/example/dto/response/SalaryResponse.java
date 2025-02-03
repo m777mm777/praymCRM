@@ -20,29 +20,28 @@ public class SalaryResponse {
     private UserResponse owner;
 
     private LocalDate reportingMonth;
-//    private Month reportingMonth;
 
-    private double salary;
+    private Double salary;
 
-    private double premiya;
+    private Double premiya;
 
-    private double fobo;
+    private Double fobo;
 
-    private double miratorg;
+    private Double miratorg;
 
-    private double smety;
+    private Double smety;
 
-    private double lenta;
+    private Double lenta;
 
-    private double avans;
+    private Double avans;
 
-    private double zpPoKarte;
+    private Double zpPoKarte;
 
-    private double rentCar;
+    private Double rentCar;
 
-    private double rentPhone;
+    private Double rentPhone;
 
-    private double itog;
+    private Double itog;
 
     private UserResponse responsible;
 

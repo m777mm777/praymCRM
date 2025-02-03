@@ -10,6 +10,8 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.math.BigInteger;
+
 
 @Data
 @AllArgsConstructor
@@ -40,8 +42,10 @@ public class UserRequest {
 
     private String category;
 
-    private Long ownerId;
+    private String ownerLastName;
 
     @Size(min = 20, max = 20, groups = {Create.class, Update.class})
-    private Integer bankAccountNumber;
+    private BigInteger bankAccountNumber;
+
+    private Boolean dismissed;
 }
