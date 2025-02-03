@@ -58,7 +58,9 @@ public class ControllerSuperAdminAction {
                                                       @RequestParam(required = false) String dismissed) {
         log.info("getAllUsersBySuperAdmin initiatorId {} responsible {} city {} formaoplaty {} dismissed {}",
                 initiatorId, responsible, city, formaoplaty, dismissed);
-        return userService.getAllUsersBySuperAdmin(initiatorId, responsible, city, formaoplaty, dismissed);
+        List<UserResponse> ttt = userService.getAllUsersBySuperAdmin(initiatorId, responsible, city, formaoplaty, dismissed);
+        return ttt;
+//        return userService.getAllUsersBySuperAdmin(initiatorId, responsible, city, formaoplaty, dismissed);
     }
 
     @PostMapping("/update-all-users/{initiatorId}")

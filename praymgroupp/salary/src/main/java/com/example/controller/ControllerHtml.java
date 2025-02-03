@@ -62,10 +62,10 @@ public class ControllerHtml {
 //        return "get-allUsers";
 //    }
 
-    @RequestMapping(value = "/get_all_salary/{initiatorId}")
+    @RequestMapping(value = "/get-all-salary/{initiatorId}")
     public String getAllSalary(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
-        return "get_all_salary";
+        return "get-all-salary";
     }
 
     @RequestMapping(value = "/index")

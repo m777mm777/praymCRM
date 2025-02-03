@@ -121,8 +121,8 @@
     <br />
 <h1>Создание Супер пользователя Праймгрупп by super admin</h1>
 <form id="dataForm">
-    <input class="polya" type="text" id="name" name="name" placeholder="Введите имя" required>
     <input class="polya" type="text" id="lastName" name="lastName" placeholder="Введите Фамилию" required>
+    <input class="polya" type="text" id="name" name="name" placeholder="Введите имя" required>
     <input class="polya" type="text" id="patronymic" name="patronymic" placeholder="Введите Отчество" required>
     <input class="polya" type="text" id="password" name="password" placeholder="Введите Пароль" required>
     <input class="polya" type="text" id="phone" name="phone" placeholder="Введите телефон" required>
@@ -163,8 +163,8 @@
         const city = document.getElementById('city').value;
 
         // Send data to the server
-<!--        fetch(`http://localhost:8080/super-admin/create-super-admin/${initiatorId}`, {-->
-        fetch(`http://95.142.37.35/super-admin/create-super-admin/${initiatorId}`, {
+        fetch(`http://localhost:8080/super-admin/create-super-admin/${initiatorId}`, {
+<!--        fetch(`http://95.142.37.35/super-admin/create-super-admin/${initiatorId}`, {-->
 
             method: 'POST',
             headers: {

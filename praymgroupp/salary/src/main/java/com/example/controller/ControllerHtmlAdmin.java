@@ -24,7 +24,7 @@ public class ControllerHtmlAdmin {
         return "get-all-users-by-admin";
     }
 
-    @RequestMapping(value = "/admin/get_all_salary/h/{initiatorId}")
+    @RequestMapping(value = "/admin/get-all-salary/h/{initiatorId}")
     public String getAllSalary() {
         return "get-all-salary-by-admin";
     }

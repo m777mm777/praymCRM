@@ -44,7 +44,7 @@ public class ControllerAdmin {
 
     }
 
-    @RequestMapping(value = "/admin/get_all_salary/{initiatorId}")
+    @RequestMapping(value = "/admin/get-all-salary/{initiatorId}")
     public String getAllUsers(@PathVariable Long initiatorId) {
 
         User user = userService.findById(initiatorId);
@@ -52,7 +52,7 @@ public class ControllerAdmin {
         String role = user.getRole();
 
         if(user.getRole().equals("ADMIN")) {
-            return "admin/get_all_salary/h/" + initiatorId;
+            return "admin/get-all-salary/h/" + initiatorId;
         } else {
             throw new ConflictServerError("Доступ запрещен");
         }

@@ -85,7 +85,7 @@ public class UserMapper {
         }
 
         if (user.getBankAccountNumber() != null) {
-            userResponse.bankAccountNumber(user.getBankAccountNumber());
+            userResponse.bankAccountNumber(user.getBankAccountNumber().toString());
         }
 
         userResponse.dismissed(user.getDismissed());

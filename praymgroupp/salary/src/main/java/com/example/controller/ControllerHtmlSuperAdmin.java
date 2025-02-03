@@ -34,9 +34,9 @@ public class ControllerHtmlSuperAdmin {
         return "get-all-users-by-super-admin";
     }
 
-    @RequestMapping(value = "/super-admin/get_all_salary/h/{initiatorId}")
+    @RequestMapping(value = "/super-admin/get-all-salary/h/{initiatorId}")
     public String getAllSalary() {
-        return "get_all_salary-by-super-admin";
+        return "get-all-salary-by-super-admin";
     }
 
     @RequestMapping(value = "/super-admin/home-super-admin/h/{initiatorId}")

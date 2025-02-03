@@ -27,7 +27,7 @@ public class UserResponse {
 
     private String ownerLastName;
 
-    private BigInteger bankAccountNumber;
+    private String bankAccountNumber;
 
     private Boolean dismissed;
 }

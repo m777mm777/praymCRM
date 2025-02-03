@@ -192,7 +192,7 @@
  // Функция для загрузки списка администраторов
 function loadResponsibles() {
 <!-- fetch(`http://localhost:8080/super-admin/get-admins/${initiatorId}`)-->
-  fetch(`http://95.142.37.35/super-admin/get-admins/${initiatorId}`)
+ fetch(`http://95.142.37.35/super-admin/get-admins/${initiatorId}`)
      .then(response => {
          if (!response.ok) {
              throw new Error(`Server responded with status: ${response.status}`);
@@ -341,8 +341,8 @@ function loadResponsibles() {
                 const response = await fetch(url, { method: 'GET' });
                 if (response.ok) {
                     const redirectUrl = await response.text(); // Получаем URL для редиректа
-<!--                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
-                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект
+                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект
+<!--                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект-->
                 } else {
                     console.error('Ошибка при выполнении запроса:', response.statusText);
                 }
@@ -353,8 +353,8 @@ function loadResponsibles() {
 
         // Назначаем обработчики событий для кнопки "Назад"
         document.getElementById('fetchButtonHome').addEventListener('click', () => {
-<!--            handleFormSubmit(`http://localhost:8080/super-admin/home-super-admin/${initiatorId}`);-->
-            handleFormSubmit(`http://95.142.37.35/super-admin/home-super-admin/${initiatorId}`);
+            handleFormSubmit(`http://localhost:8080/super-admin/home-super-admin/${initiatorId}`);
+<!--            handleFormSubmit(`http://95.142.37.35/super-admin/home-super-admin/${initiatorId}`);-->
         });
 
  // Attach the fetchData function to the button click event

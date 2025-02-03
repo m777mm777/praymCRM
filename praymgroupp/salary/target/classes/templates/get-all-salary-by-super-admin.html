@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET Request with Multiple Objects</title>
+    <style>
+        .data-card {
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .rightpic {
+            float: right; /* Выравнивание по правому краю */
+            margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
+        }
+
+        /* Fix the header at the top of the page */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 1px;
+            width: 96.9%; /* Ширина элемента на всю ширину экрана */
+            height: 20%; /* Фиксированная высота элемента */
+            background-image: url("/images/logo-praym1.jpg");/* Optional: Add a background color */
+            background-size: 100% auto;
+            z-index: 100; /* Ensure it stays on top of other content */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            padding: 10px 17px; /* Optional: Add padding for better spacing */
+            border-radius: 10px; /* Скругление углов */
+            border: 4px solid black; /* Черная рамка по контуру */
+        }
+
+        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
+        main {
+            padding-top: 150px; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+        }
+
+        /* Optional: Add some basic styling to the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        /* Optional: Style the header text */
+        .fixed-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Optional: Style the main content */
+        main p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        /* Стили для четных и нечетных полей */
+        .chet-field {
+            background-color: #a8a8a8; /* темно-серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .nechet-field {
+            background-color: #e3e8e6; /* бело-серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .nemenyemye-field {
+            background-color: #b0b7c6; /* синий цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+        }
+
+        .non-field {
+            background-color: #c2c2c2; /* Серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .botton-field {
+            background-color: #baacc7; /* красные кнопки */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+        }
+
+        .one-field {
+            background-color: #c2c2c2; /* Серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 10px; /* Скругление углов */
+            border: 4px solid black; /* Черная рамка по контуру */
+        }
+
+        .two-field {
+            background-color: #e3e8e6; /* бело-серый цвет фона */
+            color: #000000; /* Черный цвет текста */
+            border-radius: 10px; /* Скругление углов */
+            border: 4px solid black; /* Черная рамка по контуру */
+        }
+
+        .margin-field {
+            margin-left: 5px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<!-- Фиксированный заголовок -->
+<div id="i-container" class="fixed-header">
+    <form id="homeForm">
+        <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
+        <label style="color: white; font-size: 20px; margin-left: 50px;">
+            Зарплата ПРАЙМГРУПП by super admin
+        </label>
+    </form>
+    <br />
+    <select style="border-radius: 5px;" id="month" name="month">
+        <option value="">Месяц</option>
+        <option value="01">Январь</option>
+        <option value="02">Февраль</option>
+        <option value="03">Март</option>
+        <option value="04">Апрель</option>
+        <option value="05">Май</option>
+        <option value="06">Июнь</option>
+        <option value="07">Июль</option>
+        <option value="08">Август</option>
+        <option value="09">Сентябрь</option>
+        <option value="10">Октябрь</option>
+        <option value="11">Ноябрь</option>
+        <option value="12">Декабрь</option>
+        <option value="monthAll">Все месяца</option>
+    </select>
+    <select style="border-radius: 5px;" id="year" name="year">
+        <option value="">Текущий год</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
+        <option value="2031">2031</option>
+        <option value="2032">2032</option>
+        <option value="2033">2033</option>
+        <option value="2034">2034</option>
+        <option value="2035">2035</option>
+        <option value="yearAll">Все года</option>
+    </select>
+    <select style="border-radius: 5px;" id="responsible" name="responsible" required>
+        <option value="" disabled selected>Ответственный</option>
+        <!-- Опции будут заполнены динамически -->
+    </select>
+    <select style="border-radius: 5px;" id="city" name="city">
+        <option value="">Город</option>
+        <option value="Москва">Москва</option>
+        <option value="Ново-Ебенево">Ново-Ебенево</option>
+        <option value="Саратов">Саратов</option>
+        <option value="Королев">Королев</option>
+        <option value="Питер">Питер</option>
+    </select>
+    <select style="border-radius: 5px;" id="formaoplaty" name="formaoplaty">
+        <option value="">Форма оплаты</option>
+        <option value="По ТК">ПО ТК</option>
+        <option value="По ТК др-банк">По ТК др банк</option>
+        <option value="Самозанятый">Самозанятый</option>
+        <option value="Ип">ИП</option>
+        <option value="Не официально">Не официально</option>
+    </select>
+    <select style="border-radius: 5px;" id="dismissed" name="dismissed">
+        <option value="">Не уволен</option>
+        <option value="true">Уволен</option>
+    </select><br />
+    <button id="fetchButton" class="botton-field">Получить данные</button>
+    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
+    <button onclick="downloadExcel()">Скачать Excel</button><br />
+    <br />
+    <div id="label">
+        <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
+        <input style="width: 70px;" type="text" name="3" value="Фамилия" readonly class="nemenyemye-field"/>
+        <input style="width: 70px;" type="text" name="4" value="Город" readonly class="nemenyemye-field"/>
+        <input style="width: 70px;" type="text" name="5" value="Категория" readonly class="nemenyemye-field"/>
+        <input style="width: 49px;" type="text" name="7" value="Месяц" readonly class="nemenyemye-field"/>
+        <input style="width: 60px;" type="text" name="8" value="Зарплата" readonly class="nechet-field"/>
+        <input style="width: 50px;" type="text" name="9" value="Премия" readonly class="chet-field"/>
+        <input style="width: 50px;" type="text" name="10" value="Фобо" readonly class="nechet-field"/>
+        <input style="width: 60px;" type="text" name="11" value="Мираторг" readonly class="chet-field"/>
+        <input style="width: 50px;" type="text" name="12" value="Сметы" readonly class="nechet-field"/>
+        <input style="width: 50px;" type="text" name="13" value="Лента" readonly class="chet-field"/>
+        <input style="width: 50px;" type="text" name="14" value="Аванс" readonly class="nechet-field"/>
+        <input style="width: 85px;" type="text" name="15" value="Самозанятый" readonly class="chet-field"/>
+        <input style="width: 75px;" type="text" name="16" value="За машину" readonly class="nechet-field"/>
+        <input style="width: 75px;" type="text" name="17" value="За телефон" readonly class="chet-field"/>
+        <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
+        <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
+    </div>
+</div>
+<br />
+<!--<h1>GET Request with Multiple Objects</h1>-->
+<!--<button id="fetchButton">Fetch Data</button>-->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div id="data-container"></div>
+
+<script>
+    // Получаем текущий URL
+    const url = window.location.href;
+
+    // Используем регулярное выражение для извлечения числа в конце URL
+    const match = url.match(/\/super-admin\/get-all-salary\/h\/(\d+)/);
+
+    // Если число найдено, сохраняем его в переменную
+    let initiatorId = null;
+    if (match && match[1]) {
+        initiatorId = match[1];
+        console.log("Extracted number:", initiatorId);
+    } else {
+        console.log("Number not found in URL");
+    }
+
+    // Функция для загрузки списка администраторов
+    function loadResponsibles() {
+<!--        fetch(`http://localhost:8080/super-admin/get-admins/${initiatorId}`)-->
+        fetch(`http://95.142.37.35/super-admin/get-admins/${initiatorId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Server responded with status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const ownerLastNameSelect = document.getElementById('responsible');
+                ownerLastNameSelect.innerHTML = ''; // Очищаем список перед заполнением
+
+                // Добавляем первый элемент "Ответственный"
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Ответственный";
+                ownerLastNameSelect.appendChild(defaultOption);
+
+                // Добавляем остальные элементы из данных
+                data.forEach(admin => {
+                    const option = document.createElement('option');
+                    option.value = admin;
+                    option.textContent = admin;
+                    ownerLastNameSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Ошибка при загрузке списка администраторов:', error);
+            });
+    }
+
+    // Function to send GET request and display data
+    async function fetchData() {
+        try {
+            // Get the selected values
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const responsible = document.getElementById('responsible').value;
+            const city = document.getElementById('city').value;
+            const formaoplaty = document.getElementById('formaoplaty').value;
+            const dismissed = document.getElementById('dismissed').value;
+
+            // Set parameters to null if the default option is selected
+            const monthParam = month === "" ? null : month;
+            const yearParam = year === "" ? null : year;
+            const responsibleParam = responsible === "" ? null : responsible;
+            const cityParam = city === "" ? null : city;
+            const formaoplatyParam = formaoplaty === "" ? null : formaoplaty;
+            const dismissedParam = dismissed === "" ? null : dismissed;
+
+            // Build the URL with parameters
+            let url = `http://localhost:8080/super-admin/sallarys-by-super-admin/${initiatorId}`;
+<!--            let url = `http://95.142.37.35/super-admin/sallarys-by-super-admin/${initiatorId}`;-->
+            const params = [];
+
+            if (monthParam) params.push(`month=${monthParam}`);
+            if (yearParam) params.push(`year=${yearParam}`);
+            if (responsibleParam) params.push(`responsible=${responsibleParam}`);
+            if (cityParam) params.push(`city=${cityParam}`);
+            if (formaoplatyParam) params.push(`formaoplaty=${formaoplatyParam}`);
+            if (dismissedParam) params.push(`dismissed=${dismissedParam}`);
+
+            if (params.length > 0) {
+                url += `?${params.join('&')}`;
+            }
+
+            const response = await fetch(url);
+
+            // Check if the response is successful
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            // Parse the JSON response
+            const data = await response.json();
+
+            // Clear previous data
+            document.getElementById('data-container').innerHTML = '';
+
+            // Loop through the array of objects and render each one
+            data.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'data-card';
+
+                // Check if the index is even or odd and apply the appropriate class
+                if (index % 2 === 0) {
+                    card.classList.add('one-field');
+                } else {
+                    card.classList.add('two-field');
+                }
+
+                // Access nested properties from the 'owner' object
+                const owner = item.owner;
+                const responsible = item.responsible;
+                const comment = item.comment;
+
+                // Dynamically create and append fields with unique IDs
+                card.innerHTML = `
+                    <input style="width: 0px;" type="hidden" id="ownerid-${index}" name="ownerid" value="${owner.id}" readonly>
+                    <input style="width: 70px;" type="text" id="name-${index}" name="name" value="${owner.name}" readonly class="nemenyemye-field">
+                    <input style="width: 70px;" type="text" id="lastName-${index}" name="lastName" value="${owner.lastName}" readonly class="nemenyemye-field">
+                    <input style="width: 70px;" type="text" id="city-${index}" name="city" value="${owner.city}" readonly class="nemenyemye-field">
+                    <input style="width: 70px;" type="text" id="category-${index}" name="category" value="${owner.category}" readonly class="nemenyemye-field">
+                    <input style="width: 0px;" type="hidden" id="id-${index}" name="id" value="${item.id}" readonly >
+                    <input style="width: 49px;" type="text" id="reportingMonth-${index}" name="reportingMonth" value="${item.reportingMonth}" readonly class="nemenyemye-field">
+                    <input style="width: 60px;" type="text" id="salary-${index}" name="salary" value="${item.salary}" required class="nechet-field">
+                    <input style="width: 50px;" type="text" id="premiya-${index}" name="premiya" value="${item.premiya}" required class="chet-field">
+                    <input style="width: 50px;" type="text" id="fobo-${index}" name="fobo" value="${item.fobo}" required class="nechet-field">
+                    <input style="width: 60px;" type="text" id="miratorg-${index}" name="miratorg" value="${item.miratorg}" required class="chet-field">
+                    <input style="width: 50px;" type="text" id="smety-${index}" name="smety" value="${item.smety}" required class="nechet-field">
+                    <input style="width: 50px;" type="text" id="lenta-${index}" name="lenta" value="${item.lenta}" required class="chet-field">
+                    <input style="width: 50px;" type="text" id="avans-${index}" name="avans" value="${item.avans}" required class="nechet-field">
+                    <input style="width: 85px;" type="text" id="zpPoKarte-${index}" name="zpPoKarte" value="${item.zpPoKarte}" required class="chet-field">
+                    <input style="width: 75px;" type="text" id="rentCar-${index}" name="rentCar" value="${item.rentCar}" required class="nechet-field">
+                    <input style="width: 75px;" type="text" id="rentPhone-${index}" name="rentPhone" value="${item.rentPhone}" required class="chet-field">
+                    <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
+                    <input style="width: 110px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
+                    <br />
+                    <input style="width: 0px;" type="hidden" id="commentId-${index}" name="commentId" value="${comment.id}">
+                    <label>Коментарии: </label>
+                    <input style="width: 1000px;" type="text" id="comment-${index}" name="comment" value="${comment.text}" class="nechet-field">
+                    <input style="width: 0px;" type="hidden" id="bankAccountNumber-${index}" name="bankAccountNumber" value="${owner.bankAccountNumber}">
+                `;
+
+                // Append the card to the container
+                document.getElementById('data-container').appendChild(card);
+            });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            alert('Failed to fetch data. Please try again.');
+        }
+    }
+
+    // Function to save all data
+    async function saveAllData() {
+        const cards = document.querySelectorAll('.data-card');
+        const updatedDataArray = [];
+
+        cards.forEach((card) => {
+            const id = card.querySelector('input[name="id"]').value;
+            const ownerId = card.querySelector('input[name="ownerid"]').value;
+            const reportingMonth = card.querySelector('input[name="reportingMonth"]').value;
+            const salary = parseFloat(card.querySelector('input[name="salary"]').value);
+            const premiya = parseFloat(card.querySelector('input[name="premiya"]').value);
+            const fobo = parseFloat(card.querySelector('input[name="fobo"]').value);
+            const miratorg = parseFloat(card.querySelector('input[name="miratorg"]').value);
+            const smety = parseFloat(card.querySelector('input[name="smety"]').value);
+            const lenta = parseFloat(card.querySelector('input[name="lenta"]').value);
+            const avans = parseFloat(card.querySelector('input[name="avans"]').value);
+            const zpPoKarte = parseFloat(card.querySelector('input[name="zpPoKarte"]').value);
+            const rentCar = parseFloat(card.querySelector('input[name="rentCar"]').value);
+            const rentPhone = parseFloat(card.querySelector('input[name="rentPhone"]').value);
+            const responsible = card.querySelector('input[name="responsibleLastName"]').value;
+            const commentId = card.querySelector('input[name="commentId"]').value;
+            const comment = card.querySelector('input[name="comment"]').value;
+
+            updatedDataArray.push({
+                id: id,
+                ownerId: ownerId,
+                reportingMonth: reportingMonth,
+                salary: salary,
+                premiya: premiya,
+                fobo: fobo,
+                miratorg: miratorg,
+                smety: smety,
+                lenta: lenta,
+                avans: avans,
+                zpPoKarte: zpPoKarte,
+                rentCar: rentCar,
+                rentPhone: rentPhone,
+                responsible: responsible,
+                commentId: commentId,
+                comment: comment
+            });
+        });
+
+        // Send all updated data to the server
+        try {
+            const response = await fetch(`http://localhost:8080/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {
+<!--            const response = await fetch(`http://95.142.37.35/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {-->
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedDataArray),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server responded with status: ${response.status} ${response.statusText}`);
+            }
+
+            const responseData = await response.json();
+            console.log('Успех:', responseData);
+            alert('Все данные успешно сохранены!');
+        } catch (error) {
+            console.error('Ошибка при сохранении данных:', error);
+            alert('Произошла ошибка при сохранении данных. Пожалуйста, проверьте консоль для деталей.');
+        }
+    }
+
+    const handleFormSubmit = async (url) => {
+        try {
+            const response = await fetch(url, { method: 'GET' });
+            if (response.ok) {
+                const redirectUrl = await response.text(); // Получаем URL для редиректа
+                window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект
+<!--                window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект-->
+            } else {
+                console.error('Ошибка при выполнении запроса:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    };
+
+    function downloadExcel() {
+        const cards = document.querySelectorAll('.data-card');
+        const rows = [];
+
+        cards.forEach(card => {
+            const name = card.querySelector('input[name="name"]').value;
+            const lastName = card.querySelector('input[name="lastName"]').value;
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const itog = card.querySelector('input[name="itog"]').value;
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+
+            rows.push([
+                `${lastName} ${name} ${patronymic}`,
+                itog,
+                bankAccountNumber
+            ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet([
+            ["ФИО", "Итог", "Номер счета"], // Заголовки
+            ...rows // Данные
+        ]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        XLSX.writeFile(wb, "report.xlsx");
+    }
+
+    // Назначаем обработчики событий после загрузки DOM
+    document.addEventListener('DOMContentLoaded', () => {
+        loadResponsibles();
+        fetchData();
+
+        // Назначаем обработчики событий для кнопки "Назад"
+        document.getElementById('fetchButtonHome').addEventListener('click', () => {
+            handleFormSubmit(`http://localhost:8080/super-admin/home-super-admin/${initiatorId}`);
+<!--            handleFormSubmit(`http://95.142.37.35/super-admin/home-super-admin/${initiatorId}`);-->
+        });
+
+        // Attach the fetchData function to the button click event
+        document.getElementById('fetchButton').addEventListener('click', fetchData);
+
+        // Attach the saveAllData function to the "Сохранить все" button click event
+        document.getElementById('saveAllButton').addEventListener('click', saveAllData);
+    });
+</script>
+</body>
+</html>
