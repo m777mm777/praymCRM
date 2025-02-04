@@ -18,21 +18,24 @@
             margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
         }
 
+        :root {
+            --padding-top: 11.11%; /* Переменная для padding-top */
+        }
+
         /* Fix the header at the top of the page */
-       .fixed-header {
+        .fixed-header {
             position: fixed;
             top: 0;
             left: 1px;
-            width: 96.9%; /* Ширина элемента на всю ширину экрана */
-            height: 10.76%; /* Высота элемента, рассчитанная на основе соотношения сторон изображения */
-            background-image: url("/images/logo-praym1.jpg"); /* Optional: Add a background color */
-            background-size: 100% auto;
-            z-index: 100; /* Ensure it stays on top of other content */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-            padding: 10px 17px; /* Optional: Add padding for better spacing */
-            border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
-        }
+            width: 96.9%;
+            padding-top: var(--padding-top); /* Используем переменную */
+            background-image: url("/images/logo-praym1.jpg");
+            background-size: cover;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 4px solid black;
+}
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
         main {
@@ -88,10 +91,24 @@
         }
 
         .botton-field {
-            background-color: #baacc7; /* красные кнопки */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            background-color: #baacc7;
+            color: #000000;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-botton-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+            background-color: #baacc7;
+            color: #000000;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-pole-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .one-field {
@@ -111,6 +128,10 @@
         .margin-field {
             margin-left: 5px;
         }
+
+        .hed-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+        }
     </style>
 </head>
 <body>
@@ -118,17 +139,16 @@
 <!-- Фиксированный заголовок -->
 <div id="i-container" class="fixed-header">
     <form id="homeForm">
-        <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
+        <button id="fetchButtonHome" class="header-botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
             Сотрудники
         </label>
-    </form>
-    <br />
-    <select style="border-radius: 5px;" id="responsible" name="responsible" required>
+    </form><br />
+    <select class="header-pole-field" id="responsible" name="responsible" required>
         <option value="" disabled selected>Ответственный</option>
         <!-- Опции будут заполнены динамически -->
     </select>
-    <select style="border-radius: 5px;" id="city" name="city">
+    <select class="header-pole-field" id="city" name="city">
         <option value="">Город</option>
         <option value="Москва">Москва</option>
         <option value="Ново-Ебенево">Ново-Ебенево</option>
@@ -136,7 +156,7 @@
         <option value="Королев">Королев</option>
         <option value="Питер">Питер</option>
     </select>
-    <select style="border-radius: 5px;" id="formaoplaty" name="formaoplaty">
+    <select class="header-pole-field" id="formaoplaty" name="formaoplaty">
         <option value="">Форма оплаты</option>
         <option value="По ТК">ПО ТК</option>
         <option value="По ТК др-банк">По ТК др банк</option>
@@ -144,14 +164,13 @@
         <option value="Ип">ИП</option>
         <option value="Не официально">Не официально</option>
     </select>
-    <select style="border-radius: 5px;" id="dismissed" name="dismissed">
+    <select class="header-pole-field" id="dismissed" name="dismissed">
         <option value="">Не уволен</option>
         <option value="true">Уволен</option>
     </select><br />
-    <button id="fetchButton" class="botton-field">Получить данные</button>
-    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button><br />
-    <br />
-    <div id="label">
+    <button id="fetchButton" class="header-botton-field">Получить данные</button>
+    <button id="saveAllButton" style="margin-top: 20px;" class="header-botton-field">Сохранить все</button><br />
+    <div id="label" class="hed-field">
         <input style="width: 90px;" type="text" name="2" value="Фамилия" readonly class="chet-field"/>
         <input style="width: 90px;" type="text" name="3" value="Имя" readonly class="nechet-field"/>
         <input style="width: 90px;" type="text" name="4" value="Отчество" readonly class="chet-field"/>
