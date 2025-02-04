@@ -39,7 +39,7 @@
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
         main {
-            padding-top: 20.5%; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+            margin-top: calc(var(--padding-top) * 0.05 + (var(--padding-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
 
         /* Optional: Add some basic styling to the body */
@@ -182,13 +182,7 @@
         <input style="width: 85px;" type="text" name="11" value="Уволен" readonly class="chet-field"/>
     </div>
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 <div id="data-container"></div>
 
 <script>
