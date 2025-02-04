@@ -171,6 +171,13 @@
 <ul id="data-container"></ul>
 </div>
 <script>
+
+    // Автоматически высчитываем высоту хедера и делаем отступ
+    window.addEventListener('load', function() {
+    const headerHeight = document.querySelector('.fixed-header').offsetHeight;
+    document.getElementById('data-container').style.marginTop = `${headerHeight + 5}px`;
+    });
+
     document.getElementById('dataForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
