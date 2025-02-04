@@ -18,25 +18,29 @@
             margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
         }
 
-        /* Fix the header at the top of the page */
+        :root {
+            --padding-top: 11.11%; /* Переменная для padding-top */
+        }
+
         .fixed-header {
             position: fixed;
             top: 0;
             left: 1px;
-            width: 96.9%; /* Ширина элемента на всю ширину экрана */
-            height: 20%; /* Фиксированная высота элемента */
-            background-image: url("/images/logo-praym1.jpg");/* Optional: Add a background color */
-            background-size: 100% auto;
-            z-index: 100; /* Ensure it stays on top of other content */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            width: 96.9%;
+            height: var(--padding-top);
+            background-image: url("/images/logo-praym1.jpg");
+            background-size: cover;
+            background-position: right; /* Выравнивание изображения по правому краю */
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 10px 17px; /* Optional: Add padding for better spacing */
-            border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
+            border-radius: 10px;
+            border: 4px solid black;
         }
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
         main {
-            padding-top: 150px; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+            margin-top: calc(var(--padding-top) * 0.05 + (var(--padding-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
 
         /* Optional: Add some basic styling to the body */
@@ -88,10 +92,24 @@
         }
 
         .botton-field {
-            background-color: #baacc7; /* красные кнопки */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            background-color: #baacc7;
+            color: #000000;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-botton-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+            background-color: #baacc7;
+            color: #000000;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-pole-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .one-field {
@@ -110,6 +128,10 @@
 
         .margin-field {
             margin-left: 5px;
+        }
+
+        .hed-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
         }
     </style>
 </head>
@@ -134,15 +156,7 @@
     <form id="get-all-salary-form">
         <input type="submit" value="Получить все зарплаты" class="botton-field"/>
     </form>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 
-    <br />
 </div>
 
 <script>

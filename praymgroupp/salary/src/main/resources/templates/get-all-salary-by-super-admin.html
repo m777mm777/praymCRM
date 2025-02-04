@@ -18,31 +18,35 @@
             margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
         }
 
-        /* Fix the header at the top of the page */
+        :root {
+            --padding-top: 11.11%; /* Переменная для padding-top */
+        }
+
         .fixed-header {
             position: fixed;
             top: 0;
             left: 1px;
-            width: 96.9%; /* Ширина элемента на всю ширину экрана */
-            height: 20%; /* Фиксированная высота элемента */
-            background-image: url("/images/logo-praym1.jpg");/* Optional: Add a background color */
-            background-size: 100% auto;
-            z-index: 100; /* Ensure it stays on top of other content */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            width: 96.9%;
+            height: var(--padding-top);
+            background-image: url("/images/logo-praym1.jpg");
+            background-size: cover;
+            background-position: right; /* Выравнивание изображения по правому краю */
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 10px 17px; /* Optional: Add padding for better spacing */
-            border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
+            border-radius: 10px;
+            border: 4px solid black;
         }
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
         main {
-            padding-top: 150px; /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+            margin-top: calc(var(--padding-top) * 0.05 + (var(--padding-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
 
         /* Optional: Add some basic styling to the body */
         body {
             font-family: Arial, sans-serif;
-            margin-top: 10px;
+            margin-top: 25px;
             padding: 0;
         }
 
@@ -88,10 +92,24 @@
         }
 
         .botton-field {
-            background-color: #baacc7; /* красные кнопки */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+            background-color: #baacc7;
+            color: #000000;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-botton-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+            background-color: #baacc7;
+            color: #000000;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-pole-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .one-field {
@@ -111,6 +129,10 @@
         .margin-field {
             margin-left: 5px;
         }
+
+        .hed-field {
+            margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
@@ -119,13 +141,13 @@
 <!-- Фиксированный заголовок -->
 <div id="i-container" class="fixed-header">
     <form id="homeForm">
-        <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
+        <button id="fetchButtonHome" class="header-botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
             Зарплата
         </label>
     </form>
     <br />
-    <select style="border-radius: 5px;" id="month" name="month">
+    <select class="header-pole-field" id="month" name="month">
         <option value="">Месяц</option>
         <option value="01">Январь</option>
         <option value="02">Февраль</option>
@@ -141,7 +163,7 @@
         <option value="12">Декабрь</option>
         <option value="monthAll">Все месяца</option>
     </select>
-    <select style="border-radius: 5px;" id="year" name="year">
+    <select class="header-pole-field" id="year" name="year">
         <option value="">Текущий год</option>
         <option value="2024">2024</option>
         <option value="2025">2025</option>
@@ -157,11 +179,11 @@
         <option value="2035">2035</option>
         <option value="yearAll">Все года</option>
     </select>
-    <select style="border-radius: 5px;" id="responsible" name="responsible" required>
+    <select class="header-pole-field" id="responsible" name="responsible" required>
         <option value="" disabled selected>Ответственный</option>
         <!-- Опции будут заполнены динамически -->
     </select>
-    <select style="border-radius: 5px;" id="city" name="city">
+    <select class="header-pole-field" id="city" name="city">
         <option value="">Город</option>
         <option value="Москва">Москва</option>
         <option value="Ново-Ебенево">Ново-Ебенево</option>
@@ -169,7 +191,7 @@
         <option value="Королев">Королев</option>
         <option value="Питер">Питер</option>
     </select>
-    <select style="border-radius: 5px;" id="formaoplaty" name="formaoplaty">
+    <select class="header-pole-field" id="formaoplaty" name="formaoplaty">
         <option value="">Форма оплаты</option>
         <option value="По ТК">ПО ТК</option>
         <option value="По ТК др-банк">По ТК др банк</option>
@@ -177,15 +199,15 @@
         <option value="Ип">ИП</option>
         <option value="Не официально">Не официально</option>
     </select>
-    <select style="border-radius: 5px;" id="dismissed" name="dismissed">
+    <select class="header-pole-field" id="dismissed" name="dismissed">
         <option value="">Не уволен</option>
         <option value="true">Уволен</option>
     </select><br />
-    <button id="fetchButton" class="botton-field">Получить данные</button>
-    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
-    <button onclick="downloadExcelIP()" class="botton-field">Формат ИП</button><br />
+    <button id="fetchButton" class="header-botton-field">Получить данные</button>
+    <button id="saveAllButton" style="margin-top: 20px;" class="header-botton-field">Сохранить все</button>
+    <button onclick="downloadExcelIP()" class="header-botton-field">Формат ИП</button><br />
     <br />
-    <div id="label">
+    <div id="label" class="hed-field">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
         <input style="width: 70px;" type="text" name="3" value="Фамилия" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="4" value="Город" readonly class="nemenyemye-field"/>
@@ -205,14 +227,7 @@
         <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
 </div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 <div id="data-container"></div>
 
 <script>
