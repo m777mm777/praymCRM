@@ -9,8 +9,7 @@
             background-color: #f5f5f5;
             border: 1px solid #ccc;
             padding: 10px;
-            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
-<!--            margin: 10px 0;-->
+            margin: 10px 0;
             border-radius: 5px;
         }
 
@@ -134,6 +133,10 @@
         .hed-field {
             margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
         }
+
+        .up-data-field {
+            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+        }
     </style>
 </head>
 <body>
@@ -185,7 +188,7 @@
     </div>
 </div>
 
-<div id="data-container"></div>
+<div id="data-container" class="up-data-field"></div>
 
 <script>
 
