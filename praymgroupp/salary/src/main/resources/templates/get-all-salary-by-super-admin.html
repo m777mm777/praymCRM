@@ -40,7 +40,7 @@
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
         main {
-            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+            margin-top: 200px; /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
 
         /* Optional: Add some basic styling to the body */
@@ -135,9 +135,10 @@
         }
 
         .up-data-field {
-            margin-top: calc(var(--height-top) * 0.15 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
     </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -149,8 +150,7 @@
         <label style="color: white; font-size: 20px; margin-left: 50px;">
             Зарплата
         </label>
-    </form>
-    <br />
+    </form><br />
     <select class="header-pole-field" id="month" name="month">
         <option value="">Месяц</option>
         <option value="01">Январь</option>
