@@ -19,7 +19,7 @@
     }
 
     :root {
-        --padding-top: 11.11%; /* Переменная для padding-top */
+        --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
     }
 
     .fixed-header {
@@ -27,7 +27,7 @@
         top: 0;
         left: 1px;
         width: 96.9%;
-        height: var(--padding-top);
+        height: var(--height-top);
         background-image: url("/images/logo-praym1.jpg");
         background-size: cover;
         background-position: right; /* Выравнивание изображения по правому краю */
@@ -99,7 +99,7 @@
     }
 
     .header-botton-field {
-        margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+        margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
         background-color: #baacc7;
         color: #000000;
         border-radius: 7px;
@@ -107,7 +107,7 @@
     }
 
     .header-pole-field {
-        margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+        margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
         border-radius: 7px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
@@ -131,7 +131,7 @@
     }
 
     .hed-field {
-        margin-top: calc(var(--padding-top) * 0.05); /* 5% от padding-top */
+        margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
     }
   </style>
 </head>
