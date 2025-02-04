@@ -129,7 +129,7 @@ public class SalaryMapper {
         for (Salary salary : salaries) {
             SalaryResponse response = toResponse(salary);
             response.setItog(salary.getSalary() + salary.getPremiya() + salary.getFobo()
-                    + salary.getMiratorg() + salary.getSmety() + salary.getLenta() - salary.getAvans());
+                    + salary.getMiratorg() + salary.getSmety() + salary.getLenta() - salary.getZpPoKarte());
             list.add(response);
         }
 
@@ -150,7 +150,7 @@ public class SalaryMapper {
                     - salary.getZpPoKarte() - salary.getRentCar() - salary.getRentPhone();
 
             switch(response.getOwner().getCategory()) {
-                case "Самозанятый": itog = itog + (itog / 100 * 6); break;
+                case "Самозанятый": itog = itog + (itog / 100 * 6.5); break;
                 case "Ип": itog = itog + (itog / 100 * 8); break;
             }
 

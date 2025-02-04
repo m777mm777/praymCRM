@@ -114,7 +114,7 @@ main p {
   <form id="homeForm">
     <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
     <label style="color: white; font-size: 20px; margin-left: 50px;">
-      Сотрудники ПРАЙМГРУПП by admin
+      Сотрудники
     </label>
   </form>
   <br />
@@ -140,8 +140,8 @@ main p {
   <br />
   <br />
   <div id="label">
-    <input style="width: 90px;" type="text" name="2" value="Имя" readonly class="chet-field"/>
-    <input style="width: 90px;" type="text" name="3" value="Фамилия" readonly class="nechet-field"/>
+    <input style="width: 90px;" type="text" name="2" value="Фамилия" readonly class="chet-field"/>
+    <input style="width: 90px;" type="text" name="3" value="Имя" readonly class="nechet-field"/>
     <input style="width: 90px;" type="text" name="4" value="Отчество" readonly class="chet-field"/>
     <input style="width: 90px;" type="text" name="5" value="Телефон" readonly class="nechet-field"/>
     <input style="width: 110px;" type="text" name="7" value="Форма занятости" readonly class="chet-field"/>
@@ -212,8 +212,8 @@ main p {
               card.classList.add(index % 2 === 0 ? 'one-field' : 'two-field');
               card.innerHTML = `
                   <input style="width: 15px;" type="hidden" id="id-${index}" name="id" value="${item.id}" readonly>
-                  <input style="width: 90px;" type="text" id="name-${index}" name="name" value="${item.name}" readonly class="chet-field">
-                  <input style="width: 90px;" type="text" id="lastName-${index}" name="lastName" value="${item.lastName}" readonly class="nechet-field">
+                  <input style="width: 90px;" type="text" id="lastName-${index}" name="lastName" value="${item.lastName}" readonly class="chet-field">
+                  <input style="width: 90px;" type="text" id="name-${index}" name="name" value="${item.name}" readonly class="nechet-field">
                   <input style="width: 90px;" type="text" id="patronymic-${index}" name="patronymic" value="${item.patronymic}" readonly class="chet-field">
                   <input style="width: 90px;" type="text" id="phone-${index}" name="phone" value="${item.phone}" readonly class="nechet-field">
                   <input style="width: 110px;" type="text" id="category-${index}" name="category" value="${item.category}" readonly class="chet-field">

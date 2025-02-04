@@ -120,7 +120,7 @@
     <form id="homeForm">
         <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
-            Зарплаты ПРАЙМГРУППgg
+            Зарплата
         </label>
     </form>
     <br />
@@ -156,7 +156,7 @@
         <input style="width: 60px;" type="text" name="11" value="Мираторг" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="12" value="Сметы" readonly class="nechet-field"/>
         <input style="width: 50px;" type="text" name="13" value="Лента" readonly class="chet-field"/>
-        <input style="width: 50px;" type="text" name="14" value="Аванс" readonly class="nechet-field"/>
+        <input style="width: 90px;" type="text" name="14" value="Аванс Сам-ый" readonly class="nechet-field"/>
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
         <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
@@ -260,7 +260,7 @@
                   <input style="width: 60px;" type="text" id="miratorg-${index}" name="miratorg" value="${item.miratorg}" required class="chet-field">
                   <input style="width: 50px;" type="text" id="smety-${index}" name="smety" value="${item.smety}" required class="nechet-field">
                   <input style="width: 50px;" type="text" id="lenta-${index}" name="lenta" value="${item.lenta}" required class="chet-field">
-                  <input style="width: 50px;" type="text" id="avans-${index}" name="avans" value="${item.avans}" required class="nechet-field">
+                  <input style="width: 90px;" type="text" id="zpPoKarte-${index}" name="zpPoKarte" value="${item.zpPoKarte}" required class="nechet-field">
                   <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
                   <input style="width: 110px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
                   <br />
@@ -317,7 +317,7 @@
           const miratorg = parseFloat(card.querySelector('input[name="miratorg"]').value);
           const smety = parseFloat(card.querySelector('input[name="smety"]').value);
           const lenta = parseFloat(card.querySelector('input[name="lenta"]').value);
-          const avans = parseFloat(card.querySelector('input[name="avans"]').value);
+          const zpPoKarte = parseFloat(card.querySelector('input[name="zpPoKarte"]').value);
           const responsible = card.querySelector('input[name="responsibleLastName"]').value;
           const commentId = card.querySelector('input[name="commentId"]').value;
           const comment = card.querySelector('input[name="comment"]').value;
@@ -332,7 +332,7 @@
               miratorg: miratorg,
               smety: smety,
               lenta: lenta,
-              avans: avans,
+              zpPoKarte: zpPoKarte,
               responsible: responsible,
               commentId: commentId,
               comment: comment

@@ -121,7 +121,7 @@
     <form id="homeForm">
         <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
-            Зарплата ПРАЙМГРУПП by super admin
+            Зарплата
         </label>
     </form>
     <br />
@@ -183,7 +183,7 @@
     </select><br />
     <button id="fetchButton" class="botton-field">Получить данные</button>
     <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
-    <button onclick="downloadExcel()">Скачать Excel</button><br />
+    <button onclick="downloadExcelIP()" class="botton-field">Формат ИП</button><br />
     <br />
     <div id="label">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
@@ -197,8 +197,8 @@
         <input style="width: 60px;" type="text" name="11" value="Мираторг" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="12" value="Сметы" readonly class="nechet-field"/>
         <input style="width: 50px;" type="text" name="13" value="Лента" readonly class="chet-field"/>
-        <input style="width: 50px;" type="text" name="14" value="Аванс" readonly class="nechet-field"/>
-        <input style="width: 85px;" type="text" name="15" value="Самозанятый" readonly class="chet-field"/>
+        <input style="width: 90px;" type="text" name="14" value="Аванс Сам-ый" readonly class="nechet-field"/>
+        <input style="width: 50px;" type="text" name="15" value="Аванс" readonly class="chet-field"/>
         <input style="width: 75px;" type="text" name="16" value="За машину" readonly class="nechet-field"/>
         <input style="width: 75px;" type="text" name="17" value="За телефон" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
@@ -206,8 +206,6 @@
     </div>
 </div>
 <br />
-<!--<h1>GET Request with Multiple Objects</h1>-->
-<!--<button id="fetchButton">Fetch Data</button>-->
 <br />
 <br />
 <br />
@@ -346,8 +344,8 @@
                     <input style="width: 60px;" type="text" id="miratorg-${index}" name="miratorg" value="${item.miratorg}" required class="chet-field">
                     <input style="width: 50px;" type="text" id="smety-${index}" name="smety" value="${item.smety}" required class="nechet-field">
                     <input style="width: 50px;" type="text" id="lenta-${index}" name="lenta" value="${item.lenta}" required class="chet-field">
-                    <input style="width: 50px;" type="text" id="avans-${index}" name="avans" value="${item.avans}" required class="nechet-field">
-                    <input style="width: 85px;" type="text" id="zpPoKarte-${index}" name="zpPoKarte" value="${item.zpPoKarte}" required class="chet-field">
+                    <input style="width: 90px;" type="text" id="zpPoKarte-${index}" name="zpPoKarte" value="${item.zpPoKarte}" required class="nechet-field">
+                    <input style="width: 50px;" type="text" id="avans-${index}" name="avans" value="${item.avans}" required class="chet-field">
                     <input style="width: 75px;" type="text" id="rentCar-${index}" name="rentCar" value="${item.rentCar}" required class="nechet-field">
                     <input style="width: 75px;" type="text" id="rentPhone-${index}" name="rentPhone" value="${item.rentPhone}" required class="chet-field">
                     <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
@@ -357,6 +355,7 @@
                     <label>Коментарии: </label>
                     <input style="width: 1000px;" type="text" id="comment-${index}" name="comment" value="${comment.text}" class="nechet-field">
                     <input style="width: 0px;" type="hidden" id="bankAccountNumber-${index}" name="bankAccountNumber" value="${owner.bankAccountNumber}">
+                    <input style="width: 0px;" type="hidden" id="patronymic-${index}" name="patronymic" value="${owner.patronymic}">
                 `;
 
                 // Append the card to the container
@@ -450,7 +449,7 @@
         }
     };
 
-    function downloadExcel() {
+    function downloadExcelIP() {
         const cards = document.querySelectorAll('.data-card');
         const rows = [];
 

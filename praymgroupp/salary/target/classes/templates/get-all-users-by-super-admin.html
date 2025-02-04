@@ -120,7 +120,7 @@
     <form id="homeForm">
         <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
-            Сотрудники ПРАЙМГРУПП by super admin
+            Сотрудники
         </label>
     </form>
     <br />
@@ -152,8 +152,8 @@
     <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button><br />
     <br />
     <div id="label">
-        <input style="width: 90px;" type="text" name="2" value="Имя" readonly class="chet-field"/>
-        <input style="width: 90px;" type="text" name="3" value="Фамилия" readonly class="nechet-field"/>
+        <input style="width: 90px;" type="text" name="2" value="Фамилия" readonly class="chet-field"/>
+        <input style="width: 90px;" type="text" name="3" value="Имя" readonly class="nechet-field"/>
         <input style="width: 90px;" type="text" name="4" value="Отчество" readonly class="chet-field"/>
         <input style="width: 90px;" type="text" name="5" value="Телефон" readonly class="nechet-field"/>
         <input style="width: 110px;" type="text" name="7" value="Форма занятости" readonly class="chet-field"/>
@@ -274,8 +274,8 @@ function loadResponsibles() {
              }
              card.innerHTML = `
                  <input style="width: 15px;" type="hidden" id="id-${index}" name="id" value="${item.id}" readonly>
-                 <input style="width: 90px;" type="text" id="name-${index}" name="name" value="${item.name}" required class="chet-field">
-                 <input style="width: 90px;" type="text" id="lastName-${index}" name="lastName" value="${item.lastName}" required class="nechet-field">
+                 <input style="width: 90px;" type="text" id="lastName-${index}" name="lastName" value="${item.lastName}" required class="chet-field">
+                 <input style="width: 90px;" type="text" id="name-${index}" name="name" value="${item.name}" required class="nechet-field">
                  <input style="width: 90px;" type="text" id="patronymic-${index}" name="patronymic" value="${item.patronymic}" required class="chet-field">
                  <input style="width: 90px;" type="text" id="phone-${index}" name="phone" value="${item.phone}" required class="nechet-field">
                  <input style="width: 110px;" type="text" id="category-${index}" name="category" value="${item.category}" required class="chet-field">
@@ -341,8 +341,8 @@ function loadResponsibles() {
                 const response = await fetch(url, { method: 'GET' });
                 if (response.ok) {
                     const redirectUrl = await response.text(); // Получаем URL для редиректа
-                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект
-<!--                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект-->
+<!--                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
+                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект
                 } else {
                     console.error('Ошибка при выполнении запроса:', response.statusText);
                 }
