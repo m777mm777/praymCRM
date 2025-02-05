@@ -102,15 +102,6 @@
             border: 4px solid black; /* Черная рамка по контуру */
         }
 
-        .hed-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-            padding-bottom: 5px;
-        }
-
-        .fixed-header .hed-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-            padding-bottom: 5px; /* Добавляем отступ в 5px снизу */
-}
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -185,7 +176,7 @@
     <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
     <button onclick="downloadExcelIP()" style="margin-left: 100px;" class="botton-field">Скачать XLS Формат ИП</button><br />
     <br />
-    <div id="label" class="hed-field">
+    <div id="label" style="padding-bottom: 5px;">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
         <input style="width: 70px;" type="text" name="3" value="Фамилия" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="4" value="Город" readonly class="nemenyemye-field"/>
