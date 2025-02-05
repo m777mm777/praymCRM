@@ -13,11 +13,6 @@
             border-radius: 5px;
         }
 
-        .rightpic {
-            float: right; /* Выравнивание по правому краю */
-            margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
-        }
-
         :root {
             --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
         }
@@ -38,18 +33,6 @@
             border: 4px solid black;
 
             padding-bottom: 5px; /* Отступ снизу */
-        }
-
-        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
-        main {
-<!--            margin-top: 200px; /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */-->
-        }
-
-        /* Optional: Add some basic styling to the body */
-        body {
-            font-family: Arial, sans-serif;
-            margin-top: 25px;
-            padding: 0;
         }
 
         /* Optional: Style the header text */
@@ -100,16 +83,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .header-botton-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-            background-color: #baacc7;
-            color: #000000;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
         .header-pole-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
             border-radius: 7px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -128,10 +102,6 @@
             border: 4px solid black; /* Черная рамка по контуру */
         }
 
-        .margin-field {
-            margin-left: 5px;
-        }
-
         .hed-field {
             margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
             padding-bottom: 5px;
@@ -141,10 +111,6 @@
             margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
             padding-bottom: 5px; /* Добавляем отступ в 5px снизу */
 }
-
-        #label {
-            padding-bottom: 5px; /* Добавляем отступ в 5px внутри хедера */
-        }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -154,7 +120,7 @@
 <!-- Фиксированный заголовок -->
 <div id="i-container" class="fixed-header">
     <form id="homeForm">
-        <button id="fetchButtonHome" class="header-botton-field" type="button"><- Назад</button>
+        <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
             Зарплата
         </label>
@@ -215,9 +181,9 @@
         <option value="">Не уволен</option>
         <option value="true">Уволен</option>
     </select><br />
-    <button id="fetchButton" class="header-botton-field">Получить данные</button>
-    <button id="saveAllButton" style="margin-top: 20px;" class="header-botton-field">Сохранить все</button>
-    <button onclick="downloadExcelIP()" style="margin-left: 100px;" class="header-botton-field">Скачать XLS Формат ИП</button><br />
+    <button id="fetchButton" class="botton-field">Получить данные</button>
+    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
+    <button onclick="downloadExcelIP()" style="margin-left: 100px;" class="botton-field">Скачать XLS Формат ИП</button><br />
     <br />
     <div id="label" class="hed-field">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
