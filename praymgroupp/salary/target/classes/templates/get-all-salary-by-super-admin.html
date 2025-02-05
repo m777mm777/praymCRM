@@ -13,6 +13,11 @@
             border-radius: 5px;
         }
 
+        .rightpic {
+            float: right; /* Выравнивание по правому краю */
+            margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
+        }
+
         :root {
             --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
         }
@@ -29,12 +34,14 @@
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 10px 17px; /* Optional: Add padding for better spacing */
+
             border-radius: 10px;
             border: 4px solid black;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* Выравнивание элементов по нижнему краю */
-            padding-bottom: 5px; /* Отступ снизу */
+        }
+
+        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
+        main {
+            margin-top: 200px; /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
 
         /* Optional: Add some basic styling to the body */
