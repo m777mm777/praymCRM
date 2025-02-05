@@ -40,7 +40,7 @@
 
     /* Add padding to the main content to prevent it from being hidden behind the fixed header */
     main {
-        margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+        margin-top: 200px; /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
     }
 
     /* Optional: Add some basic styling to the body */
@@ -143,8 +143,7 @@
     <label style="color: white; font-size: 20px; margin-left: 50px;">
       Сотрудники
     </label>
-  </form>
-  <br />
+  </form><br />
   <select class="header-pole-field" id="city" name="city">
     <option value="">Город</option>
     <option value="Москва">Москва</option>
@@ -161,10 +160,7 @@
     <option value="Ип">ИП</option>
     <option value="Не официально">Не официально</option>
   </select><br />
-<!--  </div>-->
-  <br />
-  <button id="fetchButton" class="header-botton-field">Получить данные</button>
-  <br />
+  <button id="fetchButton" class="header-botton-field">Получить данные</button><br />
   <br />
   <div id="label" class="hed-field">
     <input style="width: 90px;" type="text" name="2" value="Фамилия" readonly class="chet-field"/>
@@ -186,6 +182,7 @@
     const headerHeight = document.querySelector('.fixed-header').offsetHeight;
     document.getElementById('data-container').style.marginTop = `${headerHeight + 5}px`;
     });
+
   // Получаем текущий URL
   const url = window.location.href;
 

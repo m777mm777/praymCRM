@@ -40,7 +40,7 @@
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
         main {
-            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
+            margin-top: 200px; /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
         }
 
         /* Optional: Add some basic styling to the body */
@@ -144,8 +144,7 @@
         <label style="color: white; font-size: 20px; margin-left: 50px;">
             Зарплата
         </label>
-    </form>
-    <br />
+    </form><br />
 
     <select class="header-pole-field" id="city" name="city">
         <option value="">Город</option>
@@ -183,9 +182,6 @@
         <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
 </div>
-<form action="/home">
-    <input type="submit" value="<- На главную" />
-</form>
 
 <div id="data-container"></div>
 

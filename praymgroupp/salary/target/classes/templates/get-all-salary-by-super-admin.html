@@ -133,10 +133,6 @@
         .hed-field {
             margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
         }
-
-        .up-data-field {
-            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
-        }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -232,7 +228,7 @@
     </div>
 </div>
 
-<div id="data-container" class="up-data-field"></div>
+<div id="data-container"></div>
 
 <script>
 
