@@ -133,6 +133,10 @@
         .hed-field {
             margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
         }
+
+        #label {
+            padding-bottom: 5px; /* Добавляем отступ в 5px внутри хедера */
+        }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -207,7 +211,7 @@
     <button id="saveAllButton" style="margin-top: 20px;" class="header-botton-field">Сохранить все</button>
     <button onclick="downloadExcelIP()" style="margin-left: 100px;" class="header-botton-field">Скачать XLS Формат ИП</button><br />
     <br />
-    <div id="label" style="margin-bottom: 5px;" class="hed-field">
+    <div id="label" class="hed-field">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/> <!-- Добавлен класс для поля "Имя" -->
         <input style="width: 70px;" type="text" name="3" value="Фамилия" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="4" value="Город" readonly class="nemenyemye-field"/>
