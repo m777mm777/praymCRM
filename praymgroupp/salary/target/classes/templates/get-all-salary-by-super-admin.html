@@ -24,7 +24,7 @@
 
         .fixed-header {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 1px;
             width: 96.9%;
             height: var(--height-top);
@@ -37,6 +37,12 @@
 
             border-radius: 10px;
             border: 4px solid black;
+        }
+
+        .in-fixed-header {
+
+            bottom: 5px;
+
         }
 
         /* Add padding to the main content to prevent it from being hidden behind the fixed header */
@@ -146,6 +152,7 @@
 
 <!-- Фиксированный заголовок -->
 <div id="i-container" class="fixed-header">
+    <div id="с-container" class="in-fixed-header">
     <form id="homeForm">
         <button id="fetchButtonHome" class="header-botton-field" type="button"><- Назад</button>
         <label style="color: white; font-size: 20px; margin-left: 50px;">
@@ -232,6 +239,8 @@
         <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
 </div>
+</div>
+
 
 <div id="data-container"></div>
 
