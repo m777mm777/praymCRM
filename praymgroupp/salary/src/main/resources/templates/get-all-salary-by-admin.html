@@ -13,11 +13,6 @@
             border-radius: 5px;
         }
 
-        .rightpic {
-            float: right; /* Выравнивание по правому краю */
-            margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
-        }
-
         :root {
             --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
         }
@@ -28,7 +23,7 @@
             left: 1px;
             width: 96.9%;
             height: var(--height-top);
-            background-image: url("/images/logo-praym1.jpg");
+            background-image: url("/images/logo-praym1.jpeg");
             background-size: cover;
             background-position: right; /* Выравнивание изображения по правому краю */
             z-index: 100;
@@ -38,16 +33,8 @@
             border: 4px solid black;
         }
 
-        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
-        main {
-            margin-top: 200px; /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
-        }
-
-        /* Optional: Add some basic styling to the body */
-        body {
-            font-family: Arial, sans-serif;
-            margin-top: 25px;
-            padding: 0;
+        .botton-magrin {
+            margin-top: calc(var(--height-top) * 0.16);
         }
 
         /* Optional: Style the header text */
@@ -98,16 +85,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .header-botton-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-            background-color: #baacc7;
-            color: #000000;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
         .header-pole-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
             border-radius: 7px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -126,13 +104,6 @@
             border: 4px solid black; /* Черная рамка по контуру */
         }
 
-        .margin-field {
-            margin-left: 5px;
-        }
-
-        .hed-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-        }
     </style>
 </head>
 <body>
