@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GET Request with Multiple Objects</title>
     <style>
+
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
         .data-card {
             background-color: #f5f5f5;
             border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 5px;
+            margin: 10px 5px;
+            width: 97.8%;
             border-radius: 5px;
         }
 
@@ -20,88 +29,71 @@
         .fixed-header {
             position: fixed;
             top: 0;
-            left: 1px;
-            width: 96.9%;
+            left: 0px;
+            width: 98.1%;
             height: var(--height-top);
             background-image: url("/images/logo-praym1.jpeg");
             background-size: cover;
-            background-position: right; /* Выравнивание изображения по правому краю */
+            background-position: right;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 10px 17px; /* Optional: Add padding for better spacing */
+            padding: 10px 10px;
             border-radius: 10px;
             border: 4px solid black;
-        }
-
-        .botton-magrin {
-            margin-top: calc(var(--height-top) * 0.16);
-        }
-
-        /* Optional: Style the header text */
-        .fixed-header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-
-        /* Optional: Style the main content */
-        main p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin: 20px;
-        }
-
-        /* Стили для четных и нечетных полей */
-        .chet-field {
-            background-color: #a8a8a8; /* темно-серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-        }
-
-        .nechet-field {
-            background-color: #e3e8e6; /* бело-серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-        }
-
-        .nemenyemye-field {
-            background-color: #b0b7c6; /* синий цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-        }
-
-        .non-field {
-            background-color: #c2c2c2; /* Серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-        }
-
-        .botton-field {
-            background-color: #baacc7;
-            color: #000000;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .header-pole-field {
             border-radius: 7px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-right: 10px;
+        }
+
+        .label-container {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            padding: 0px 10px;
+        }
+
+        /* Стили для четных и нечетных полей */
+        .chet-field {
+            background-color: #a8a8a8; /* темно-серый цвет фона */
+        }
+
+        .nechet-field {
+            background-color: #e3e8e6; /* бело-серый цвет фона */
+        }
+
+        .nemenyemye-field {
+            background-color: #b0b7c6; /* синий цвет фона */
+        }
+
+        .non-field {
+            background-color: #c2c2c2; /* Серый цвет фона */
+        }
+
+        .botton-field {
+            background-color: #baacc7;
+        }
+
+        .header-pole-field, .botton-field, .non-field, .nemenyemye-field, .nechet-field, .chet-field  {
+            color: #000000; /* Черный цвет текста */
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+         .one-field, .two-field {
+            border-radius: 10px;
+            border: 4px solid black;
         }
 
         .one-field {
-            background-color: #c2c2c2; /* Серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
+            background-color: #c2c2c2;
         }
 
         .two-field {
-            background-color: #e3e8e6; /* бело-серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
+            background-color: #e3e8e6;
         }
 
     </style>
@@ -136,12 +128,12 @@
     <button id="fetchButton" class="botton-field">Получить данные</button>
     <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button><br />
     <br />
-    <div id="label" class="botton-magrin">
+    <div class="label-container">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="3" value="Фамилия" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="4" value="Город" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="5" value="Категория" readonly class="nemenyemye-field"/>
-        <input style="width: 49px;" type="text" name="7" value="Месяц" readonly class="nemenyemye-field"/>
+        <input style="width: 50px;" type="text" name="7" value="Месяц" readonly class="nemenyemye-field"/>
         <input style="width: 60px;" type="text" name="8" value="Зарплата" readonly class="nechet-field"/>
         <input style="width: 50px;" type="text" name="9" value="Премия" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="10" value="Фобо" readonly class="nechet-field"/>
@@ -150,7 +142,7 @@
         <input style="width: 50px;" type="text" name="13" value="Лента" readonly class="chet-field"/>
         <input style="width: 90px;" type="text" name="14" value="Аванс Сам-ый" readonly class="nechet-field"/>
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
-        <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
+        <input style="width: 100px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
 </div>
 
@@ -240,7 +232,7 @@
                   <input style="width: 70px;" type="text" id="city-${index}" name="city" value="${owner.city}" readonly class="nemenyemye-field">
                   <input style="width: 70px;" type="text" id="category-${index}" name="category" value="${owner.category}" readonly class="nemenyemye-field">
                   <input style="width: 0px;" type="hidden" id="id-${index}" name="id" value="${item.id}" readonly >
-                  <input style="width: 49px;" type="text" id="reportingMonth-${index}" name="reportingMonth" value="${item.reportingMonth}" readonly class="nemenyemye-field">
+                  <input style="width: 50px;" type="text" id="reportingMonth-${index}" name="reportingMonth" value="${item.reportingMonth}" readonly class="nemenyemye-field">
                   <input style="width: 60px;" type="text" id="salary-${index}" name="salary" value="${item.salary}" required class="nechet-field">
                   <input style="width: 50px;" type="text" id="premiya-${index}" name="premiya" value="${item.premiya}" required class="chet-field">
                   <input style="width: 50px;" type="text" id="fobo-${index}" name="fobo" value="${item.fobo}" required class="nechet-field">
@@ -249,7 +241,7 @@
                   <input style="width: 50px;" type="text" id="lenta-${index}" name="lenta" value="${item.lenta}" required class="chet-field">
                   <input style="width: 90px;" type="text" id="zpPoKarte-${index}" name="zpPoKarte" value="${item.zpPoKarte}" required class="nechet-field">
                   <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
-                  <input style="width: 110px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
+                  <input style="width: 100px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
                   <br />
                   <input style="width: 0px;" type="hidden" id="commentId-${index}" name="commentId" value="${comment.id}">
                   <label>Коментарии: </label>
