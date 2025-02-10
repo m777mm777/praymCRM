@@ -55,12 +55,12 @@ public class ControllerSuperAdminAction {
                                                       @RequestParam(required = false) String responsible,
                                                       @RequestParam(required = false) String city,
                                                       @RequestParam(required = false) String formaoplaty,
+                                                      @RequestParam(required = false) String companyName,
                                                       @RequestParam(required = false) String dismissed) {
-        log.info("getAllUsersBySuperAdmin initiatorId {} responsible {} city {} formaoplaty {} dismissed {}",
-                initiatorId, responsible, city, formaoplaty, dismissed);
-        List<UserResponse> ttt = userService.getAllUsersBySuperAdmin(initiatorId, responsible, city, formaoplaty, dismissed);
-        return ttt;
-//        return userService.getAllUsersBySuperAdmin(initiatorId, responsible, city, formaoplaty, dismissed);
+        log.info("getAllUsersBySuperAdmin initiatorId {} responsible {} city {} formaoplaty {} companyName {} dismissed {}",
+                initiatorId, responsible, city, formaoplaty, companyName, dismissed);
+
+        return userService.getAllUsersBySuperAdmin(initiatorId, responsible, city, formaoplaty, companyName, dismissed);
     }
 
     @PostMapping("/update-all-users/{initiatorId}")
@@ -79,10 +79,11 @@ public class ControllerSuperAdminAction {
                                                 @RequestParam(required = false) String responsible,
                                                 @RequestParam(required = false) String city,
                                                 @RequestParam(required = false) String formaoplaty,
+                                                @RequestParam(required = false) String companyName,
                                                 @RequestParam(required = false) String dismissed) {
-        log.info("getAllSalarysBy initiatorId {} month {} year {} responsible {} city {} formaoplaty {} dismissed {}",
-                initiatorId, month, year, responsible, city, formaoplaty, dismissed);
-        return salaryService.getAllBySuperAdmin(initiatorId, month, year, responsible, city, formaoplaty, dismissed);
+        log.info("getAllSalarysBy initiatorId {} month {} year {} responsible {} city {} formaoplaty {} companyName {} dismissed {}",
+                initiatorId, month, year, responsible, city, formaoplaty, companyName, dismissed);
+        return salaryService.getAllBySuperAdmin(initiatorId, month, year, responsible, city, formaoplaty, companyName, dismissed);
     }
 
     @PatchMapping("/update-all-salary-by-super-admin/{initiatorId}")

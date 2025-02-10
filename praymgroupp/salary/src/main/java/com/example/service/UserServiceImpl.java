@@ -115,6 +115,7 @@ public class UserServiceImpl implements UserService {
         return getAllUsers(user.getLastName(),
                 city,
                 formaoplaty,
+                null,
                 dismissed);
     }
 
@@ -123,6 +124,7 @@ public class UserServiceImpl implements UserService {
                                                       String responsible,
                                                       String city,
                                                       String formaoplaty,
+                                                      String companyName,
                                                       String dismissed) {
 
         User user = userRepository.findById(initiatorId)
@@ -135,6 +137,7 @@ public class UserServiceImpl implements UserService {
         return getAllUsers(responsible,
                 city,
                 formaoplaty,
+                companyName,
                 dismissed);
     }
 
@@ -208,6 +211,7 @@ public class UserServiceImpl implements UserService {
     private List<UserResponse> getAllUsers (String responsible,
                                                String city,
                                                String formaoplaty,
+                                               String companyName,
                                                String dismissed) {
 
         SalarySearchFilter salarySearchFilter = new SalarySearchFilter();
@@ -217,6 +221,7 @@ public class UserServiceImpl implements UserService {
             salarySearchFilter.setResponsible(responsible);
         if (city != null) salarySearchFilter.setCity(city);
         if (formaoplaty != null) salarySearchFilter.setFormaoplaty(formaoplaty);
+        if (companyName != null) salarySearchFilter.setCompanyName(companyName);
         if (dismissed != null) {
             if (dismissed.equals("true")) salarySearchFilter.setDismissed(true);
         } else {
@@ -254,6 +259,9 @@ public class UserServiceImpl implements UserService {
         if (salarySearchFilter.getFormaoplaty() != null) {
             specifications.add(formaOplaty(List.of(salarySearchFilter.getFormaoplaty())));
         }
+        if (salarySearchFilter.getCompanyName() != null) {
+            specifications.add(companyName(List.of(salarySearchFilter.getCompanyName())));
+        }
         if (salarySearchFilter.getDismissed() != null) {
             specifications.add(dismissed(salarySearchFilter.getDismissed()));
         }
@@ -273,6 +281,11 @@ public class UserServiceImpl implements UserService {
     private Specification<User> formaOplaty(List<String> values) {
         return (root, query, criteriaBuilder) -> criteriaBuilder
                 .in(root.get("category")).value(values);
+    }
+
+    private Specification<User> companyName(List<String> values) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder
+                .in(root.get("company_name")).value(values);
     }
 
     private Specification<User> dismissed(Boolean dismissed) {

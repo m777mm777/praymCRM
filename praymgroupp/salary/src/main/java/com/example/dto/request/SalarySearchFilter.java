@@ -19,5 +19,7 @@ public class SalarySearchFilter {
 
     private String formaoplaty;
 
+    private String companyName;
+
     private Boolean dismissed;
 }

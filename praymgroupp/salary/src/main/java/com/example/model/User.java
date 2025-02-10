@@ -52,5 +52,8 @@ public class User {
     @Column(name = "bank_account_number")
     private BigInteger bankAccountNumber;
 
+    @Column(name = "company_name")
+    private String companyName;
+
 }
 

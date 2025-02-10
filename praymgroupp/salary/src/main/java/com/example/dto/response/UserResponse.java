@@ -30,4 +30,6 @@ public class UserResponse {
     private String bankAccountNumber;
 
     private Boolean dismissed;
+
+    private String companyName;
 }

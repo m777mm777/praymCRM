@@ -40,6 +40,9 @@
          </column>
          <column name="bank_account_number" type="decimal(20)">
          </column>
+         <column name="company_name" type="VARCHAR(25)">
+             <constraints nullable="false"/>
+         </column>
      </createTable>
 
      <addForeignKeyConstraint baseColumnNames="owner_id"

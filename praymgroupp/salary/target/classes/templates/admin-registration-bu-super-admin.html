@@ -132,10 +132,15 @@
     </select>
     <select class="polya" id="city" name="city" required>
         <option value="Москва">Москва</option>
-        <option value="Ново-Ебенево">Ново-Ебенево</option>
-        <option value="Саратов">Саратов</option>
-        <option value="Королев">Королев</option>
-        <option value="Питер">Питер</option>
+        <option value="Мос.Обл">Мос.Обл</option>
+        <option value="Брянск">Брянск</option>
+        <option value="Тверь">Тверь</option>
+        <option value="Смоленск">Смоленск</option>
+    </select>
+    <select class="polya" id="companyName" name="companyName" required>
+        <option value="ПРАЙМГРУПП">ПРАЙМГРУПП</option>
+        <option value="ГРОССТРОЙ">ГРОССТРОЙ</option>
+        <option value="Олимпик">Олимпик</option>
     </select><br /><br />
     <button class="botton-field" type="submit">Сохранить</button>
     <br /><br /><br />
@@ -171,13 +176,14 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Collect form data
-    const name = document.getElementById('name').value;
     const lastName = document.getElementById('lastName').value;
+    const name = document.getElementById('name').value;
     const patronymic = document.getElementById('patronymic').value;
     const password = document.getElementById('password').value;
     const phone = document.getElementById('phone').value;
     const category = document.getElementById('category').value;
     const city = document.getElementById('city').value;
+    const companyName = document.getElementById('companyName').value;
 
     // Send data to the server
 <!--    fetch(`http://localhost:8080/super-admin/create-admin/${initiatorId}`, {-->
@@ -187,13 +193,14 @@ document.getElementById('dataForm').addEventListener('submit', function(event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: name,
             lastName: lastName,
+            name: name,
             patronymic: patronymic,
             password: password,
             phone: phone,
+            category: category,
             city: city,
-            category: category
+            companyName: companyName
         })
     })
     .then(response => {
@@ -240,12 +247,13 @@ function renderData(data) {
 
     // Extract each field into its own variable
     const id = data.id;
-    const name = data.name;
     const lastName = data.lastName;
+    const name = data.name;
     const patronymic = data.patronymic;
     const phone = data.phone;
     const category = data.category;
     const city = data.city;
+    const companyName = data.companyName;
 
     // Render data as list items
     const listItemId = document.createElement('li');
@@ -275,6 +283,10 @@ function renderData(data) {
     const listItemCity = document.createElement('li');
     listItemCity.textContent = `City: ${city}`;
     container.appendChild(listItemCity);
+
+    const listItemCompanyName = document.createElement('li');
+    listItemCompanyName.textContent = `CompanyName: ${companyName}`;
+    container.appendChild(listItemCompanyName);
 }
 </script>
 </body>

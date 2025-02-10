@@ -48,4 +48,6 @@ public class UserRequest {
     private BigInteger bankAccountNumber;
 
     private Boolean dismissed;
+
+    private String companyName;
 }

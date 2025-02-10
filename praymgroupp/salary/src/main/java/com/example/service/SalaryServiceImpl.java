@@ -88,6 +88,7 @@ public class SalaryServiceImpl implements SalaryService {
                                                    String responsible,
                                                    String city,
                                                    String formaoplaty,
+                                                   String companyName,
                                                    String dismissed) {
 
         return getAllSalary(initiatorId,
@@ -96,6 +97,7 @@ public class SalaryServiceImpl implements SalaryService {
                 responsible,
                 city,
                 formaoplaty,
+                companyName,
                 dismissed);
     }
 
@@ -111,6 +113,7 @@ public class SalaryServiceImpl implements SalaryService {
                 user.getLastName(),
                 city,
                 formaoplaty,
+                null,
                 null);
     }
 
@@ -120,6 +123,7 @@ public class SalaryServiceImpl implements SalaryService {
                                                String responsible,
                                                String city,
                                                String formaoplaty,
+                                               String companyName,
                                                String dismissed) {
 
         User user = userRepository.findById(initiatorId)
@@ -167,6 +171,7 @@ public class SalaryServiceImpl implements SalaryService {
             salarySearchFilter.setResponsible(responsible);
         if (city != null) salarySearchFilter.setCity(city);
         if (formaoplaty != null) salarySearchFilter.setFormaoplaty(formaoplaty);
+        if (companyName != null) salarySearchFilter.setCompanyName(companyName);
         if (dismissed != null) {
             if (dismissed.equals("true")) salarySearchFilter.setDismissed(true);
         } else {
@@ -270,6 +275,9 @@ public class SalaryServiceImpl implements SalaryService {
         if (salarySearchFilter.getFormaoplaty() != null) {
             specifications.add(formaOplaty(List.of(salarySearchFilter.getFormaoplaty())));
         }
+        if (salarySearchFilter.getCompanyName() != null) {
+            specifications.add(companyName(List.of(salarySearchFilter.getCompanyName())));
+        }
         if (salarySearchFilter.getDismissed() != null) {
             specifications.add(dismissed(salarySearchFilter.getDismissed()));
         }
@@ -315,6 +323,11 @@ public class SalaryServiceImpl implements SalaryService {
     private Specification<Salary> formaOplaty(List<String> values) {
         return (root, query, criteriaBuilder) -> criteriaBuilder
                 .in(root.get("owner").get("category")).value(values);
+    }
+
+    private Specification<Salary> companyName(List<String> values) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder
+                .in(root.get("owner").get("company_name")).value(values);
     }
 
     private Specification<Salary> dismissed(Boolean dismissed) {

@@ -115,10 +115,10 @@
     <select class="header-pole-field" id="city" name="city">
         <option value="">Город</option>
         <option value="Москва">Москва</option>
-        <option value="Ново-Ебенево">Ново-Ебенево</option>
-        <option value="Саратов">Саратов</option>
-        <option value="Королев">Королев</option>
-        <option value="Питер">Питер</option>
+        <option value="Мос.Обл">Мос.Обл</option>
+        <option value="Брянск">Брянск</option>
+        <option value="Тверь">Тверь</option>
+        <option value="Смоленск">Смоленск</option>
     </select>
     <select class="header-pole-field" id="formaoplaty" name="formaoplaty">
         <option value="">Форма оплаты</option>
@@ -127,6 +127,11 @@
         <option value="Самозанятый">Самозанятый</option>
         <option value="Ип">ИП</option>
         <option value="Не официально">Не официально</option>
+    </select>
+    <select class="header-pole-field" id="companyName" name="companyName" required>
+        <option value="ПРАЙМГРУПП">ПРАЙМГРУПП</option>
+        <option value="ГРОССТРОЙ">ГРОССТРОЙ</option>
+        <option value="Олимпик">Олимпик</option>
     </select>
     <select class="header-pole-field" id="dismissed" name="dismissed">
         <option value="">Не уволен</option>
@@ -144,6 +149,7 @@
         <input style="width: 90px;" type="text" name="8" value="Город" readonly class="nechet-field"/>
         <input style="width: 160px;" type="text" name="9" value="Номер счета" readonly class="chet-field"/>
         <input style="width: 110px;" type="text" name="10" value="Ответственный" readonly class="nechet-field"/>
+        <input style="width: 50px;" type="text" name="11" value="companyName" readonly class="chet-field"/>
         <input style="width: 65px;" type="text" name="11" value="Уволен" readonly class="chet-field"/>
     </div>
 </div>
@@ -218,12 +224,14 @@ function loadResponsibles() {
          const responsible = document.getElementById('responsible').value;
          const city = document.getElementById('city').value;
          const formaoplaty = document.getElementById('formaoplaty').value;
+         const companyName = document.getElementById('companyName').value;
          const dismissed = document.getElementById('dismissed').value;
 
          // Set parameters to null if the default option is selected
          const responsibleParam = responsible === "" ? null : responsible;
          const cityParam = city === "" ? null : city;
          const formaoplatyParam = formaoplaty === "" ? null : formaoplaty;
+         const companyName = document.getElementById('companyName').value;
          const dismissedParam = dismissed === "" ? null : dismissed;
 
          // Build the URL with parameters
@@ -235,6 +243,7 @@ function loadResponsibles() {
          if (responsibleParam) params.push(`responsible=${responsibleParam}`);
          if (cityParam) params.push(`city=${cityParam}`);
          if (formaoplatyParam) params.push(`formaoplaty=${formaoplatyParam}`);
+         if (companyNameParam) params.push(`companyName=${companyNameParam}`);
          if (dismissedParam) params.push(`dismissed=${dismissedParam}`);
 
          if (params.length > 0) {
@@ -266,7 +275,8 @@ function loadResponsibles() {
                  <input style="width: 90px;" type="text" id="city-${index}" name="city" value="${item.city}" required class="nechet-field">
                  <input style="width: 160px;" type="text" id="bankAccountNumber-${index}" name="bankAccountNumber" value="${item.bankAccountNumber}" required class="chet-field">
                  <input style="width: 110px;" type="text" id="ownerLastName-${index}" name="ownerLastName" value="${item.ownerLastName}" required class="nechet-field">
-                 <select style="width: 90px;" id="dismissed-${index}" name="dismissed" class="chet-field">
+                 <input style="width: 50px;" type="text" id="companyName-${index}" name="companyName" value="${owner.companyName}" required class="chet-field">
+                 <select style="width: 90px;" id="dismissed-${index}" name="dismissed" class="nechet-field">
                      <option value="true" ${item.dismissed === true ? 'selected' : ''}>Да</option>
                      <option value="false" ${item.dismissed === false ? 'selected' : ''}>Нет</option>
                  </select>
@@ -294,6 +304,7 @@ function loadResponsibles() {
              city: card.querySelector(`#city-${index}`).value,
              bankAccountNumber: card.querySelector(`#bankAccountNumber-${index}`).value,
              ownerLastName: card.querySelector(`#ownerLastName-${index}`).value,
+             companyName: card.querySelector(`#companyName-${index}`).value,
              dismissed: card.querySelector(`#dismissed-${index}`).value === 'true'
          };
          data.push(item);

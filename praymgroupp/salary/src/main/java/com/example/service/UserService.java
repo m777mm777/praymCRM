@@ -28,6 +28,7 @@ public interface UserService {
                                                String responsible,
                                                String city,
                                                String formaoplaty,
+                                               String companyName,
                                                String dismissed);
 
     UserResponse crateUserByAdmin(Long initiatorId, UserRequest request);

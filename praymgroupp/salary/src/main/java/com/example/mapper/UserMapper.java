@@ -35,6 +35,7 @@ public class UserMapper {
             user.setBankAccountNumber(request.getBankAccountNumber());
         }
         user.setDismissed(request.getDismissed());
+        user.setCompanyName(request.getCompanyName());
 
         return user;
     }
@@ -63,6 +64,7 @@ public class UserMapper {
             user.setBankAccountNumber(request.getBankAccountNumber());
         }
         user.setDismissed(request.getDismissed());
+        user.setCompanyName(request.getCompanyName());
 
         return user;
     }
@@ -89,6 +91,7 @@ public class UserMapper {
         }
 
         userResponse.dismissed(user.getDismissed());
+        userResponse.companyName(user.getCompanyName());
 
         return userResponse.build();
     }

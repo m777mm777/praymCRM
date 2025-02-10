@@ -149,10 +149,10 @@
     <select class="header-pole-field" id="city" name="city">
         <option value="">Город</option>
         <option value="Москва">Москва</option>
-        <option value="Ново-Ебенево">Ново-Ебенево</option>
-        <option value="Саратов">Саратов</option>
-        <option value="Королев">Королев</option>
-        <option value="Питер">Питер</option>
+        <option value="Мос.Обл">Мос.Обл</option>
+        <option value="Брянск">Брянск</option>
+        <option value="Тверь">Тверь</option>
+        <option value="Смоленск">Смоленск</option>
     </select>
     <select class="header-pole-field" id="formaoplaty" name="formaoplaty">
         <option value="">Форма оплаты</option>
@@ -161,6 +161,11 @@
         <option value="Самозанятый">Самозанятый</option>
         <option value="Ип">ИП</option>
         <option value="Не официально">Не официально</option>
+    </select>
+    <select class="header-pole-field" id="companyName" name="companyName" required>
+        <option value="ПРАЙМГРУПП">ПРАЙМГРУПП</option>
+        <option value="ГРОССТРОЙ">ГРОССТРОЙ</option>
+        <option value="Олимпик">Олимпик</option>
     </select>
     <select class="header-pole-field" id="dismissed" name="dismissed">
         <option value="">Не уволен</option>
@@ -188,6 +193,8 @@
         <input style="width: 70px;" type="text" name="17" value="За телефон" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
         <input style="width: 100px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
+        <input style="width: 50px;" type="text" name="20" value="companyName" readonly class="nemenyemye-field"/>
+
     </div>
 </div>
 
@@ -259,6 +266,8 @@
             const city = document.getElementById('city').value;
             const formaoplaty = document.getElementById('formaoplaty').value;
             const dismissed = document.getElementById('dismissed').value;
+            const companyName = document.getElementById('companyName').value;
+
 
             // Set parameters to null if the default option is selected
             const monthParam = month === "" ? null : month;
@@ -267,6 +276,7 @@
             const cityParam = city === "" ? null : city;
             const formaoplatyParam = formaoplaty === "" ? null : formaoplaty;
             const dismissedParam = dismissed === "" ? null : dismissed;
+            const companyNameParam = companyName === "" ? null : companyName;
 
             // Build the URL with parameters
 <!--            let url = `http://localhost:8080/super-admin/sallarys-by-super-admin/${initiatorId}`;-->
@@ -278,6 +288,7 @@
             if (responsibleParam) params.push(`responsible=${responsibleParam}`);
             if (cityParam) params.push(`city=${cityParam}`);
             if (formaoplatyParam) params.push(`formaoplaty=${formaoplatyParam}`);
+            if (companyNameParam) params.push(`companyName=${companyNameParam}`);
             if (dismissedParam) params.push(`dismissed=${dismissedParam}`);
 
             if (params.length > 0) {
@@ -334,7 +345,8 @@
                     <input style="width: 70px;" type="text" id="rentCar-${index}" name="rentCar" value="${item.rentCar}" required class="nechet-field">
                     <input style="width: 70px;" type="text" id="rentPhone-${index}" name="rentPhone" value="${item.rentPhone}" required class="chet-field">
                     <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
-                    <input style="width: 100px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
+                    <input style="width: 100px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field">
+                    <input style="width: 50px;" type="text" id="companyName-${index}" name="companyName" value="${owner.companyName}" required class="nemenyemye-field"><br />
                     <br />
                     <input style="width: 0px;" type="hidden" id="commentId-${index}" name="commentId" value="${comment.id}">
                     <label>Коментарии: </label>
@@ -374,6 +386,7 @@
             const responsible = card.querySelector('input[name="responsibleLastName"]').value;
             const commentId = card.querySelector('input[name="commentId"]').value;
             const comment = card.querySelector('input[name="comment"]').value;
+
 
             updatedDataArray.push({
                 id: id,

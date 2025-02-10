@@ -24,6 +24,7 @@ public interface SalaryService {
                                             String responsible,
                                             String city,
                                             String formaoplaty,
+                                            String companyName,
                                             String dismissed);
 
     List<SalaryResponse> getAllSalarysByAdmin(Long initiatorId, String city, String formaoplaty);
