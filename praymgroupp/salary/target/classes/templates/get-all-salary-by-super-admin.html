@@ -53,7 +53,7 @@
             bottom: 5px;
             left: 0;
             right: 0;
-            padding: 10px;
+            padding: 0px 10px;
         }
 
         /* Стили для четных и нечетных полей */
@@ -189,7 +189,7 @@
         <input style="width: 75px;" type="text" name="16" value="За машину" readonly class="nechet-field"/>
         <input style="width: 75px;" type="text" name="17" value="За телефон" readonly class="chet-field"/>
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
-        <input style="width: 110px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
+        <input style="width: 100px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
 </div>
 
@@ -336,7 +336,7 @@
                     <input style="width: 75px;" type="text" id="rentCar-${index}" name="rentCar" value="${item.rentCar}" required class="nechet-field">
                     <input style="width: 75px;" type="text" id="rentPhone-${index}" name="rentPhone" value="${item.rentPhone}" required class="chet-field">
                     <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
-                    <input style="width: 110px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
+                    <input style="width: 100px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field"><br />
                     <br />
                     <input style="width: 0px;" type="hidden" id="commentId-${index}" name="commentId" value="${comment.id}">
                     <label>Коментарии: </label>
