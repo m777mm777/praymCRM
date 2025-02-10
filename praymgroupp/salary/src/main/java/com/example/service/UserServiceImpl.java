@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
     Pageable page = PageRequest.of(0 > 0 ? 0 / 10000 : 0, 10000, SORT_ID_ASC);
 
     @Override
-    public User findById(Long id) {
+    public User findById(UUID id) {
 
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<String> getAdmins(Long initiatorId) {
+    public List<String> getAdmins(UUID initiatorId) {
         User initiator = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
 
@@ -86,7 +87,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponse> updateAllUsersBySuperAdmin(Long initiatorId, List<UserRequestUpdate> request) {
+    public List<UserResponse> updateAllUsersBySuperAdmin(UUID initiatorId, List<UserRequestUpdate> request) {
         User user = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
 
@@ -100,7 +101,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponse> getAllUsersByAdmin(Long initiatorId,
+    public List<UserResponse> getAllUsersByAdmin(UUID initiatorId,
                                                  String city,
                                                  String formaoplaty,
                                                  String dismissed) {
@@ -120,7 +121,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponse> getAllUsersBySuperAdmin(Long initiatorId,
+    public List<UserResponse> getAllUsersBySuperAdmin(UUID initiatorId,
                                                       String responsible,
                                                       String city,
                                                       String formaoplaty,
@@ -142,7 +143,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse crateUserByAdmin(Long initiatorId, UserRequest request) {
+    public UserResponse crateUserByAdmin(UUID initiatorId, UserRequest request) {
         User owner = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
 
@@ -159,7 +160,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse crateUserBySuperAdmin(Long initiatorId, UserRequest request) {
+    public UserResponse crateUserBySuperAdmin(UUID initiatorId, UserRequest request) {
         userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь супер админ не найден"));
 
@@ -178,7 +179,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse crateAdminBySuperAdmin(Long initiatorId, UserRequest request) {
+    public UserResponse crateAdminBySuperAdmin(UUID initiatorId, UserRequest request) {
         User owner = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь супер админ не найден"));
 
@@ -193,9 +194,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse crateSuperAdminBySuperAdmin(Long initiatorId, UserRequest request) {
+    public UserResponse crateSuperAdminBySuperAdmin(UUID initiatorId, UserRequest request) {
 
-        if (initiatorId != 1919L) {
+        String uuidString = "95822a8f-4537-429c-a224-b093256075ba";
+        UUID uuid = UUID.fromString(uuidString);
+
+        if (initiatorId != uuid) {
             throw new ConflictServerError("В доступе отказано");
         }
 

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -19,7 +20,7 @@ public class ControllerSuperAdmin {
     private final UserService userService;
 
     @GetMapping(value = "/super-admin/user-registration/{initiatorId}")
-    public String userRegistrationH(@PathVariable Long initiatorId) {
+    public String userRegistrationH(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -33,7 +34,7 @@ public class ControllerSuperAdmin {
     }
 
     @GetMapping(value = "/super-admin/admin-registration/{initiatorId}")
-    public String adminRegistrationH(@PathVariable Long initiatorId) {
+    public String adminRegistrationH(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -58,7 +59,7 @@ public class ControllerSuperAdmin {
 
 
     @GetMapping("/super-admin/get-all-users-by-super-admin/{initiatorId}")
-    public String getAllUsersH(@PathVariable Long initiatorId) {
+    public String getAllUsersH(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -73,7 +74,7 @@ public class ControllerSuperAdmin {
     }
 
     @RequestMapping(value = "/super-admin/get-all-salary/{initiatorId}")
-    public String getAllUsers(@PathVariable Long initiatorId) {
+    public String getAllUsers(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -85,7 +86,7 @@ public class ControllerSuperAdmin {
     }
 
     @RequestMapping(value = "/super-admin/home-super-admin/{initiatorId}")
-    public String getHome(@PathVariable Long initiatorId) {
+    public String getHome(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -97,7 +98,7 @@ public class ControllerSuperAdmin {
     }
 
     @GetMapping("/get-admins/{initiatorId}")
-    public List<String> getAdmins(@PathVariable Long initiatorId) {
+    public List<String> getAdmins(@PathVariable UUID initiatorId) {
         log.info("getAdmins initiatorId {}", initiatorId);
         return userService.getAdmins(initiatorId);
     }

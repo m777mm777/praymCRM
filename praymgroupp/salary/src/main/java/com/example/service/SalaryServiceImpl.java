@@ -56,7 +56,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public List<SalaryResponse> updateAllSalaryByAdmin(Long initiatorId, List<SalaryRequest> requests) {
+    public List<SalaryResponse> updateAllSalaryByAdmin(UUID initiatorId, List<SalaryRequest> requests) {
         User initiator = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
 
@@ -69,7 +69,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public List<SalaryResponse> updateAllSalaryBySuperAdmin(Long initiatorId, List<SalaryRequest> requests) {
+    public List<SalaryResponse> updateAllSalaryBySuperAdmin(UUID initiatorId, List<SalaryRequest> requests) {
         User initiator = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
 
@@ -82,7 +82,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public List<SalaryResponse> getAllBySuperAdmin(Long initiatorId,
+    public List<SalaryResponse> getAllBySuperAdmin(UUID initiatorId,
                                                    String month,
                                                    String year,
                                                    String responsible,
@@ -102,7 +102,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public List<SalaryResponse> getAllSalarysByAdmin(Long initiatorId, String city, String formaoplaty) {
+    public List<SalaryResponse> getAllSalarysByAdmin(UUID initiatorId, String city, String formaoplaty) {
 
         User user = userRepository.findById(initiatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
@@ -117,7 +117,7 @@ public class SalaryServiceImpl implements SalaryService {
                 null);
     }
 
-    private List<SalaryResponse> getAllSalary (Long initiatorId,
+    private List<SalaryResponse> getAllSalary (UUID initiatorId,
                                                String month,
                                                String year,
                                                String responsible,
@@ -200,7 +200,7 @@ public class SalaryServiceImpl implements SalaryService {
         return responses;
     }
 
-    private List<SalaryResponse> getForTheCurrentMonth(Long requesterId) {
+    private List<SalaryResponse> getForTheCurrentMonth(UUID requesterId) {
 
         User requester = userRepository.findById(requesterId)
                 .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));

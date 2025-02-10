@@ -9,16 +9,17 @@ import com.example.model.User;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 public interface SalaryService {
 
     Salary createToUser(User user);
 
-    List<SalaryResponse> updateAllSalaryByAdmin(Long initiatorId, List<SalaryRequest> requests);
+    List<SalaryResponse> updateAllSalaryByAdmin(UUID initiatorId, List<SalaryRequest> requests);
 
-    List<SalaryResponse> updateAllSalaryBySuperAdmin(Long initiatorId, List<SalaryRequest> requests);
+    List<SalaryResponse> updateAllSalaryBySuperAdmin(UUID initiatorId, List<SalaryRequest> requests);
 
-    List<SalaryResponse> getAllBySuperAdmin(Long initiatorId,
+    List<SalaryResponse> getAllBySuperAdmin(UUID initiatorId,
                                             String month,
                                             String year,
                                             String responsible,
@@ -27,5 +28,5 @@ public interface SalaryService {
                                             String companyName,
                                             String dismissed);
 
-    List<SalaryResponse> getAllSalarysByAdmin(Long initiatorId, String city, String formaoplaty);
+    List<SalaryResponse> getAllSalarysByAdmin(UUID initiatorId, String city, String formaoplaty);
 }

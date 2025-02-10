@@ -9,13 +9,14 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 public class SalaryResponse {
 
-    private Long id;
+    private UUID id;
 
     private UserResponse owner;
 

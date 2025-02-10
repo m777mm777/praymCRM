@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 @Builder
 @AllArgsConstructor
 public class CommentResponse {
 
-    private Long id;
+    private UUID id;
 
     private String text;
 }

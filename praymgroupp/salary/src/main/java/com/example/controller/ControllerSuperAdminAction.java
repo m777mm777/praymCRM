@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -28,7 +29,7 @@ public class ControllerSuperAdminAction {
 
     @PostMapping("/create-user/{initiatorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse crateUserBySuperAdmin(@PathVariable Long initiatorId,
+    public UserResponse crateUserBySuperAdmin(@PathVariable UUID initiatorId,
                                          @Validated(Create.class) @RequestBody UserRequest request) {
         log.info("crateUserByAdmin initiatorId {} request {}", initiatorId, request);
         return userService.crateUserBySuperAdmin(initiatorId, request);
@@ -36,7 +37,7 @@ public class ControllerSuperAdminAction {
 
     @PostMapping("/create-admin/{initiatorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse crateAdminBySuperAdmin(@PathVariable Long initiatorId,
+    public UserResponse crateAdminBySuperAdmin(@PathVariable UUID initiatorId,
                                               @Validated(Create.class) @RequestBody UserRequest request) {
         log.info("crateAdminBySuperAdmin initiatorId {} request {}", initiatorId, request);
         return userService.crateAdminBySuperAdmin(initiatorId, request);
@@ -44,14 +45,14 @@ public class ControllerSuperAdminAction {
 
     @PostMapping("/create-super-admin/{initiatorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse crateSuperAdminBySuperAdmin(@PathVariable Long initiatorId,
+    public UserResponse crateSuperAdminBySuperAdmin(@PathVariable UUID initiatorId,
                                                @Validated(Create.class) @RequestBody UserRequest request) {
         log.info("crateSuperAdminBySuperAdmin initiatorId {} request {}", initiatorId, request);
         return userService.crateSuperAdminBySuperAdmin(initiatorId, request);
     }
 
     @GetMapping("/all-users-by-super-admin/{initiatorId}")
-    public List<UserResponse> getAllUsersBySuperAdmin(@PathVariable Long initiatorId,
+    public List<UserResponse> getAllUsersBySuperAdmin(@PathVariable UUID initiatorId,
                                                       @RequestParam(required = false) String responsible,
                                                       @RequestParam(required = false) String city,
                                                       @RequestParam(required = false) String formaoplaty,
@@ -65,7 +66,7 @@ public class ControllerSuperAdminAction {
 
     @PostMapping("/update-all-users/{initiatorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<UserResponse> updateAllUsersBySuperAdmin(@Validated(Update.class) @PathVariable Long initiatorId,
+    public List<UserResponse> updateAllUsersBySuperAdmin(@Validated(Update.class) @PathVariable UUID initiatorId,
                                                              @RequestBody List<UserRequestUpdate> request) {
 
         log.info("updateAllUsersBySuperAdmin initiatorId {} request {}", initiatorId, request);
@@ -73,7 +74,7 @@ public class ControllerSuperAdminAction {
     }
 
     @GetMapping("/sallarys-by-super-admin/{initiatorId}")
-    public List<SalaryResponse> getAllSalarysBy(@PathVariable Long initiatorId,
+    public List<SalaryResponse> getAllSalarysBy(@PathVariable UUID initiatorId,
                                                 @RequestParam(required = false) String month,
                                                 @RequestParam(required = false) String year,
                                                 @RequestParam(required = false) String responsible,
@@ -88,13 +89,13 @@ public class ControllerSuperAdminAction {
 
     @PatchMapping("/update-all-salary-by-super-admin/{initiatorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<SalaryResponse> updateAllSalaryBySuperAdmin(@PathVariable Long initiatorId, @RequestBody List<SalaryRequest> request) {
+    public List<SalaryResponse> updateAllSalaryBySuperAdmin(@PathVariable UUID initiatorId, @RequestBody List<SalaryRequest> request) {
         log.info("updateAllSalary initiatorId {} request {}", initiatorId, request);
         return salaryService.updateAllSalaryBySuperAdmin(initiatorId, request);
     }
 
     @GetMapping("/get-admins/{initiatorId}")
-    public List<String> getAdmins(@PathVariable Long initiatorId) {
+    public List<String> getAdmins(@PathVariable UUID initiatorId) {
         log.info("getAdmins initiatorId {}", initiatorId);
         return userService.getAdmins(initiatorId);
     }

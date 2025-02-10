@@ -6,14 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 public class SalaryRequest {
 
-    private Long id;
+    private UUID id;
 
-    private Long ownerId;
+    private UUID ownerId;
 
     private Double salary;
 
@@ -39,7 +40,7 @@ public class SalaryRequest {
 
     private String responsible;
 
-    private Long commentId;
+    private UUID commentId;
 
     private String comment;
 }

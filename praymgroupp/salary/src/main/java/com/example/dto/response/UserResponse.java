@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigInteger;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 public class UserResponse {
 
-    private Long id;
+    private UUID id;
 
     private String name;
 

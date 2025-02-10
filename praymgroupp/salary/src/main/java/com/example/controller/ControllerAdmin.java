@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class ControllerAdmin {
     private final UserService userService;
 
     @GetMapping(value = "/admin/user-registration/{initiatorId}")
-    public String userRegistrationH(@PathVariable Long initiatorId) {
+    public String userRegistrationH(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -32,7 +34,7 @@ public class ControllerAdmin {
     }
 
     @GetMapping("/admin/get-allUsers/{initiatorId}")
-    public String getAllUsersH(@PathVariable Long initiatorId) {
+    public String getAllUsersH(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -45,7 +47,7 @@ public class ControllerAdmin {
     }
 
     @RequestMapping(value = "/admin/get-all-salary/{initiatorId}")
-    public String getAllUsers(@PathVariable Long initiatorId) {
+    public String getAllUsers(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 
@@ -59,7 +61,7 @@ public class ControllerAdmin {
     }
 
     @RequestMapping(value = "/admin/admin-home/{initiatorId}")
-    public String getHome(@PathVariable Long initiatorId) {
+    public String getHome(@PathVariable UUID initiatorId) {
 
         User user = userService.findById(initiatorId);
 

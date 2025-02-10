@@ -6,37 +6,38 @@ import com.example.dto.response.UserResponse;
 import com.example.model.User;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface UserService {
 
-    User findById(Long id);
+    User findById(UUID id);
 
     User chekUser(Long phone, String password);
 
     List<UserResponse> getAll();
 
-    List<String> getAdmins(Long initiatorId);
+    List<String> getAdmins(UUID initiatorId);
 
-    List<UserResponse> updateAllUsersBySuperAdmin(Long initiatorId, List<UserRequestUpdate> request);
+    List<UserResponse> updateAllUsersBySuperAdmin(UUID initiatorId, List<UserRequestUpdate> request);
 
-    List<UserResponse> getAllUsersByAdmin(Long initiatorId,
+    List<UserResponse> getAllUsersByAdmin(UUID initiatorId,
                                           String city,
                                           String formaoplaty,
                                           String dismissed);
 
-    List<UserResponse> getAllUsersBySuperAdmin(Long initiatorId,
+    List<UserResponse> getAllUsersBySuperAdmin(UUID initiatorId,
                                                String responsible,
                                                String city,
                                                String formaoplaty,
                                                String companyName,
                                                String dismissed);
 
-    UserResponse crateUserByAdmin(Long initiatorId, UserRequest request);
+    UserResponse crateUserByAdmin(UUID initiatorId, UserRequest request);
 
-    UserResponse crateUserBySuperAdmin(Long initiatorId, UserRequest request);
+    UserResponse crateUserBySuperAdmin(UUID initiatorId, UserRequest request);
 
-    UserResponse crateAdminBySuperAdmin(Long initiatorId, UserRequest request);
+    UserResponse crateAdminBySuperAdmin(UUID initiatorId, UserRequest request);
 
-    UserResponse crateSuperAdminBySuperAdmin(Long initiatorId, UserRequest request);
+    UserResponse crateSuperAdminBySuperAdmin(UUID initiatorId, UserRequest request);
 
 }

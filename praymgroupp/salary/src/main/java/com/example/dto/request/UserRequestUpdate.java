@@ -9,12 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigInteger;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 public class UserRequestUpdate {
 
-    private Long id;
+    private UUID id;
 
 //    @Size(min = 2, max = 20, groups = {Update.class})
 //    @NotBlank(groups = Create.class)
