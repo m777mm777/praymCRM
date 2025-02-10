@@ -285,7 +285,7 @@ public class UserServiceImpl implements UserService {
 
     private Specification<User> companyName(List<String> values) {
         return (root, query, criteriaBuilder) -> criteriaBuilder
-                .in(root.get("company_name")).value(values);
+                .in(root.get("companyName")).value(values);
     }
 
     private Specification<User> dismissed(Boolean dismissed) {

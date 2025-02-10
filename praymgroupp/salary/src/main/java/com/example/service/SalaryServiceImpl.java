@@ -327,7 +327,7 @@ public class SalaryServiceImpl implements SalaryService {
 
     private Specification<Salary> companyName(List<String> values) {
         return (root, query, criteriaBuilder) -> criteriaBuilder
-                .in(root.get("owner").get("company_name")).value(values);
+                .in(root.get("owner").get("companyName")).value(values);
     }
 
     private Specification<Salary> dismissed(Boolean dismissed) {
