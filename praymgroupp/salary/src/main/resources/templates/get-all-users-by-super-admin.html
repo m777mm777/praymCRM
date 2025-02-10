@@ -276,7 +276,7 @@ function loadResponsibles() {
                  <input style="width: 90px;" type="text" id="city-${index}" name="city" value="${item.city}" required class="nechet-field">
                  <input style="width: 160px;" type="text" id="bankAccountNumber-${index}" name="bankAccountNumber" value="${item.bankAccountNumber}" required class="chet-field">
                  <input style="width: 110px;" type="text" id="ownerLastName-${index}" name="ownerLastName" value="${item.ownerLastName}" required class="nechet-field">
-                 <input style="width: 70px;" type="text" id="companyName-${index}" name="companyName" value="${owner.companyName}" required class="chet-field">
+                 <input style="width: 70px;" type="text" id="companyName-${index}" name="companyName" value="${item.companyName}" required class="chet-field">
                  <select style="width: 90px;" id="dismissed-${index}" name="dismissed" class="nechet-field">
                      <option value="true" ${item.dismissed === true ? 'selected' : ''}>Да</option>
                      <option value="false" ${item.dismissed === false ? 'selected' : ''}>Нет</option>
