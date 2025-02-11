@@ -167,6 +167,10 @@
 </div>
 
 <script>
+
+<!--    const urll = "http://localhost:8080";-->
+    const urll = "http://95.142.37.35";
+
     // Получаем текущий URL
     const url = window.location.href;
 
@@ -189,7 +193,7 @@
                 if (response.ok) {
                     const redirectUrl = await response.text(); // Получаем URL для редиректа
 <!--                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
-                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект
+                    window.location.href = `${urll}/${redirectUrl}`; // Выполняем редирект
                 } else {
                     console.error('Ошибка при выполнении запроса:', response.statusText);
                 }
@@ -202,19 +206,19 @@
         document.getElementById('user-registration-form').addEventListener('submit', (e) => {
             e.preventDefault(); // Отменяем стандартное поведение формы
 <!--            handleFormSubmit(`http://localhost:8080/admin/user-registration/${initiatorId}`);-->
-            handleFormSubmit(`http://95.142.37.35/admin/user-registration/${initiatorId}`);
+            handleFormSubmit(`${urll}/admin/user-registration/${initiatorId}`);
         });
 
         document.getElementById('get-all-users-form').addEventListener('submit', (e) => {
             e.preventDefault(); // Отменяем стандартное поведение формы
 <!--            handleFormSubmit(`http://localhost:8080/admin/get-allUsers/${initiatorId}`);-->
-            handleFormSubmit(`http://95.142.37.35/admin/get-allUsers/${initiatorId}`);
+            handleFormSubmit(`${urll}/admin/get-allUsers/${initiatorId}`);
         });
 
         document.getElementById('get-all-salary-form').addEventListener('submit', (e) => {
             e.preventDefault(); // Отменяем стандартное поведение формы
 <!--            handleFormSubmit(`http://localhost:8080/admin/get-all-salary/${initiatorId}`);-->
-            handleFormSubmit(`http://95.142.37.35/admin/get-all-salary/${initiatorId}`);
+            handleFormSubmit(`${urll}/admin/get-all-salary/${initiatorId}`);
         });
     } else {
         console.log("Number not found in URL");

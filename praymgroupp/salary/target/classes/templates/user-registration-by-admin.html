@@ -181,6 +181,9 @@
 </div>
 <script>
 
+<!--    const urll = "http://localhost:8080";-->
+    const urll = "http://95.142.37.35";
+
     // Автоматически высчитываем высоту хедера и делаем отступ
     window.addEventListener('load', function() {
     const headerHeight = document.querySelector('.fixed-header').offsetHeight;
@@ -218,7 +221,7 @@
 
         // Send data to the server
 <!--        fetch(`http://localhost:8080/admin/create-user/${initiatorId}`, {-->
-        fetch(`http://95.142.37.35/admin/create-user/${initiatorId}`, {
+        fetch(`${urll}/admin/create-user/${initiatorId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -229,7 +232,8 @@
                 patronymic: patronymic,
                 phone: phone,
                 category: category,
-                city: city
+                city: city,
+                companyName
             })
         })
         .then(response => {
@@ -255,7 +259,7 @@
                 if (response.ok) {
                     const redirectUrl = await response.text(); // Получаем URL для редиректа
 <!--                    window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
-                    window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект
+                    window.location.href = `${urll}/${redirectUrl}`; // Выполняем редирект
                 } else {
                     console.error('Ошибка при выполнении запроса:', response.statusText);
                 }
@@ -267,7 +271,7 @@
         // Назначаем обработчики событий для кнопки "Назад"
         document.getElementById('fetchButtonHome').addEventListener('click', () => {
 <!--            handleFormSubmit(`http://localhost:8080/admin/admin-home/${initiatorId}`);-->
-            handleFormSubmit(`http://95.142.37.35/admin/admin-home/${initiatorId}`);
+            handleFormSubmit(`${urll}/admin/admin-home/${initiatorId}`);
         });
 
     function renderData(data) {

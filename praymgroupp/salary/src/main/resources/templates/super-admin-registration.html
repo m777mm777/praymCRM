@@ -177,6 +177,9 @@
 </div>
 <script>
 
+<!--    const urll = "http://localhost:8080";-->
+    const urll = "http://95.142.37.35";
+
     // Автоматически высчитываем высоту хедера и делаем отступ
     window.addEventListener('load', function() {
     const headerHeight = document.querySelector('.fixed-header').offsetHeight;
@@ -199,7 +202,7 @@
 
         // Send data to the server
 <!--        fetch(`http://localhost:8080/super-admin/create-super-admin/${initiatorId}`, {-->
-        fetch(`http://95.142.37.35/super-admin/create-super-admin/${initiatorId}`, {
+        fetch(`${urll}/super-admin/create-super-admin/${initiatorId}`, {
 
             method: 'POST',
             headers: {

@@ -60,6 +60,10 @@
 </div>
 
 <script>
+
+<!--    const urll = "http://localhost:8080";-->
+    const urll = "http://95.142.37.35";
+
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Предотвращаем стандартную отправку формы
 
@@ -72,7 +76,7 @@
         };
 
 <!--        fetch('http://localhost:8080/auth', {-->
-        fetch('http://95.142.37.35/auth', {
+        fetch(`${urll}/auth`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -88,7 +92,7 @@
         .then(redirectUrl => {
             // Перенаправляем пользователя на URL, полученный от сервера
 <!--            window.location.href = 'http://localhost:8080/' + redirectUrl;-->
-            window.location.href = 'http://95.142.37.35/' + redirectUrl;
+            window.location.href = `${urll}/` + redirectUrl;
         })
         .catch((error) => {
             console.error('Ошибка:', error);

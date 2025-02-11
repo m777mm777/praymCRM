@@ -207,6 +207,9 @@
 
 <script>
 
+<!--    const urll = "http://localhost:8080";-->
+    const urll = "http://95.142.37.35";
+
     // Автоматически высчитываем высоту хедера и делаем отступ
     window.addEventListener('load', function() {
     const headerHeight = document.querySelector('.fixed-header').offsetHeight;
@@ -231,7 +234,7 @@
     // Функция для загрузки списка администраторов
     function loadResponsibles() {
 <!--        fetch(`http://localhost:8080/super-admin/get-admins/${initiatorId}`)-->
-        fetch(`http://95.142.37.35/super-admin/get-admins/${initiatorId}`)
+        fetch(`${urll}/super-admin/get-admins/${initiatorId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Server responded with status: ${response.status}`);
@@ -285,7 +288,7 @@
 
             // Build the URL with parameters
 <!--            let url = `http://localhost:8080/super-admin/sallarys-by-super-admin/${initiatorId}`;-->
-            let url = `http://95.142.37.35/super-admin/sallarys-by-super-admin/${initiatorId}`;
+            let url = `${urll}/super-admin/sallarys-by-super-admin/${initiatorId}`;
             const params = [];
 
             if (monthParam) params.push(`month=${monthParam}`);
@@ -416,7 +419,7 @@
         // Send all updated data to the server
         try {
 <!--            const response = await fetch(`http://localhost:8080/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {-->
-            const response = await fetch(`http://95.142.37.35/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {
+            const response = await fetch(`${urll}/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -443,7 +446,7 @@
             if (response.ok) {
                 const redirectUrl = await response.text(); // Получаем URL для редиректа
 <!--                window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
-                window.location.href = `http://95.142.37.35/${redirectUrl}`; // Выполняем редирект
+                window.location.href = `${urll}/${redirectUrl}`; // Выполняем редирект
             } else {
                 console.error('Ошибка при выполнении запроса:', response.statusText);
             }
@@ -626,7 +629,7 @@
         // Назначаем обработчики событий для кнопки "Назад"
         document.getElementById('fetchButtonHome').addEventListener('click', () => {
 <!--            handleFormSubmit(`http://localhost:8080/super-admin/home-super-admin/${initiatorId}`);-->
-            handleFormSubmit(`http://95.142.37.35/super-admin/home-super-admin/${initiatorId}`);
+            handleFormSubmit(`${urll}/super-admin/home-super-admin/${initiatorId}`);
         });
 
         // Attach the fetchData function to the button click event
