@@ -174,11 +174,7 @@
     </select><br />
     <button id="fetchButton" class="botton-field">Получить данные</button>
     <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
-    <button onclick="downloadExcelTK()" style="margin-left: 100px;" class="botton-field">Скачать по ТК</button>
-    <button onclick="downloadExcelTKDR()" style="margin-left: 20px;" class="botton-field">Скачать по ТК др банк</button>
-    <button onclick="downloadExcelSZ()" style="margin-left: 20px;" class="botton-field">Скачать по СЗ</button>
-    <button onclick="downloadExcelIP()" style="margin-left: 20px;" class="botton-field">Скачать по ИП</button>
-    <button onclick="downloadExcelNeTK()" style="margin-left: 20px;" class="botton-field">Скачать Не по ТК</button><br />
+    <button onclick="downloadExcel()" style="margin-left: 100px;" class="botton-field">Скачать XLSX</button><br />
     <br />
     <div class="label-container">
         <input style="width: 70px;" type="text" name="2" value="Фамилия" readonly class="nemenyemye-field"/>
@@ -456,17 +452,41 @@
     };
 
 
-        function downloadExcelTK() {
+ function downloadExcel() {
+        const formaoplaty = document.getElementById('formaoplaty').value;
+
+        switch (formaoplaty) {
+            case 'По ТК':
+                downloadExcelTK();
+                break;
+            case 'По ТК др-банк':
+                downloadExcelTKDR();
+                break;
+            case 'Самозанятый':
+                downloadExcelSZ();
+                break;
+            case 'Ип':
+                downloadExcelIP();
+                break;
+            case 'Не официально':
+                downloadExcelNeTK();
+                break;
+            default:
+                alert('Пожалуйста, выберите форму оплаты.');
+                break;
+        }
+    }
+
+    function downloadExcelTK() {
         const cards = document.querySelectorAll('.data-card');
         const rows = [];
 
         cards.forEach(card => {
             const name = card.querySelector('input[name="name"]').value;
             const lastName = card.querySelector('input[name="lastName"]').value;
-            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || '';
             const itog = card.querySelector('input[name="itog"]').value;
-            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
-
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных';
 
             rows.push([
                 bankAccountNumber,
@@ -480,14 +500,8 @@
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["Счёт (20 знаков)",
-             "Фамилия",
-             "Имя",
-             "Отчество",
-             "Сумма (разделитель - точка)",
-             "Сумма произведенных удержаний (разделитель - точка)",
-             "БИК (9 цифр)"],// Заголовки
-            ...rows // Данные
+            ["Счёт (20 знаков)", "Фамилия", "Имя", "Отчество", "Сумма (разделитель - точка)", "Сумма произведенных удержаний (разделитель - точка)", "БИК (9 цифр)"],
+            ...rows
         ]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -502,13 +516,12 @@
         cards.forEach(card => {
             const name = card.querySelector('input[name="name"]').value;
             const lastName = card.querySelector('input[name="lastName"]').value;
-            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || '';
             const itog = card.querySelector('input[name="itog"]').value;
-            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных';
 
             const rentCar = card.querySelector('input[name="rentCar"]').value;
             const rentPhone = card.querySelector('input[name="rentPhone"]').value;
-
 
             rows.push([
                 `${lastName} ${name} ${patronymic}`,
@@ -520,8 +533,8 @@
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["ФИО", "Машина", "Связь", "Под отчет", "Итог"], // Заголовки
-            ...rows // Данные
+            ["ФИО", "Машина", "Связь", "Под отчет", "Итог"],
+            ...rows
         ]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -529,16 +542,16 @@
         XLSX.writeFile(wb, "reportTKDR.xlsx");
     }
 
-        function downloadExcelIP() {
+    function downloadExcelIP() {
         const cards = document.querySelectorAll('.data-card');
         const rows = [];
 
         cards.forEach(card => {
             const name = card.querySelector('input[name="name"]').value;
             const lastName = card.querySelector('input[name="lastName"]').value;
-            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || '';
             const itog = card.querySelector('input[name="itog"]').value;
-            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных';
 
             rows.push([
                 `${lastName} ${name} ${patronymic}`,
@@ -548,8 +561,8 @@
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["ФИО", "Итог", "Примечание"], // Заголовки
-            ...rows // Данные
+            ["ФИО", "Итог", "Примечание"],
+            ...rows
         ]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -557,16 +570,16 @@
         XLSX.writeFile(wb, "reportIP.xlsx");
     }
 
-        function downloadExcelSZ() {
+    function downloadExcelSZ() {
         const cards = document.querySelectorAll('.data-card');
         const rows = [];
 
         cards.forEach(card => {
             const name = card.querySelector('input[name="name"]').value;
             const lastName = card.querySelector('input[name="lastName"]').value;
-            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || '';
             const itog = card.querySelector('input[name="itog"]').value;
-            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных';
 
             rows.push([
                 bankAccountNumber,
@@ -578,13 +591,8 @@
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["Счёт (20 знаков)",
-             "Фамилия", "Имя",
-             "Отчество",
-             "Сумма (разделитель - точка)",
-             "Сумма произведенных удержаний (разделитель - точка)",
-             "Наименование товаров и услуг в чеке. Только для выплаты самозанятым (вид выплаты с кодом 87)"],// Заголовки
-            ...rows // Данные
+            ["Счёт (20 знаков)", "Фамилия", "Имя", "Отчество", "Сумма (разделитель - точка)", "Сумма произведенных удержаний (разделитель - точка)", "Наименование товаров и услуг в чеке. Только для выплаты самозанятым (вид выплаты с кодом 87)"],
+            ...rows
         ]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -592,16 +600,16 @@
         XLSX.writeFile(wb, "reportSZ.xlsx");
     }
 
-            function downloadExcelNeTK() {
+    function downloadExcelNeTK() {
         const cards = document.querySelectorAll('.data-card');
         const rows = [];
 
         cards.forEach(card => {
             const name = card.querySelector('input[name="name"]').value;
             const lastName = card.querySelector('input[name="lastName"]').value;
-            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || '';
             const itog = card.querySelector('input[name="itog"]').value;
-            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных';
 
             rows.push([
                 `${lastName} ${name} ${patronymic}`,
@@ -611,8 +619,8 @@
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["ФИО", "Итог", "Примечание"], // Заголовки
-            ...rows // Данные
+            ["ФИО", "Итог", "Примечание"],
+            ...rows
         ]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
