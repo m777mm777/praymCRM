@@ -169,16 +169,16 @@
  const url = window.location.href;
 
  // Используем регулярное выражение для извлечения числа в конце URL
- const match = url.match(/\/super-admin\/get-all-users-by-super-admin\/h\/(\d+)/);
+ const match = url.match(/\/super-admin\/get-all-users-by-super-admin\/h\/([a-f0-9-]+)/);
 
- // Если число найдено, сохраняем его в переменную
- let initiatorId = null;
- if (match && match[1]) {
- initiatorId = match[1];
- console.log("Extracted number:", initiatorId);
- } else {
- console.log("Number not found in URL");
- }
+    // Если число найдено, сохраняем его в переменную
+    let initiatorId = null;
+    if (match && match[1]) {
+    initiatorId = match[1];
+    console.log("Extracted UUID:", initiatorId);
+    } else {
+    console.log("Number not found in URL");
+    }
 
  // Функция для загрузки списка администраторов
 function loadResponsibles() {

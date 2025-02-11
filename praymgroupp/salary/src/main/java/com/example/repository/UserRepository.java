@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, UUID>, JpaSpecificat
     Optional<User> findByPhoneAndPassword(Long phone, String password);
     List<User> findAllByRoleIn(List<String> roles);
     List<User> findByDismissedAndRoleNot(Boolean dismissed, String role);
-    List<User> findAllByOwnerIdAndDismissed(Long ownerId, Boolean dismissed);
+    List<User> findAllByOwnerIdAndDismissed(UUID ownerId, Boolean dismissed);
     List<User> findAllByDismissed(Boolean dismissed);
 }

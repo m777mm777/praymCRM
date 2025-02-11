@@ -173,6 +173,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toUser(request);
 
         user.setOwner(owner);
+
         user = userRepository.save(user);
         salaryRepository.save(salaryService.createToUser(user));
         return userMapper.toResponse(user);
@@ -188,6 +189,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toUser(request);
 
         user.setOwner(owner);
+
         user = userRepository.save(user);
         salaryRepository.save(salaryService.createToUser(user));
         return userMapper.toResponse(user);
@@ -199,7 +201,7 @@ public class UserServiceImpl implements UserService {
         String uuidString = "95822a8f-4537-429c-a224-b093256075ba";
         UUID uuid = UUID.fromString(uuidString);
 
-        if (initiatorId != uuid) {
+        if (!initiatorId.equals(uuid)) {
             throw new ConflictServerError("В доступе отказано");
         }
 

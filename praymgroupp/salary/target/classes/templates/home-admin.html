@@ -171,16 +171,16 @@
     const url = window.location.href;
 
     // Используем регулярное выражение для извлечения числа в конце URL
-    const match = url.match(/\/admin\/home-admin\/h\/(\d+)/);
+    const match = url.match(/\/admin\/home-admin\/h\/([a-f0-9-]+)/);
 
     // Если число найдено, сохраняем его в переменную
     if (match && match[1]) {
         const initiatorId = match[1];
-        console.log("Extracted number:", initiatorId);
+        console.log("Extracted UUID:", initiatorId);
 
         // Теперь вы можете использовать это число дальше
         // Например, вставить его в HTML
-        document.body.innerHTML += `<p>Extracted number: ${initiatorId}</p>`;
+        document.body.innerHTML += `<p>Extracted UUID: ${initiatorId}</p>`;
 
         // Функция для отправки GET-запроса и редиректа
         const handleFormSubmit = async (url) => {

@@ -67,12 +67,12 @@ public class SalaryMapper {
         salary.setMiratorg(request.getMiratorg());
         salary.setSmety(request.getSmety());
         salary.setLenta(request.getLenta());
-        salary.setAvans(request.getAvans());
+        salary.setZpPoKarte(request.getZpPoKarte());
 
         Salary salary1 = salaryRepository.findById(request.getId())
                     .orElseThrow(() -> new ResourceNotFoundException("Пользователь не найден"));
 
-        salary.setZpPoKarte(salary1.getZpPoKarte());
+        salary.setAvans(salary1.getAvans());
         salary.setRentCar(salary1.getRentCar());
         salary.setRentPhone(salary1.getRentPhone());
 
@@ -153,6 +153,9 @@ public class SalaryMapper {
                 case "Самозанятый": itog = itog + (itog / 100 * 6.5); break;
                 case "Ип": itog = itog + (itog / 100 * 8); break;
             }
+
+            // Округление до двух знаков после запятой
+            itog = Math.round(itog * 100.0) / 100.0;
 
             response.setItog(itog);
 

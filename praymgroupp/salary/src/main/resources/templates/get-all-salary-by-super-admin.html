@@ -174,7 +174,11 @@
     </select><br />
     <button id="fetchButton" class="botton-field">Получить данные</button>
     <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button>
-    <button onclick="downloadExcelIP()" style="margin-left: 100px;" class="botton-field">Скачать XLS Формат ИП</button><br />
+    <button onclick="downloadExcelTK()" style="margin-left: 100px;" class="botton-field">Скачать по ТК</button>
+    <button onclick="downloadExcelTKDR()" style="margin-left: 20px;" class="botton-field">Скачать по ТК др банк</button>
+    <button onclick="downloadExcelSZ()" style="margin-left: 20px;" class="botton-field">Скачать по СЗ</button>
+    <button onclick="downloadExcelIP()" style="margin-left: 20px;" class="botton-field">Скачать по ИП</button>
+    <button onclick="downloadExcelNeTK()" style="margin-left: 20px;" class="botton-field">Скачать Не по ТК</button><br />
     <br />
     <div class="label-container">
         <input style="width: 70px;" type="text" name="2" value="Фамилия" readonly class="nemenyemye-field"/>
@@ -192,7 +196,7 @@
         <input style="width: 50px;" type="text" name="15" value="Аванс" readonly class="chet-field"/>
         <input style="width: 70px;" type="text" name="16" value="За машину" readonly class="nechet-field"/>
         <input style="width: 70px;" type="text" name="17" value="За телефон" readonly class="chet-field"/>
-        <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
+        <input style="width: 70px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
         <input style="width: 100px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="20" value="Компания" readonly class="nemenyemye-field"/>
 
@@ -213,15 +217,15 @@
     const url = window.location.href;
 
     // Используем регулярное выражение для извлечения числа в конце URL
-    const match = url.match(/\/super-admin\/get-all-salary\/h\/(\d+)/);
+    const match = url.match(/\/super-admin\/get-all-salary\/h\/([a-f0-9-]+)/);
 
     // Если число найдено, сохраняем его в переменную
     let initiatorId = null;
     if (match && match[1]) {
-        initiatorId = match[1];
-        console.log("Extracted number:", initiatorId);
+    initiatorId = match[1];
+    console.log("Extracted UUID:", initiatorId);
     } else {
-        console.log("Number not found in URL");
+    console.log("Number not found in URL");
     }
 
     // Функция для загрузки списка администраторов
@@ -345,7 +349,7 @@
                     <input style="width: 50px;" type="text" id="avans-${index}" name="avans" value="${item.avans}" required class="chet-field">
                     <input style="width: 70px;" type="text" id="rentCar-${index}" name="rentCar" value="${item.rentCar}" required class="nechet-field">
                     <input style="width: 70px;" type="text" id="rentPhone-${index}" name="rentPhone" value="${item.rentPhone}" required class="chet-field">
-                    <input style="width: 50px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
+                    <input style="width: 70px;" type="text" id="itog-${index}" name="itog" value="${item.itog}" readonly class="nemenyemye-field">
                     <input style="width: 100px;" type="text" id="responsibleLastName-${index}" name="responsibleLastName" value="${responsible.lastName}" required class="nemenyemye-field">
                     <input style="width: 70px;" type="text" id="companyName-${index}" name="companyName" value="${owner.companyName}" required class="nemenyemye-field"><br />
                     <br />
@@ -448,7 +452,81 @@
         }
     };
 
-    function downloadExcelIP() {
+
+        function downloadExcelTK() {
+        const cards = document.querySelectorAll('.data-card');
+        const rows = [];
+
+        cards.forEach(card => {
+            const name = card.querySelector('input[name="name"]').value;
+            const lastName = card.querySelector('input[name="lastName"]').value;
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const itog = card.querySelector('input[name="itog"]').value;
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+
+
+            rows.push([
+                bankAccountNumber,
+                lastName,
+                name,
+                patronymic,
+                itog,
+                "",
+                "044525593"
+            ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet([
+            ["Счёт (20 знаков)",
+             "Фамилия",
+             "Имя",
+             "Отчество",
+             "Сумма (разделитель - точка)",
+             "Сумма произведенных удержаний (разделитель - точка)",
+             "БИК (9 цифр)"],// Заголовки
+            ...rows // Данные
+        ]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        XLSX.writeFile(wb, "reportTK.xlsx");
+    }
+
+    function downloadExcelTKDR() {
+        const cards = document.querySelectorAll('.data-card');
+        const rows = [];
+
+        cards.forEach(card => {
+            const name = card.querySelector('input[name="name"]').value;
+            const lastName = card.querySelector('input[name="lastName"]').value;
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const itog = card.querySelector('input[name="itog"]').value;
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+
+            const rentCar = card.querySelector('input[name="rentCar"]').value;
+            const rentPhone = card.querySelector('input[name="rentPhone"]').value;
+
+
+            rows.push([
+                `${lastName} ${name} ${patronymic}`,
+                rentCar,
+                rentPhone,
+                "ХЗ че тут указать",
+                itog
+            ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet([
+            ["ФИО", "Машина", "Связь", "Под отчет", "Итог"], // Заголовки
+            ...rows // Данные
+        ]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        XLSX.writeFile(wb, "reportTKDR.xlsx");
+    }
+
+        function downloadExcelIP() {
         const cards = document.querySelectorAll('.data-card');
         const rows = [];
 
@@ -462,19 +540,83 @@
             rows.push([
                 `${lastName} ${name} ${patronymic}`,
                 itog,
-                bankAccountNumber
+                "ИП"
             ]);
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["ФИО", "Итог", "Номер счета"], // Заголовки
+            ["ФИО", "Итог", "Примечание"], // Заголовки
             ...rows // Данные
         ]);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
-        XLSX.writeFile(wb, "report.xlsx");
+        XLSX.writeFile(wb, "reportIP.xlsx");
     }
+
+        function downloadExcelSZ() {
+        const cards = document.querySelectorAll('.data-card');
+        const rows = [];
+
+        cards.forEach(card => {
+            const name = card.querySelector('input[name="name"]').value;
+            const lastName = card.querySelector('input[name="lastName"]').value;
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const itog = card.querySelector('input[name="itog"]').value;
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+
+            rows.push([
+                bankAccountNumber,
+                lastName,
+                name,
+                patronymic,
+                itog
+            ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet([
+            ["Счёт (20 знаков)",
+             "Фамилия", "Имя",
+             "Отчество",
+             "Сумма (разделитель - точка)",
+             "Сумма произведенных удержаний (разделитель - точка)",
+             "Наименование товаров и услуг в чеке. Только для выплаты самозанятым (вид выплаты с кодом 87)"],// Заголовки
+            ...rows // Данные
+        ]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        XLSX.writeFile(wb, "reportSZ.xlsx");
+    }
+
+            function downloadExcelNeTK() {
+        const cards = document.querySelectorAll('.data-card');
+        const rows = [];
+
+        cards.forEach(card => {
+            const name = card.querySelector('input[name="name"]').value;
+            const lastName = card.querySelector('input[name="lastName"]').value;
+            const patronymic = card.querySelector('input[name="patronymic"]')?.value || ''; // Проверка на наличие отчества
+            const itog = card.querySelector('input[name="itog"]').value;
+            const bankAccountNumber = card.querySelector('input[name="bankAccountNumber"]')?.value || 'Нет данных'; // Проверка на наличие номера счета
+
+            rows.push([
+                `${lastName} ${name} ${patronymic}`,
+                itog,
+                "Нал"
+            ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet([
+            ["ФИО", "Итог", "Примечание"], // Заголовки
+            ...rows // Данные
+        ]);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        XLSX.writeFile(wb, "reportNeTK.xlsx");
+    }
+
 
     // Назначаем обработчики событий после загрузки DOM
     document.addEventListener('DOMContentLoaded', () => {

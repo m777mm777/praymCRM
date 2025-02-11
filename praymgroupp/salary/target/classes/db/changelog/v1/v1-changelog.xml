@@ -7,13 +7,13 @@
 
  <changeSet id="1" author="hromov">
      <createTable tableName="users">
-         <column name="id" type="uuid" autoIncrement="true">
-             <constraints primaryKey="true"/>
+         <column name="id" type="uuid">
+             <constraints primaryKey="true" nullable="false"/>
          </column>
-         <column name="name" type="varchar(20)">
+         <column name="name" type="VARCHAR(20)">
              <constraints nullable="false"/>
          </column>
-         <column name="last_name" type="varchar(20)">
+         <column name="last_name" type="VARCHAR(20)">
              <constraints nullable="false"/>
          </column>
          <column name="patronymic" type="VARCHAR(20)">
@@ -22,7 +22,7 @@
          <column name="password" type="VARCHAR(255)">
              <constraints nullable="false"/>
          </column>
-         <column name="phone" type="bigint(11)">
+         <column name="phone" type="bigint">
              <constraints nullable="false" unique="true"/>
          </column>
          <column name="role" type="VARCHAR(25)">
@@ -34,7 +34,7 @@
          <column name="category" type="VARCHAR(25)">
              <constraints nullable="false"/>
          </column>
-         <column name="owner_id" type="bigint">
+         <column name="owner_id" type="uuid">
          </column>
          <column name="dismissed" type="boolean">
          </column>
@@ -54,23 +54,23 @@
 
     <changeSet id="2" author="hromov">
         <createTable tableName="comments">
-            <column name="id" type="uuid" autoIncrement="true">
-                <constraints primaryKey="true"/>
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="text" type="varchar(2000)">
+            <column name="text" type="VARCHAR(2000)">
             </column>
         </createTable>
     </changeSet>
 
     <changeSet id="3" author="hromov">
         <createTable tableName="salary">
-            <column name="id" type="uuid" autoIncrement="true">
-                <constraints primaryKey="true"/>
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="owner_id" type="bigint">
+            <column name="owner_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
-            <column name="reporting_month" type="timestamp">
+            <column name="reporting_month" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="salary" type="double">
@@ -103,7 +103,7 @@
             <column name="rent_phone" type="double">
                 <constraints nullable="false"/>
             </column>
-            <column name="comment_id" type="bigint">
+            <column name="comment_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
 
