@@ -185,7 +185,7 @@ public class SalaryServiceImpl implements SalaryService {
                 specifications.stream().reduce(Specification::and).orElse(null), page
         );
 
-        if (!salaryPage.hasContent()) {
+        if (!salaryPage.hasContent() && month == null && year == null) {
             return getForTheCurrentMonth(initiatorId);
         }
 
