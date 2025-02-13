@@ -229,7 +229,6 @@
 
     // Функция для загрузки списка администраторов
     function loadResponsibles() {
-<!--        fetch(`http://localhost:8080/super-admin/get-admins/${initiatorId}`)-->
         fetch(`${urll}/super-admin/get-admins/${initiatorId}`)
             .then(response => {
                 if (!response.ok) {
@@ -283,7 +282,6 @@
             const companyNameParam = companyName === "" ? null : companyName;
 
             // Build the URL with parameters
-<!--            let url = `http://localhost:8080/super-admin/sallarys-by-super-admin/${initiatorId}`;-->
             let url = `${urll}/super-admin/sallarys-by-super-admin/${initiatorId}`;
             const params = [];
 
@@ -414,7 +412,6 @@
 
         // Send all updated data to the server
         try {
-<!--            const response = await fetch(`http://localhost:8080/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {-->
             const response = await fetch(`${urll}/super-admin/update-all-salary-by-super-admin/${initiatorId}`, {
                 method: 'PATCH',
                 headers: {
@@ -441,7 +438,6 @@
             const response = await fetch(url, { method: 'GET' });
             if (response.ok) {
                 const redirectUrl = await response.text(); // Получаем URL для редиректа
-<!--                window.location.href = `http://localhost:8080/${redirectUrl}`; // Выполняем редирект-->
                 window.location.href = `${urll}/${redirectUrl}`; // Выполняем редирект
             } else {
                 console.error('Ошибка при выполнении запроса:', response.statusText);
