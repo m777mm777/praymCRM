@@ -134,6 +134,14 @@ public class SalaryServiceImpl implements SalaryService {
             throw new ConflictServerError("Доступ запрещен");
         }
 
+        Boolean searchEngineIs = chek(month,
+                year,
+                responsible,
+                city,
+                formaoplaty,
+                companyName,
+                dismissed);
+
         SalarySearchFilter salarySearchFilter = new SalarySearchFilter();
 /////////удалить        //////
         LocalDate localDate = LocalDate.now().minusMonths(1);
@@ -185,7 +193,7 @@ public class SalaryServiceImpl implements SalaryService {
                 specifications.stream().reduce(Specification::and).orElse(null), page
         );
 
-        if (!salaryPage.hasContent() && month == null && year == null) {
+        if (!salaryPage.hasContent() && !searchEngineIs) {
             return getForTheCurrentMonth(initiatorId);
         }
 
@@ -335,4 +343,27 @@ public class SalaryServiceImpl implements SalaryService {
         return (root, query, criteriaBuilder) -> criteriaBuilder
                 .in(root.get("owner").get("dismissed")).value(dismissed);
     }
+
+    private Boolean chek(String month,
+                         String year,
+                         String responsible,
+                         String city,
+                         String formaoplaty,
+                         String companyName,
+                         String dismissed) {
+        if (month == null
+                && year == null
+                && responsible == null
+                && city == null
+                && formaoplaty == null
+                && companyName == null
+                && dismissed == null) {
+
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 }
