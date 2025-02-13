@@ -39,7 +39,7 @@ public class SalaryServiceImpl implements SalaryService {
     public Salary createToUser(User user) {
         Salary salary = new Salary();
         salary.setOwner(user);
-        salary.setReportingMonth(LocalDate.now());
+        salary.setReportingMonth(LocalDate.now().minusMonths(1));
         salary.setSalary(0.00);
         salary.setPremiya(0.00);
         salary.setFobo(0.00);
@@ -135,7 +135,8 @@ public class SalaryServiceImpl implements SalaryService {
         }
 
         SalarySearchFilter salarySearchFilter = new SalarySearchFilter();
-        LocalDate localDate = LocalDate.now();
+/////////удалить        //////
+        LocalDate localDate = LocalDate.now().minusMonths(1);
         Boolean isByMonth = true;
 
 

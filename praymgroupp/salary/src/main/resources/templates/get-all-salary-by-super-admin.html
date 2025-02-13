@@ -495,7 +495,7 @@
                 patronymic,
                 itog,
                 "",
-                "044525593"
+                "044525225"
             ]);
         });
 
@@ -527,13 +527,12 @@
                 `${lastName} ${name} ${patronymic}`,
                 rentCar,
                 rentPhone,
-                "ХЗ че тут указать",
                 itog
             ]);
         });
 
         const ws = XLSX.utils.aoa_to_sheet([
-            ["ФИО", "Машина", "Связь", "Под отчет", "Итог"],
+            ["ФИО", "Машина", "Связь", "Под отчет"],
             ...rows
         ]);
         const wb = XLSX.utils.book_new();
