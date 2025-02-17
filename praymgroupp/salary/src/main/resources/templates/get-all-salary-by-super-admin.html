@@ -595,6 +595,18 @@
         }
     }
 
+// обработчик изменений выпадающего списка
+    document.getElementById('month').addEventListener('change', fetchData);
+    document.getElementById('year').addEventListener('change', fetchData);
+    document.getElementById('responsible').addEventListener('change', fetchData);
+    document.getElementById('city').addEventListener('change', fetchData);
+    document.getElementById('formaoplaty').addEventListener('change', fetchData);
+    document.getElementById('companyName').addEventListener('change', fetchData);
+    document.getElementById('dismissed').addEventListener('change', fetchData);
+
+    // вызов данных после обработчика
+    fetchData();
+
     // Function to save all data
     async function saveAllData() {
         const cards = document.querySelectorAll('.data-card');

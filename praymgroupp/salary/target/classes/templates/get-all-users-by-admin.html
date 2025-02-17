@@ -434,6 +434,13 @@ outline: 4px solid #ffffff; /* Белая рамка вокруг черной *
       }
   }
 
+  // обработчик изменений выпадающего списка
+    document.getElementById('city').addEventListener('change', fetchData);
+    document.getElementById('formaoplaty').addEventListener('change', fetchData);
+
+    // вызов данных после обработчика
+    fetchData();
+
   const handleFormSubmit = async (url) => {
             try {
                 const response = await fetch(url, { method: 'GET' });

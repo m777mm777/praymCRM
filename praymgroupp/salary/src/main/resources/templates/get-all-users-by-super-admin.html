@@ -513,6 +513,16 @@
      }
  }
 
+ // обработчик изменений выпадающего списка
+    document.getElementById('responsible').addEventListener('change', fetchData);
+    document.getElementById('city').addEventListener('change', fetchData);
+    document.getElementById('formaoplaty').addEventListener('change', fetchData);
+    document.getElementById('companyName').addEventListener('change', fetchData);
+    document.getElementById('dismissed').addEventListener('change', fetchData);
+
+    // вызов данных после обработчика
+    fetchData();
+
  // Function to collect data and send it to the server
  async function saveAllData() {
      const data = [];
