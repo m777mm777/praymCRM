@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #808080;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,9 +15,11 @@
             margin: 0;
         }
         .login-container {
-            background: #fff;
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
             padding: 20px;
-            border-radius: 8px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
+            border-radius: 10px; /* Скругление углов */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: center;
@@ -27,7 +29,7 @@
             margin-bottom: 20px;
         }
         input[type="text"], input[type="password"] {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
@@ -46,16 +48,103 @@
         button:hover {
             background-color: #218838;
         }
+
+                .polya {
+        background-color: #e3e8e6; /* бело-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border: 2px solid #000000; /* Черная рамка */
+        outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
+        padding: 10px; /* Отступ внутри элемента */
+        font-size: 14px;
+    }
+
+        .bbtn {
+  font-size: 1.5rem; /* Устанавливает размер шрифта */
+  border: 2px solid white; /* Добавляет белую рамку */
+  border-radius: 10px; /* Скругляет углы */
+  font-size: 12px;
+   color: #000; /* Меняет цвет текста */
+  width: 60px; /* Устанавливает ширину */
+  height: 40px; /* Устанавливает высоту */
+  padding: 5px; /* Добавляет внутренний отступ */
+  background-color: transparent; /* Делает фон прозрачным */
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Анимация */
+}
+
+.bbtn:hover {
+  width: 200px; /* Увеличивает ширину при наведении */
+  background-color: #91CCC2; /* Меняет фон на голубой при наведении */
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Добавляет тень */
+  font-size: 16px;
+  color: #000; /* Меняет цвет текста */
+  transition: 0.3s; /* Анимация при наведении */
+}
+
+.bbtn:active {
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон при нажатии */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Уменьшает тень */
+  transition: 0.05s; /* Анимация при нажатии */
+}
+
+.box {
+   border: 2px solid #000000; /* Черная рамка */
+   outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+}
+
+        .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: rgba(85, 85, 85, 0.9); /* Полупрозрачный фон */
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        right: 105%; /* Позиция тултипа слева от кнопки */
+        top: 50%;
+        transform: translateY(-50%); /* Центрирование по вертикали */
+        opacity: 0; /* Начальная прозрачность */
+        transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 100%; /* Стрелка справа от тултипа */
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent transparent rgba(85, 85, 85, 0.9); /* Полупрозрачная стрелка */
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 0.9; /* Полупрозрачность при наведении */
+    }
     </style>
 </head>
 <body>
 <div class="login-container">
-    <img src="/images/logo-praym.jpg" alt="Логотип компании" class="logo">
-    <h2>Авторизация</h2>
+
+    <img src="/images/logo-praym.jpg" alt="Логотип компании" class="logo" style="border: 2px solid #000000; border-radius: 10px;">
+    <h2 style="font-family: 'Comic Sans MS', cursive;">Логинься и го работать</h2>
     <form id="loginForm">
-        <input type="text" id="phone" name="phone" placeholder="Логин" required>
-        <input type="password" id="password" name="password" placeholder="Пароль" required>
-        <button type="submit">Войти</button>
+        <input class="polya" type="text" id="phone" name="phone" placeholder="Логин" required>
+        <input class="polya" type="password" id="password" name="password" placeholder="Пароль" required>
+<!--        <button class="bbtn" type="submit">Войти</button>-->
+        <div class="tooltip">
+            <button class="bbtn" type="submit">Войти</button>
+            <span class="tooltiptext">Хотелось бы войти во вторую стадию опьянения, а не вот это вот все..</span>
+        </div>
     </form>
 </div>
 

@@ -5,165 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GET Request with Multiple Objects</title>
     <style>
-        .data-card {
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .rightpic {
-            float: right; /* Выравнивание по правому краю */
-            margin: 0 30px 5px 5px; /* Отступы вокруг фотографии */
-        }
-
-        :root {
-            --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
-        }
-
-        .fixed-header {
-            position: fixed;
-            top: 0;
-            left: 1px;
-            width: 96.9%;
-            height: var(--height-top);
-            background-image: url("/images/logo-praym1.jpeg");
-            background-size: cover;
-            background-position: right; /* Выравнивание изображения по правому краю */
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 10px 17px; /* Optional: Add padding for better spacing */
-            border-radius: 10px;
-            border: 4px solid black;
-        }
-
-        /* Add padding to the main content to prevent it from being hidden behind the fixed header */
-        main {
-            margin-top: calc(var(--height-top) * 0.05 + (var(--height-top))); /* 5% от padding-top */ /* Отступ, чтобы избежать наложения на фиксированный заголовок */
-        }
-
-        /* Optional: Add some basic styling to the body */
         body {
             font-family: Arial, sans-serif;
-            margin-top: 25px;
-            padding: 0;
-        }
-
-        /* Optional: Style the header text */
-        .fixed-header h1 {
+            background-color: #808080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            font-size: 24px;
         }
-
-        /* Optional: Style the main content */
-        main p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin: 20px;
-        }
-
-        /* Стили для четных и нечетных полей */
-        .chet-field {
-            background-color: #a8a8a8; /* темно-серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-        }
-
-        .nechet-field {
-            background-color: #e3e8e6; /* бело-серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-        }
-
-        .nemenyemye-field {
-            background-color: #b0b7c6; /* синий цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-        }
-
-        .non-field {
-            background-color: #c2c2c2; /* Серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px; /* Скругление углов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-        }
-
-        .botton-field {
-            background-color: #baacc7;
-            color: #000000;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-botton-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-            background-color: #baacc7;
-            color: #000000;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-pole-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .one-field {
-            background-color: #c2c2c2; /* Серый цвет фона */
-            color: #000000; /* Черный цвет текста */
+        .login-container {
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
+            padding: 20px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
             border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
         }
 
-        .two-field {
-            background-color: #e3e8e6; /* бело-серый цвет фона */
-            color: #000000; /* Черный цвет текста */
-            border-radius: 10px; /* Скругление углов */
-            border: 4px solid black; /* Черная рамка по контуру */
-        }
+                .polya {
+        background-color: #e3e8e6; /* бело-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border: 2px solid #000000; /* Черная рамка */
+        outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
+        padding: 10px; /* Отступ внутри элемента */
+        font-size: 14px;
+    }
 
-        .margin-field {
-            margin-left: 5px;
-        }
+        .bbtn {
+  font-size: 1.5rem; /* Устанавливает размер шрифта */
+  border: 2px solid white; /* Добавляет белую рамку */
+  border-radius: 10px; /* Скругляет углы */
+  font-size: 12px;
+  font-weight: 700; /* жирность шрифта от 100 до 900 */
+  width: 220px; /* Устанавливает ширину */
+  height: 40px; /* Устанавливает высоту */
+  padding: 5px; /* Добавляет внутренний отступ */
+  background-color: transparent; /* Делает фон прозрачным */
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Анимация */
+}
 
-        .hed-field {
-            margin-top: calc(var(--height-top) * 0.05); /* 5% от height-top */
-        }
+.bbtn:hover {
+  width: 280px; /* Увеличивает ширину при наведении */
+  background-color: #91CCC2; /* Меняет фон на голубой при наведении */
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Добавляет тень */
+  font-size: 16px;
+  color: #000; /* Меняет цвет текста */
+  transition: 0.3s; /* Анимация при наведении */
+}
+
+.bbtn:active {
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон при нажатии */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Уменьшает тень */
+  transition: 0.05s; /* Анимация при нажатии */
+}
+
+.bold-text {
+    font-weight: 700;
+}
+
+.box {
+   border: 2px solid #000000; /* Черная рамка */
+   outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+}
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: rgba(85, 85, 85, 0.9); /* Полупрозрачный фон */
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        right: 105%; /* Позиция тултипа слева от кнопки */
+        top: 50%;
+        transform: translateY(-50%); /* Центрирование по вертикали */
+        opacity: 0; /* Начальная прозрачность */
+        transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 100%; /* Стрелка справа от тултипа */
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent transparent rgba(85, 85, 85, 0.9); /* Полупрозрачная стрелка */
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 0.9; /* Полупрозрачность при наведении */
+    }
     </style>
 </head>
 <body>
 
 <!-- Фиксированный заголовок -->
-<div id="i-container" class="fixed-header">
+<div class="login-container">
 
-    <label style="color: white; font-size: 20px; margin-left: 30px;">
-        Главное меню
-    </label><br />
-    <br />
+    <img src="/images/logo-praym.jpg" alt="Логотип компании" class="logo" style="border: 2px solid #000000; border-radius: 10px;">
+    <h2 style="font-family: 'Comic Sans MS', cursive;">Меню босса поменьше</h2>
     <form id="user-registration-form">
-        <input type="submit" value="Регистрация пользователя" class="botton-field"/>
+        <div class="tooltip">
+            <input type="submit" value="Добавить нового трудягу" class="connt bbtn bbtn-size-1 bold-text"/>
+            <span class="tooltiptext">Ну должен же хоть кто-то тут работать</span>
+        </div>
     </form>
     <br />
     <form id="get-all-users-form">
-        <input type="submit" value="Получить всех пользователей" class="botton-field"/>
+        <div class="tooltip">
+            <input type="submit" value="Все сотрудники" class="connt bbtn bbtn-size-1"/>
+            <span class="tooltiptext">Да.. Знаю.. Не всех ты любишь, но знать должен</span>
+        </div>
     </form>
     <br />
     <form id="get-all-salary-form">
-        <input type="submit" value="Получить все зарплаты" class="botton-field"/>
+        <div class="tooltip">
+            <input type="submit" value="Зарплаты" class="connt bbtn bbtn-size-1"/>
+            <span class="tooltiptext">Собственно то ради чего мы тут собрались</span>
+        </div>
     </form>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <br />
 </div>
 
 <script>
@@ -181,10 +180,6 @@
     if (match && match[1]) {
         const initiatorId = match[1];
         console.log("Extracted UUID:", initiatorId);
-
-        // Теперь вы можете использовать это число дальше
-        // Например, вставить его в HTML
-        document.body.innerHTML += `<p>Extracted UUID: ${initiatorId}</p>`;
 
         // Функция для отправки GET-запроса и редиректа
         const handleFormSubmit = async (url) => {
