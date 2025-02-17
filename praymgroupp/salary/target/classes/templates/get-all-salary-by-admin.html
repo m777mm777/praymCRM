@@ -5,87 +5,243 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GET Request with Multiple Objects</title>
     <style>
-
-        /* Общие стили */
         body {
             font-family: Arial, sans-serif;
+            background-color: #808080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
         }
-
-        .data-card {
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-            padding: 5px;
-            margin: 10px 5px;
-            width: 97.8%;
-            border-radius: 5px;
-        }
-
         :root {
             --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
         }
 
-        .fixed-header {
+        .login-container1 {
             position: fixed;
-            top: 0;
-            left: 0px;
-            width: 98.1%;
-            height: var(--height-top);
-            background-image: url("/images/logo-praym1.jpeg");
-            background-size: cover;
-            background-position: right;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 10px 10px;
+            top: 7px;
+            left: 220px;
+            width: 25%;
+            height: calc(var(--height-top) + 50px);
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
+            padding: 10px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
+            border-radius: 10px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container2 {
+            position: fixed;
+            top: 7px;
+            right: 10px;
+            width: 50%;
+            height: calc(var(--height-top) + 50px);
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
+            padding: 10px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
+            border-radius: 10px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container3 {
+            position: fixed;
+            top: 7px;
+            right: 20%;
+            width: 14%;
+            height: calc(var(--height-top) + 50px);
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
+            padding: 10px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
+            border-radius: 10px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container {
+            position: fixed;
+            top: 3px;
+            left: 5px;
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
+            padding: 5px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
+            border-radius: 5px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 98.3%;
+            text-align: center;
+        }
+        .back-container {
+            position: fixed;
+            top: 5px;
+            left: 5px;
+        }
+        .inf-container {
+
+            margin-top: 550px;
+
+            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
+            padding: 20px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
+            border-radius: 10px; /* Скругление углов */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 99%;
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+
+                .polya1 {
+        background-color: #e3e8e6; /* бело-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border: 2px solid #000000; /* Черная рамка */
+        outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
+        margin-top: 12px;
+        width: 120px;
+<!--        padding: 2px; /* Отступ внутри элемента */-->
+        font-size: 14px;
+    }
+
+                 .polya {
+        background-color: #e3e8e6; /* бело-серый цвет фона */
+        color: #000000; /* Черный цвет текста */
+        border: 2px solid #000000; /* Черная рамка */
+        outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+        border-radius: 7px; /* Скругление углов */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
+        padding: 10px; /* Отступ внутри элемента */
+        font-size: 14px;
+    }
+
+        .bbtn {
+  font-size: 1.5rem; /* Устанавливает размер шрифта */
+  border: 2px solid white; /* Добавляет белую рамку */
+  border-radius: 10px; /* Скругляет углы */
+  font-size: 12px;
+    color: #000; /* Меняет цвет текста */
+  font-weight: 700; /* жирность шрифта от 100 до 900 */
+  width: 150px; /* Устанавливает ширину */
+  height: 40px; /* Устанавливает высоту */
+  padding: 5px; /* Добавляет внутренний отступ */
+  background-color: transparent; /* Делает фон прозрачным */
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Анимация */
+}
+
+.bbtn:hover {
+  width: 200px; /* Увеличивает ширину при наведении */
+  background-color: #91CCC2; /* Меняет фон на голубой при наведении */
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Добавляет тень */
+  font-size: 16px;
+  color: #000; /* Меняет цвет текста */
+  transition: 0.3s; /* Анимация при наведении */
+}
+
+.bbtn:active {
+  background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон при нажатии */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Уменьшает тень */
+  transition: 0.05s; /* Анимация при нажатии */
+}
+
+.bold-text {
+    font-weight: 700;
+}
+
+.box {
+   border: 2px solid #000000; /* Черная рамка */
+   outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+}
+
+     /* Общие стили для тултипа */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: rgba(85, 85, 85, 0.9); /* Полупрозрачный фон */
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        opacity: 0; /* Начальная прозрачность */
+        transition: opacity 0.3s;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 0.9; /* Полупрозрачность при наведении */
+    }
+
+    /* Стили для тултипа слева */
+    .tooltip-left .tooltiptext {
+        right: 105%; /* Позиция слева от кнопки */
+        top: 50%;
+        transform: translateY(-50%); /* Центрирование по вертикали */
+    }
+
+    .tooltip-left .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 100%; /* Стрелка справа от тултипа */
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent transparent rgba(85, 85, 85, 0.9); /* Полупрозрачная стрелка */
+    }
+
+    /* Стили для тултипа снизу */
+    .tooltip-bottom .tooltiptext {
+        top: 105%; /* Позиция снизу от кнопки */
+        left: 50%;
+        transform: translateX(-50%); /* Центрирование по горизонтали */
+    }
+
+    .tooltip-bottom .tooltiptext::after {
+        content: "";
+        position: absolute;
+        bottom: 100%; /* Стрелка сверху тултипа */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent rgba(85, 85, 85, 0.9) transparent; /* Полупрозрачная стрелка */
+    }
+
+       .one-field, .two-field {
+            padding: 0 10px;
             border-radius: 10px;
-            border: 4px solid black;
-        }
-
-        .header-pole-field {
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-right: 10px;
-        }
-
-        .label-container {
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            right: 0;
-            padding: 0px 10px;
-        }
-
-        /* Стили для четных и нечетных полей */
-        .chet-field {
-            background-color: #a8a8a8; /* темно-серый цвет фона */
-        }
-
-        .nechet-field {
-            background-color: #e3e8e6; /* бело-серый цвет фона */
-        }
-
-        .nemenyemye-field {
-            background-color: #b0b7c6; /* синий цвет фона */
-        }
-
-        .non-field {
-            background-color: #c2c2c2; /* Серый цвет фона */
-        }
-
-        .botton-field {
-            background-color: #baacc7;
-        }
-
-        .header-pole-field, .botton-field, .non-field, .nemenyemye-field, .nechet-field, .chet-field  {
-            color: #000000; /* Черный цвет текста */
-            border-radius: 7px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-         .one-field, .two-field {
-            border-radius: 10px;
-            border: 4px solid black;
+            margin-top: 12px;
+            border: 2px solid #ffffff; /* Черная рамка */
+            outline: 4px solid #000000; /* Белая рамка вокруг черной */
         }
 
         .one-field {
@@ -96,20 +252,78 @@
             background-color: #e3e8e6;
         }
 
+
+        select.nechet-field {
+            background-color: #e3e8e6;
+            color: #000000; /* Черный цвет текста */
+            border: 2px solid #000000; /* Черная рамка */
+            outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
+            padding: 3px; /* Отступ внутри элемента */
+            font-size: 14px;
+        }
+
+        input.nechet-field, input.nemenyemye-field, input.chet-field {
+
+            color: #000000; /* Черный цвет текста */
+            border: 2px solid #000000; /* Черная рамка */
+            outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
+            border-radius: 7px; /* Скругление углов */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
+            padding: 3px; /* Отступ внутри элемента */
+            font-size: 14px;
+        }
+
+        /* Стили для четных и нечетных полей */
+        input.chet-field {
+            background-color: #a8a8a8; /* темно-серый цвет фона */
+        }
+
+        input.nechet-field {
+            background-color: #e3e8e6; /* бело-серый цвет фона */
+        }
+
+        input.nemenyemye-field {
+            background-color: #b0b7c6; /* синий цвет фона */
+        }
+
+        #data-container {
+            height: 400px; /* Задайте высоту, которая подходит для вашего дизайна */
+            overflow-y: auto; /* Включаем вертикальную прокрутку */
+            width: 100%; /* Ширина контейнера */
+            position: fixed; /* Фиксируем позицию */
+            top: 320px; /* Позиционируем контейнер */
+            padding: 10px; /* Отступ внутри элемента */
+            background-color: #808080; /* Цвет фона, чтобы соответствовать общему стилю */
+            z-index: 1; /* Убедитесь, что контейнер находится над другими элементами */
+            text-align: center;
+        }
+
+        .logo {
+        width: 98.1%;
+            height: 99%;
+<!--        background-size: cover;-->
+            background-position: right;
+            margin-bottom: 10px;
+            border: 2px solid #000000;
+             border-radius: 10px;
+        }
     </style>
 </head>
 <body>
 
-<!-- Фиксированный заголовок -->
-<div id="i-container" class="fixed-header">
-    <form id="homeForm">
-        <button id="fetchButtonHome" class="botton-field" type="button"><- Назад</button>
-        <label style="color: white; font-size: 20px; margin-left: 50px;">
-            Зарплата
-        </label>
-    </form><br />
+<div class="back-container">
+    <div class="tooltip tooltip-bottom">
+        <button id="fetchButtonHome" class="connt bbtn bbtn-size-1" type="button" >Назад</button>
+        <span class="tooltiptext">Ну передумал и ладно, пойдем кофе попьем</span>
+    </div>
+</div>
 
-    <select class="header-pole-field" id="city" name="city">
+<!-- Фиксированный заголовок -->
+<div class="login-container1">
+
+    <select class="polya1" id="city" name="city" style="margin-top: -10px;">
         <option value="">Город</option>
         <option value="Москва">Москва</option>
         <option value="Мос.Обл">Мос.Обл</option>
@@ -117,7 +331,8 @@
         <option value="Тверь">Тверь</option>
         <option value="Смоленск">Смоленск</option>
     </select>
-    <select class="header-pole-field" id="formaoplaty" name="formaoplaty">
+    <br />
+    <select class="polya1" id="formaoplaty" name="formaoplaty">
         <option value="">Форма оплаты</option>
         <option value="По ТК">ПО ТК</option>
         <option value="По ТК др-банк">По ТК др банк</option>
@@ -125,10 +340,20 @@
         <option value="Ип">ИП</option>
         <option value="Не официально">Не официально</option>
     </select><br />
-    <button id="fetchButton" class="botton-field">Получить данные</button>
-    <button id="saveAllButton" style="margin-top: 20px;" class="botton-field">Сохранить все</button><br />
-    <br />
-    <div class="label-container">
+
+    <div style="position: absolute; left: 45%; top: 10px;">
+        <button id="fetchButton" class="connt bbtn bbtn-size-2">Получить</button>
+    </div>
+    <div style="position: absolute; left: 45%; bottom: 10px;">
+        <button id="saveAllButton" class="connt bbtn bbtn-size-2">Сохранить</button>
+    </div>
+</div>
+
+
+<div class="login-container2">
+    <img src="/images/logo-praymm.jpg" alt="Логотип компании" class="logo">
+</div>
+<div class="login-container" style="margin-top: 250px;">
         <input style="width: 70px;" type="text" name="2" value="Имя" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="3" value="Фамилия" readonly class="nemenyemye-field"/>
         <input style="width: 70px;" type="text" name="4" value="Город" readonly class="nemenyemye-field"/>
@@ -144,7 +369,7 @@
         <input style="width: 50px;" type="text" name="18" value="Итог" readonly class="nemenyemye-field"/>
         <input style="width: 100px;" type="text" name="19" value="Ответственный" readonly class="nemenyemye-field"/>
     </div>
-</div>
+
 
 <div id="data-container"></div>
 
