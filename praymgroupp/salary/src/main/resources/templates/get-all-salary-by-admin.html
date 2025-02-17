@@ -341,9 +341,8 @@
         <option value="Не официально">Не официально</option>
     </select><br />
 
-    <div style="position: absolute; left: 45%; top: 10px;">
-        <button id="fetchButton" class="connt bbtn bbtn-size-2">Получить</button>
-    </div>
+
+        <button id="fetchButton" style="display: none;"></button>
     <div style="position: absolute; left: 45%; bottom: 10px;">
         <button id="saveAllButton" class="connt bbtn bbtn-size-2">Сохранить</button>
     </div>
@@ -580,8 +579,10 @@
   // Attach the fetchData function to the button click event
   document.getElementById('fetchButton').addEventListener('click', fetchData);
 
-  // Attach the saveAllData function to the "Сохранить все" button click event
-  document.getElementById('saveAllButton').addEventListener('click', saveAllData);
+        document.getElementById('saveAllButton').addEventListener('click', async () => {
+            await saveAllData(); // Сначала сохраняем данные
+            await fetchData();   // Затем получаем данные
+        });
 </script>
 </body>
 </html>
