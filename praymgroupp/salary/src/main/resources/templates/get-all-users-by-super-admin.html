@@ -15,7 +15,7 @@
             margin: 0;
         }
         :root {
-            --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
+            --height-top: calc(15vw); /* 18% от ширины экрана */
         }
 
         .login-container1 {
@@ -23,9 +23,9 @@
             top: 7px;
             left: 220px;
             width: 25%;
-            height: calc(var(--height-top) + 50px);
+            height: var(--height-top);
             background-color: #91CCC2; /* зеленовато-голубой цвет фона */
-            padding: 10px;
+            padding: 5px 10px;
             border: 2px solid #ffffff; /* Черная рамка */
             outline: 4px solid #000000; /* Белая рамка вокруг черной */
             border-radius: 10px; /* Скругление углов */
@@ -35,40 +35,28 @@
             position: fixed;
             top: 7px;
             right: 10px;
-            width: 14%;
-            height: calc(var(--height-top) + 50px);
+            width: 50%;
+            height: var(--height-top);
             background-color: #91CCC2; /* зеленовато-голубой цвет фона */
-            padding: 10px;
+            padding: 5px 10px;
             border: 2px solid #ffffff; /* Черная рамка */
             outline: 4px solid #000000; /* Белая рамка вокруг черной */
             border-radius: 10px; /* Скругление углов */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .login-container3 {
-            position: fixed;
-            top: 7px;
-            right: 20%;
-            width: 14%;
-            height: calc(var(--height-top) + 50px);
-            background-color: #91CCC2; /* зеленовато-голубой цвет фона */
-            padding: 10px;
-            border: 2px solid #ffffff; /* Черная рамка */
-            outline: 4px solid #000000; /* Белая рамка вокруг черной */
-            border-radius: 10px; /* Скругление углов */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+
         .login-container {
             position: fixed;
-            top: 3px;
+            top: calc(var(--height-top) + 4%);
             left: 5px;
             background-color: #91CCC2; /* зеленовато-голубой цвет фона */
-            padding: 5px;
+            padding: 5px 15px;
             border: 2px solid #ffffff; /* Черная рамка */
             outline: 4px solid #000000; /* Белая рамка вокруг черной */
             border-radius: 5px; /* Скругление углов */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 98.3%;
-            text-align: center;
+            width: 97.5%;
+<!--            text-align: center;-->
         }
         .back-container {
             position: fixed;
@@ -120,7 +108,9 @@
         outline: 4px solid #ffffff; /* Белая рамка вокруг черной */
         border-radius: 7px; /* Скругление углов */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Опционально: Добавление тени */
-        padding: 2px; /* Отступ внутри элемента */
+        margin-top: 12px;
+        width: 120px;
+<!--        padding: 2px; /* Отступ внутри элемента */-->
         font-size: 14px;
     }
 
@@ -235,7 +225,7 @@
     }
 
        .one-field, .two-field {
-            padding: 0 20px;
+            padding: 0 10px;
             border-radius: 10px;
             margin-top: 12px;
             border: 2px solid #ffffff; /* Черная рамка */
@@ -287,21 +277,24 @@
         }
 
         #data-container {
-            height: 400px; /* Задайте высоту, которая подходит для вашего дизайна */
+            height: 55%; /* Задайте высоту, которая подходит для вашего дизайна */
             overflow-y: auto; /* Включаем вертикальную прокрутку */
-<!--            margin-top: 670px; /* Оставляем отступ сверху */-->
-            width: 110%; /* Ширина контейнера */
+            width: 99%; /* Ширина контейнера */
             position: fixed; /* Фиксируем позицию */
-            top: 320px; /* Позиционируем контейнер */
-            padding: 10px; /* Отступ внутри элемента */
-<!--            left: 0; /* Выравниваем по левому краю */-->
+            top: calc(var(--height-top) + 12%); /* Позиционируем контейнер */
+            padding: 0 10px; /* Отступ внутри элемента */
             background-color: #808080; /* Цвет фона, чтобы соответствовать общему стилю */
             z-index: 1; /* Убедитесь, что контейнер находится над другими элементами */
         }
 
         .logo {
-            width: 200px;
-            margin-bottom: 20px;
+        width: 98.1%;
+            height: 99%;
+<!--        background-size: cover;-->
+            background-position: right;
+            margin-bottom: 10px;
+            border: 2px solid #000000;
+             border-radius: 10px;
         }
     </style>
 </head>
@@ -362,7 +355,7 @@
 <div class="login-container2">
     <img src="/images/logo-praym.jpg" alt="Логотип компании" class="logo" style="border: 2px solid #000000; border-radius: 10px;">
 </div>
-<div class="login-container" style="margin-top: 250px;">
+<div class="login-container">
         <input style="width: 90px;" type="text" name="2" value="Фамилия" readonly class="chet-field"/>
         <input style="width: 90px;" type="text" name="3" value="Имя" readonly class="nechet-field"/>
         <input style="width: 90px;" type="text" name="4" value="Отчество" readonly class="chet-field"/>
