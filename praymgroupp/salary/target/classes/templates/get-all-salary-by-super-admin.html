@@ -15,7 +15,7 @@
             margin: 0;
         }
         :root {
-            --height-top: calc(11.11vw); /* 11.11% от ширины экрана */
+            --height-top: calc(11.11vw); /* 12% от ширины экрана */
         }
 
         .login-container1 {
@@ -47,10 +47,10 @@
 
         .login-container {
             position: fixed;
-            top: calc(var(--height-top) + 50px);
+            top: calc(var(--height-top) + 5%);
             left: 5px;
             background-color: #91CCC2; /* зеленовато-голубой цвет фона */
-            padding: 5px;
+            padding: 5px 15px;
             border: 2px solid #ffffff; /* Черная рамка */
             outline: 4px solid #000000; /* Белая рамка вокруг черной */
             border-radius: 5px; /* Скругление углов */
@@ -281,7 +281,7 @@
             overflow-y: auto; /* Включаем вертикальную прокрутку */
             width: 99%; /* Ширина контейнера */
             position: fixed; /* Фиксируем позицию */
-            top: 320px; /* Позиционируем контейнер */
+            top: calc(var(--height-top) + 10%); /* Позиционируем контейнер */
             padding: 10px; /* Отступ внутри элемента */
             background-color: #808080; /* Цвет фона, чтобы соответствовать общему стилю */
             z-index: 1; /* Убедитесь, что контейнер находится над другими элементами */
