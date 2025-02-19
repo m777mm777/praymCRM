@@ -204,7 +204,9 @@ public class SalaryServiceImpl implements SalaryService {
         if (user.getRole().equals("SUPERADMIN")) {
             responses = salaryMapper.toResponseCollectionBySuperAdmin(salaries);
         } else {
+            Salary salaryForResponsible = getResponsiblePersonsSalary (localDate, user.getId());
             responses = salaryMapper.toResponseCollectionByAdmin(salaries);
+            responses.add(salaryMapper.toResponseCollectionByAdmin(List.of(salaryForResponsible)).get(0));
         }
         return responses;
     }
@@ -221,7 +223,7 @@ public class SalaryServiceImpl implements SalaryService {
         }
 
         SalarySearchFilter salarySearchFilter = new SalarySearchFilter();
-        LocalDate localDate = LocalDate.now();
+        LocalDate localDate = LocalDate.now().minusMonths(1);
         salarySearchFilter.setLocalDate(localDate);
 
         if (requester.getRole().equals("ADMIN")) {
@@ -246,13 +248,21 @@ public class SalaryServiceImpl implements SalaryService {
             salaryRepository.saveAll(salaries);
         }
 
+        List<SalaryResponse> responses;
+
         if (requester.getRole().equals("ADMIN")) {
             salaries.stream()
                     .filter(salary -> requester.getLastName().equals(salary.getOwner().getOwner().getLastName()))
                     .toList();
+
+            Salary salaryForResponsible = getResponsiblePersonsSalary (localDate, requesterId);
+            responses = salaryMapper.toResponseCollectionByAdmin(salaries);
+            responses.add(salaryMapper.toResponseCollectionByAdmin(List.of(salaryForResponsible)).get(0));
+        } else {
+            responses = salaryMapper.toResponseCollectionByAdmin(salaries);
         }
 
-        return salaryMapper.toResponseCollection(salaries);
+        return responses;
     }
 
     private List<SalaryResponse> updateAllSalary (List<Salary> salaries) {
@@ -264,6 +274,21 @@ public class SalaryServiceImpl implements SalaryService {
 
         commentService.saveAll(comments);
         return salaryMapper.toResponseCollection(salaryRepository.saveAll(salaries));
+    }
+
+    private Salary getResponsiblePersonsSalary (LocalDate localDate, UUID responsibleId) {
+        List<Specification<Salary>> specifications = new ArrayList<>();
+
+        specifications.add(salaryDateMontAndYear(localDate));
+        specifications.add(responsibleId(responsibleId));
+
+        Page<Salary> salaryPage = salaryRepository.findAll(
+                specifications.stream().reduce(Specification::and).orElse(null), page
+        );
+
+        List<Salary> salaries = salaryPage.getContent();
+
+        return salaries.get(0);
     }
 
     private List<Specification<Salary>> searchFilterToSpecifications(Boolean isByMonth, SalarySearchFilter salarySearchFilter) {
@@ -342,6 +367,11 @@ public class SalaryServiceImpl implements SalaryService {
     private Specification<Salary> dismissed(Boolean dismissed) {
         return (root, query, criteriaBuilder) -> criteriaBuilder
                 .in(root.get("owner").get("dismissed")).value(dismissed);
+    }
+
+    private Specification<Salary> responsibleId(UUID values) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder
+                .in(root.get("owner").get("id")).value(values);
     }
 
     private Boolean chek(String month,
