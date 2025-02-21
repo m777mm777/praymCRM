@@ -456,6 +456,26 @@ outline: 4px solid #ffffff; /* Белая рамка вокруг черной *
       event.preventDefault(); // Предотвращаем отправку формы
       fetchData(); // Вызываем функцию fetchData
   });
+
+  // Время в миллисекундах (1 час = 3600000 мс)
+        const inactivityTime = 3600000;
+        let timeout;
+
+        // Функция для перенаправления
+        function redirect() {
+            window.location.href = `${urll}`;
+        }
+
+        // Функция для сброса таймера
+        function resetTimer() {
+            clearTimeout(timeout);
+            timeout = setTimeout(redirect, inactivityTime);
+        }
+
+        // Отслеживание активности пользователя
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
 </script>
 </body>
 </html>

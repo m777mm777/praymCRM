@@ -134,7 +134,8 @@ public class SalaryServiceImpl implements SalaryService {
             throw new ConflictServerError("Доступ запрещен");
         }
 
-        Boolean searchEngineIs = chek(month,
+        Boolean searchEngineIs = chek(user.getRole(),
+                month,
                 year,
                 responsible,
                 city,
@@ -374,14 +375,17 @@ public class SalaryServiceImpl implements SalaryService {
                 .in(root.get("owner").get("id")).value(values);
     }
 
-    private Boolean chek(String month,
+    private Boolean chek(String role,
+                         String month,
                          String year,
                          String responsible,
                          String city,
                          String formaoplaty,
                          String companyName,
                          String dismissed) {
-        if (month == null
+
+        if (role.equals("SUPERADMIN")
+                && month == null
                 && year == null
                 && responsible == null
                 && city == null
@@ -389,6 +393,14 @@ public class SalaryServiceImpl implements SalaryService {
                 && companyName == null
                 && dismissed == null) {
 
+            return false;
+        } else if (role.equals("ADMIN")
+                && month == null
+                && year == null
+                && city == null
+                && formaoplaty == null
+                && companyName == null
+                && dismissed == null){
             return false;
         } else {
             return true;
